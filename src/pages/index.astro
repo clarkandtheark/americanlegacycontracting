@@ -53,7 +53,15 @@ const faqItems = [
                 </div>
                 <div class="col-lg-8 align-self-baseline">
                     <p class="text-white-75 mb-5">{site.hero_tagline}</p>
-                    <a class="btn btn-primary btn-xl" href="#contact">Get a Quote</a>
+                    <a class="btn btn-primary btn-xl" href="#contact" id="quote-btn">Get a Quote</a>
+                    <script is:inline>
+                      document.getElementById('quote-btn').addEventListener('click', function(e) {
+                        if (/Mobi|Android/i.test(navigator.userAgent)) {
+                          e.preventDefault();
+                          window.location.href = 'sms:8016369887?body=Hey%20Alan%2C%20I%27m%20looking%20to%20get%20some%20work%20done%20and%20would%20love%20to%20have%20you%20come%20over%20and%20give%20me%20a%20quote!';
+                        }
+                      });
+                    </script>
                 </div>
             </div>
         </div>
