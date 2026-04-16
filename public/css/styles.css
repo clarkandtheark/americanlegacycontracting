@@ -2851,9 +2851,9 @@ textarea.form-control-lg {
   --bs-btn-bg: #7EB2DD;
   --bs-btn-border-color: #7EB2DD;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #cf5331;
-  --bs-btn-hover-border-color: #c34e2e;
-  --bs-btn-focus-shadow-rgb: 246, 122, 88;
+  --bs-btn-hover-bg: #5a8ac4;
+  --bs-btn-hover-border-color: #4d7db7;
+  --bs-btn-focus-shadow-rgb: 90, 138, 196;
   --bs-btn-active-color: #fff;
   --bs-btn-active-bg: #7EB2DD;
   --bs-btn-active-border-color: #7EB2DD;
@@ -10931,7 +10931,7 @@ hr.divider-light {
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/bg-remodel.jpg");
+  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.5) 0%, rgba(92, 77, 66, 0.5) 100%), url("../assets/img/bg-remodel.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -10939,6 +10939,7 @@ header.masthead {
 }
 header.masthead h1, header.masthead .h1 {
   font-size: 2.25rem;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 @media (min-width: 992px) {
   header.masthead {
@@ -10979,7 +10980,7 @@ header.masthead h1, header.masthead .h1 {
   text-align: center;
   opacity: 0;
   color: #fff;
-  background: rgba(126, 178, 221, 0.9);
+  background: linear-gradient(to bottom, rgba(126, 178, 221, 0.85) 0%, rgba(30, 60, 100, 0.9) 100%);
   transition: opacity 0.25s ease;
   text-align: center;
 }
@@ -10994,5 +10995,21 @@ header.masthead h1, header.masthead .h1 {
 }
 #portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption, #portfolio .container-sm .portfolio-box:hover .portfolio-box-caption, #portfolio .container-md .portfolio-box:hover .portfolio-box-caption, #portfolio .container-lg .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xl .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xxl .portfolio-box:hover .portfolio-box-caption {
   opacity: 1;
+}
+
+/* Body font override — Merriweather Sans for all body text */
+body {
+  font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Scroll reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 

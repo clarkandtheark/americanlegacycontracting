@@ -209,6 +209,23 @@ const faqItems = [
         })} />
     </section>
 
+    <!-- Scroll reveal script -->
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', function() {
+        var targets = document.querySelectorAll('.page-section, #portfolio .col-lg-4, #portfolio .col-sm-6');
+        targets.forEach(function(el) { el.classList.add('reveal'); });
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.08 });
+        targets.forEach(function(el) { observer.observe(el); });
+      });
+    </script>
+
     <!-- Contact-->
     <section class="page-section" id="contact">
         <div class="container px-4 px-lg-5">
