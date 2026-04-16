@@ -22,7 +22,7 @@ const faqItems = [
     },
     {
         question: "Do you provide free estimates?",
-        answer: "Yes — just call or text Alan at 801-636-9887 and he'll let you know if he can help, or refer you to a trusted partner who can."
+        answer: "Yes — just call or text Alan at <a href='tel:8016369887'>801-636-9887</a> and he'll let you know if he can help, or refer you to a trusted partner who can."
     },
     {
         question: "How long does a basement finish take?",
@@ -38,7 +38,7 @@ const faqItems = [
     // },
     {
         question: "How do I get started?",
-        answer: "Call or text Alan at 801-636-9887, or fill out the contact form below. He responds quickly and will let you know next steps right away."
+        answer: "Call or text Alan at <a href='tel:8016369887'>801-636-9887</a>, or fill out the contact form below. He responds quickly and will let you know next steps right away."
     }
 ];
 ---
@@ -184,9 +184,7 @@ const faqItems = [
                                     aria-labelledby={`faq-heading-${i}`}
                                     data-bs-parent="#faqAccordion"
                                 >
-                                    <div class="accordion-body text-muted">
-                                        {item.answer}
-                                    </div>
+                                    <div class="accordion-body text-muted" set:html={item.answer} />
                                 </div>
                             </div>
                         ))}

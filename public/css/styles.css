@@ -11015,17 +11015,19 @@ body {
 
 /* ── DESIGN REFRESH: Typography & Visual Polish ── */
 
-/* Playfair Display for all headings */
+/* Barlow Condensed for all headings */
 h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Barlow Condensed', sans-serif;
+  letter-spacing: 0.01em;
 }
 
-/* Section h2 — tighter, more confident */
+/* Section h2 — bold and confident */
 .page-section h2, #portfolio h2 {
-  font-size: 2.25rem;
+  font-size: 2.4rem;
   font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  text-transform: uppercase;
 }
 
 /* Divider — gradient fade instead of blunt stub */
@@ -11038,9 +11040,9 @@ hr.divider {
   opacity: 1;
 }
 
-/* Testimonial quotes — italic Playfair, more readable */
+/* Testimonial quotes — readable size */
 .page-section.bg-dark .row h6 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Merriweather Sans', sans-serif;
   font-size: 1rem;
   font-weight: 400;
   font-style: italic;
