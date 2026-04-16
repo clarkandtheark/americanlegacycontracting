@@ -1,17 +1,204 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
 ---
+<Layout>
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container px-4 px-lg-5 h-100">
+            <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+                <div class="col-lg-8 align-self-end">
+                    <h1 class="text-white font-weight-bold">American Legacy Contracting</h1>
+                    <hr class="divider" />
+                </div>
+                <div class="col-lg-8 align-self-baseline">
+                    <p class="text-white-75 mb-5">Looking for a licensed general contractor to do a kitchen remodel, finish your basement, build a deck, or need help with some other construction project? Call Alan at American Legacy Contracting.
+                        American Legacy Contracting has been building in Utah county for over 14 years. He also has great electricians and plumbers for whatever you might need. He is a top rated contractor that Build zoom ranks above 74,376 other contractors in Utah. Placing them in the top 1% of general contractors to work with and they live just down the road.</p>
+                    <a class="btn btn-primary btn-xl" href="#contact">Get a Quote</a>
+                </div>
+            </div>
+        </div>
+    </header>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+    <!-- About-->
+    <section class="page-section bg-primary" id="about">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="text-white mt-0">Get to know the owner</h2><br>
+                    <div><img class="justify-content-center" src="/assets/img/portfolio/BarbenFamily.JPG" width="100%" height="100%" style="object-fit: cover; object-position: bottom;" /></div>
+                    <hr class="divider divider-light" />
+                    <p class="text-white-75 mb-4"></p>
+                    <br>
+                    <p class="text-white-75 mb-4">Based in Payson, Utah Alan Barben, (the owner) is fully licensed and insured, he also has a Bachelor's degree in Construction Management, as well as an Applied Science degree in Construction Management. He has worked as a residential home builder, a commercial construction manager and has worked in all the major trades including framing, electrical, heating and air conditioning and plumbing. Alan only uses subcontractors that he would trust to work in his own home. Don't know if he can help you? Give him a call or send him a text and he'll let you know if he can help, or possibly just refer you to a trusted friend that can.</p>
+                    <a class="btn btn-light btn-xl" href="#services">Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services-->
+    <section class="page-section" id="services">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">Services</h2>
+            <hr class="divider" />
+            <div class="row gx-4 gx-lg-5">
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="mt-5">
+                        <div class="mb-2"><i class="fa-solid fa-hammer fa-2xl text-primary"></i></div><br>
+                        <h3 class="h4 mb-2">Remodels &amp; Renovations</h3>
+                        <p class="text-muted mb-0">From kitchens to bathrooms, breathe new life into your space with our expert renovations!</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="mt-5">
+                        <div class="mb-2"><i class="fa-solid fa-stairs fa-2xl text-primary"></i></div><br>
+                        <h3 class="h4 mb-2">Basement Finishing</h3>
+                        <p class="text-muted mb-0">Create versatile, beautiful spaces in your home with our professional basement finishing!</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="mt-5">
+                        <div class="mb-2"><i class="fa-solid fa-house-chimney fa-2xl text-primary"></i></div><br>
+                        <h3 class="h4 mb-2">New Construction</h3>
+                        <p class="text-muted mb-0">Your vision, our expertise: You can put your trust in us to build your dream home!</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="mt-5">
+                        <div class="mb-2"><i class="fa-solid fa-screwdriver-wrench fa-2xl text-primary"></i></div><br>
+                        <h3 class="h4 mb-2">Handyman Services</h3>
+                        <p class="text-muted mb-0">No job too small: let us cover all your home maintenance and repair needs!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio-->
+    <div id="portfolio">
+        <h2 class="text-center mt-0">Projects</h2>
+        <hr class="divider" />
+        <br>
+        <div class="container-fluid p-0">
+            <div class="row g-0">
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box" href="/assets/img/portfolio/4-B.JPG" title="Bathroom Finish (Before)">
+                        <img class="img-fluid" src="/assets/img/portfolio/4-A.JPG" alt="..." />
+                        <div class="portfolio-box-caption">
+                            <div class="project-category text-white-50">Bathroom Finish</div>
+                            <div class="project-name">Click to see the "before"</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box" href="/assets/img/portfolio/1-B.JPG" title="Basement Finish (Before)">
+                        <img class="img-fluid" src="/assets/img/portfolio/1-A.JPG" alt="..." />
+                        <div class="portfolio-box-caption">
+                            <div class="project-category text-white-50">Basement Finish</div>
+                            <div class="project-name">Click to see the "before"</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box" href="/assets/img/portfolio/2-B.JPG" title="Bathroom Finish (Before)">
+                        <img class="img-fluid" src="/assets/img/portfolio/2-A.JPG" alt="..." />
+                        <div class="portfolio-box-caption">
+                            <div class="project-category text-white-50">Bathroom Finish</div>
+                            <div class="project-name">Click to see the "before"</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box" href="/assets/img/portfolio/OutsideDeck.JPG" title="Outdoor Deck">
+                        <img class="img-fluid" src="/assets/img/portfolio/OutsideDeck.JPG" alt="..." />
+                        <div class="portfolio-box-caption">
+                            <div class="project-category text-white-50">Outdoor Deck</div>
+                            <div class="project-name">Click to Enlarge</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box" href="/assets/img/portfolio/CabinBuildSide.JPG" title="New Build">
+                        <img class="img-fluid" src="/assets/img/portfolio/CabinBuildSide.JPG" alt="..." />
+                        <div class="portfolio-box-caption p-3">
+                            <div class="project-category text-white-50">New Build</div>
+                            <div class="project-name">Click to Enlarge</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box" href="/assets/img/portfolio/BasementFinish.JPG" title="Basement Finish">
+                        <img class="img-fluid" src="/assets/img/portfolio/BasementFinish.JPG" alt="..." />
+                        <div class="portfolio-box-caption">
+                            <div class="project-category text-white-50">Basement Finish</div>
+                            <div class="project-name">Click to Enlarge</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials-->
+    <section class="page-section bg-dark text-white">
+        <div class="container px-4 px-lg-5 text-center">
+            <h2 class="mb-4">Testimonials</h2>
+            <hr class="divider" />
+            <div class="row gx-4 gx-lg-5">
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="mt-5">
+                        <h6 class="mb-2">"This is the second time we've used American Legacy and have referred them as well. They finished our basement and it looks fantastic. Alan will work with you along the way to help save money. We highly recommend them!"</h6>
+                        <p class="text-muted mb-0">- Chris D.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="mt-5">
+                        <h6 class="mb-2">"...All work performed exceeded expectations. Moreover, not only was all work performed in an exemplary manner, but the way in which the work was performed was designed to ensure complete customer satisfaction..."</h6>
+                        <p class="text-muted mb-0">- Roderick M.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="mt-5">
+                        <h6 class="mb-2">"Work was completed in a timely manner, faster than expected. The job looks great and was very professional. Alan was responsive to emails and text messages about the project."</h6>
+                        <p class="text-muted mb-0">- Jared S.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="mt-5">
+                        <h6 class="mb-2">"We had plumbing done and it was a great experience. The plumbing was a good price and everything works correctly and they worked around my timing, and had everything hooked back up at the end of the day. This was a big deal because we were still living in the house, and it was a big project."</h6>
+                        <p class="text-muted mb-0">- Josephine A.</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <a class="btn btn-light btn-xl" href="https://www.thumbtack.com/ut/payson/basements/american-legacy-contracting-inc/service/209189999677572292">All Reviews</a>
+        </div>
+    </section>
+
+    <!-- Contact-->
+    <section class="page-section" id="contact">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6 text-center">
+                    <h2 class="mt-0">Get a free Quote!</h2>
+                    <hr class="divider" />
+                    <p class="text-muted mb-5">Ready to start your next project with us? Send us a message and we will get back to you as soon as possible!</p>
+                </div>
+            </div>
+            <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdnlpLBFIogdHId-7Ha4DwhLUTaz36z-5uS3hjIICbOKYcB6A/viewform?embedded=true" width="640" height="824" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-4 text-center mb-5 mb-lg-0">
+                    <br>
+                    <h2 class="mt-0">Contact</h2>
+                    <hr class="divider" />
+                    <i class="bi-phone fs-2 mb-3 text-muted"></i>
+                    <div><a href="tel:801-636-9887">801-636-9887</a></div><br>
+                    <i class="bi-envelope fs-2 mb-3 text-muted"></i>
+                    <div><a href="mailto:amlgcy@gmail.com">amlgcy@gmail.com</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>
