@@ -11013,3 +11013,72 @@ body {
   transform: translateY(0);
 }
 
+/* ── DESIGN REFRESH: Typography & Visual Polish ── */
+
+/* Playfair Display for all headings */
+h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Section h2 — tighter, more confident */
+.page-section h2, #portfolio h2 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+/* Divider — gradient fade instead of blunt stub */
+hr.divider {
+  height: 1px;
+  max-width: 6rem;
+  background: linear-gradient(to right, transparent, #7EB2DD, transparent);
+  border: none;
+  margin: 1.25rem auto 1.75rem;
+  opacity: 1;
+}
+
+/* Testimonial quotes — italic Playfair, more readable */
+.page-section.bg-dark .row h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.75;
+}
+
+/* FAQ accordion — brand-matched, no Bootstrap gray boxes */
+.accordion-item {
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: 0 !important;
+  background: transparent;
+}
+.accordion-button {
+  font-family: "Merriweather Sans", sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: transparent !important;
+  color: #212529 !important;
+  box-shadow: none !important;
+}
+.accordion-button:not(.collapsed) {
+  color: #7EB2DD !important;
+}
+.accordion-button:focus {
+  box-shadow: 0 0 0 2px rgba(126, 178, 221, 0.25) !important;
+}
+
+/* Service card hover lift */
+#services .col-lg-3 .mt-5 {
+  border-radius: 10px;
+  padding: 1.5rem 1rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+#services .col-lg-3:hover .mt-5 {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
