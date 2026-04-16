@@ -1,0 +1,109 @@
+backend:
+  name: github
+  repo: clarkandtheark/americanlegacycontracting
+  branch: main
+  auth_type: pkce
+  app_id: REPLACE_WITH_GITHUB_OAUTH_APP_CLIENT_ID
+
+media_folder: public/assets/img/portfolio
+public_folder: /assets/img/portfolio
+
+collections:
+  - name: site_settings
+    label: Site Settings
+    files:
+      - name: general
+        label: General Info
+        file: src/content/site.json
+        fields:
+          - label: Hero Tagline
+            name: hero_tagline
+            widget: text
+            hint: The paragraph shown on the homepage hero banner
+          - label: About Text
+            name: about_text
+            widget: text
+            hint: The paragraph in the About/Owner section
+          - label: Phone Number
+            name: phone
+            widget: string
+          - label: Email Address
+            name: email
+            widget: string
+          - label: Reviews URL
+            name: reviews_url
+            widget: string
+            hint: Link to the "All Reviews" button (Thumbtack, Google, etc.)
+          - label: Contact Form URL
+            name: contact_form_url
+            widget: string
+            hint: Google Form embed URL
+
+  - name: services
+    label: Services
+    folder: src/content/services
+    create: true
+    slug: "{{order}}-{{slug}}"
+    fields:
+      - label: Order
+        name: order
+        widget: number
+        hint: Display order (1 = first)
+      - label: Title
+        name: title
+        widget: string
+      - label: Description
+        name: description
+        widget: text
+      - label: Icon
+        name: icon
+        widget: string
+        hint: "FontAwesome icon name only, e.g. fa-hammer, fa-stairs, fa-house-chimney"
+
+  - name: testimonials
+    label: Testimonials
+    folder: src/content/testimonials
+    create: true
+    slug: "{{order}}-{{slug}}"
+    fields:
+      - label: Order
+        name: order
+        widget: number
+        hint: Display order (1 = first)
+      - label: Quote
+        name: quote
+        widget: text
+      - label: Author
+        name: author
+        widget: string
+        hint: "e.g. Chris D."
+
+  - name: portfolio
+    label: Portfolio Projects
+    folder: src/content/portfolio
+    create: true
+    slug: "{{order}}-{{slug}}"
+    fields:
+      - label: Order
+        name: order
+        widget: number
+        hint: Display order (1 = first)
+      - label: Category
+        name: category
+        widget: string
+        hint: "e.g. Bathroom Finish, Basement Finish, New Build"
+      - label: Main Image (After)
+        name: image
+        widget: image
+        hint: The image shown in the grid
+      - label: Lightbox Image
+        name: lightbox_image
+        widget: image
+        hint: Image shown when clicked (use a Before photo if you have one)
+      - label: Lightbox Title
+        name: lightbox_title
+        widget: string
+      - label: Caption
+        name: caption
+        widget: string
+        hint: "e.g. Click to Enlarge or Click to see the before"
