@@ -22,6 +22,11 @@
         <link href="/css/styles.css" rel="stylesheet" />
         <!-- Netlify Identity Widget (handles CMS login redirects)-->
         <script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+        <script is:inline>
+          if (window.netlifyIdentity) {
+            window.netlifyIdentity.init({ APIUrl: 'https://deluxe-moonbeam-d7cdb6.netlify.app/.netlify/identity' });
+          }
+        </script>
     </head>
     <body id="page-top">
         <!-- Navigation-->
