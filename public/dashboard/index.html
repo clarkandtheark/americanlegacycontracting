@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard — American Legacy Contracting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #7EB2DD;
+      --blue-dark: #5a8ac4;
+      --navy: #1a2a3a;
+      --bg: #f4f6f9;
+      --white: #ffffff;
+      --text: #212529;
+      --muted: #6c757d;
+      --border: #dee2e6;
+      --green: #28a745;
+      --red: #dc3545;
+      --card-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    body {
+      font-family: 'Merriweather Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Loading / Login screens ── */
+    .screen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .screen-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    }
+
+    .screen-card .logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.02em;
+      margin-bottom: 0.25rem;
+    }
+
+    .screen-card .logo-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 2rem;
+    }
+
+    .screen-card h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--navy);
+    }
+
+    .screen-card p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .btn-google {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--blue);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.85rem 1.75rem;
+      font-family: 'Merriweather Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-google:hover { background: var(--blue-dark); }
+
+    .spinner {
+      width: 36px;
+      height: 36px;
+      border: 3px solid var(--border);
+      border-top-color: var(--blue);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 1.5rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Dashboard layout ── */
+    #dashboard { display: none; }
+
+    header.topbar {
+      background: var(--navy);
+      padding: 0 2rem;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .topbar-brand {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #fff;
+      letter-spacing: 0.02em;
+    }
+
+    .topbar-badge {
+      font-size: 0.7rem;
+      background: var(--blue);
+      color: #fff;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .topbar-right a {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.8rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .topbar-right a:hover { color: #fff; }
+
+    .btn-signout {
+      background: none;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.75);
+      border-radius: 6px;
+      padding: 0.35rem 0.85rem;
+      font-family: 'Merriweather Sans', sans-serif;
+      font-size: 0.775rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-signout:hover {
+      border-color: rgba(255,255,255,0.6);
+      color: #fff;
+    }
+
+    .content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* ── Section headers ── */
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .section-header:first-of-type { margin-top: 0; }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .section-date {
+      font-size: 0.775rem;
+      color: var(--muted);
+    }
+
+    /* ── Metric cards ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 900px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px) { .cards { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--card-shadow);
+    }
+
+    .card-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-sub {
+      font-size: 0.775rem;
+      color: var(--muted);
+    }
+
+    .card-accent { border-top: 3px solid var(--blue); }
+
+    /* ── Queries table ── */
+    .table-wrap {
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+
+    thead {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    th {
+      padding: 0.8rem 1.25rem;
+      text-align: left;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+    }
+
+    th:not(:first-child) { text-align: right; }
+
+    td {
+      padding: 0.8rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    td:not(:first-child) { text-align: right; color: var(--muted); }
+
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #f8f9fa; }
+
+    .query-text {
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    /* ── Error state ── */
+    .error-msg {
+      background: #fff3f3;
+      border: 1px solid #f5c6c6;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      color: var(--red);
+      font-size: 0.875rem;
+      margin-top: 1rem;
+    }
+
+    /* ── Footer note ── */
+    .dash-footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loading screen -->
+  <div class="screen" id="loading-screen">
+    <div class="screen-card">
+      <div class="logo">American Legacy Contracting</div>
+      <div class="logo-sub">Dashboard</div>
+      <div class="spinner"></div>
+      <p id="loading-msg">Connecting to Google…</p>
+    </div>
+  </div>
+
+  <!-- Login screen -->
+  <div class="screen" id="login-screen" style="display:none">
+    <div class="screen-card">
+      <div class="logo">American Legacy Contracting</div>
+      <div class="logo-sub">Dashboard</div>
+      <h2>Sign in to view your metrics</h2>
+      <p>Connect your Google account to see your Google Analytics and Search Console data in one place.</p>
+      <button class="btn-google" onclick="authorize()">
+        <svg width="18" height="18" viewBox="0 0 48 48" fill="none"><path fill="#fff" d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z"/></svg>
+        Sign in with Google
+      </button>
+      <div id="login-error" class="error-msg" style="display:none;margin-top:1rem"></div>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard">
+    <header class="topbar">
+      <div class="topbar-left">
+        <span class="topbar-brand">American Legacy Contracting</span>
+        <span class="topbar-badge">Dashboard</span>
+      </div>
+      <div class="topbar-right">
+        <a href="/admin/">CMS Admin</a>
+        <a href="/">View Site</a>
+        <button class="btn-signout" onclick="signOut()">Sign Out</button>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <!-- GA4 Section -->
+      <div class="section-header">
+        <span class="section-title">Google Analytics</span>
+        <span class="section-date" id="ga4-date-label">Last 30 days</span>
+      </div>
+
+      <div class="cards" id="ga4-cards">
+        <div class="card card-accent">
+          <div class="card-label">Sessions</div>
+          <div class="card-value" id="stat-sessions">—</div>
+          <div class="card-sub">Total site visits</div>
+        </div>
+        <div class="card card-accent">
+          <div class="card-label">Users</div>
+          <div class="card-value" id="stat-users">—</div>
+          <div class="card-sub">Unique visitors</div>
+        </div>
+        <div class="card card-accent">
+          <div class="card-label">Organic Sessions</div>
+          <div class="card-value" id="stat-organic">—</div>
+          <div class="card-sub">From Google search</div>
+        </div>
+        <div class="card card-accent">
+          <div class="card-label">Direct Sessions</div>
+          <div class="card-value" id="stat-direct">—</div>
+          <div class="card-sub">Typed your URL directly</div>
+        </div>
+      </div>
+
+      <!-- GSC Section -->
+      <div class="section-header">
+        <span class="section-title">Google Search Console</span>
+        <span class="section-date" id="gsc-date-label">Last 28 days</span>
+      </div>
+
+      <div class="cards">
+        <div class="card card-accent">
+          <div class="card-label">Clicks</div>
+          <div class="card-value" id="stat-clicks">—</div>
+          <div class="card-sub">People who clicked your site</div>
+        </div>
+        <div class="card card-accent">
+          <div class="card-label">Impressions</div>
+          <div class="card-value" id="stat-impressions">—</div>
+          <div class="card-sub">Times shown in search results</div>
+        </div>
+        <div class="card card-accent">
+          <div class="card-label">Avg. Position</div>
+          <div class="card-value" id="stat-position">—</div>
+          <div class="card-sub">Average ranking (lower = better)</div>
+        </div>
+        <div class="card card-accent">
+          <div class="card-label">Click-through Rate</div>
+          <div class="card-value" id="stat-ctr">—</div>
+          <div class="card-sub">% who clicked after seeing you</div>
+        </div>
+      </div>
+
+      <!-- Top Queries Table -->
+      <div class="section-header">
+        <span class="section-title">Top Search Queries</span>
+        <span class="section-date">What people searched before finding you</span>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Search Query</th>
+              <th>Clicks</th>
+              <th>Impressions</th>
+              <th>Avg Position</th>
+            </tr>
+          </thead>
+          <tbody id="queries-tbody">
+            <tr><td colspan="4" style="color:var(--muted);text-align:center;padding:2rem">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="gsc-error" class="error-msg" style="display:none"></div>
+
+      <p class="dash-footer">Data refreshes each time you load this page &nbsp;·&nbsp; Search Console data has a ~3 day delay</p>
+    </div>
+  </div>
+
+  <script>
+    const CLIENT_ID = '277379858434-24ee7p0ceg9c4cu8ea149nlrqv0lnhhp.apps.googleusercontent.com';
+    const SCOPES = 'https://www.googleapis.com/auth/analytics.readonly https://www.googleapis.com/auth/webmasters.readonly';
+
+    let tokenClient;
+    let accessToken = sessionStorage.getItem('alc_ga_token');
+
+    function show(id) {
+      ['loading-screen', 'login-screen', 'dashboard'].forEach(s => {
+        const el = document.getElementById(s);
+        if (el) el.style.display = (s === id ? (id === 'dashboard' ? 'block' : 'flex') : 'none');
+      });
+    }
+
+    function authorize() {
+      if (tokenClient) tokenClient.requestAccessToken({ prompt: '' });
+    }
+
+    function signOut() {
+      if (accessToken) {
+        try { google.accounts.oauth2.revoke(accessToken); } catch(e) {}
+      }
+      sessionStorage.removeItem('alc_ga_token');
+      accessToken = null;
+      show('login-screen');
+    }
+
+    window.initGIS = function() {
+      tokenClient = google.accounts.oauth2.initTokenClient({
+        client_id: CLIENT_ID,
+        scope: SCOPES,
+        callback: async (resp) => {
+          if (resp.error) {
+            showLoginError('Sign-in failed: ' + resp.error);
+            show('login-screen');
+            return;
+          }
+          accessToken = resp.access_token;
+          sessionStorage.setItem('alc_ga_token', accessToken);
+          await loadDashboard();
+        }
+      });
+
+      if (accessToken) {
+        loadDashboard();
+      } else {
+        show('login-screen');
+      }
+    };
+
+    function showLoginError(msg) {
+      const el = document.getElementById('login-error');
+      el.textContent = msg;
+      el.style.display = 'block';
+    }
+
+    async function apiFetch(url, options) {
+      const resp = await fetch(url, {
+        ...options,
+        headers: {
+          Authorization: 'Bearer ' + accessToken,
+          'Content-Type': 'application/json',
+          ...(options && options.headers)
+        }
+      });
+      if (resp.status === 401) {
+        sessionStorage.removeItem('alc_ga_token');
+        accessToken = null;
+        show('login-screen');
+        showLoginError('Session expired. Please sign in again.');
+        throw new Error('unauthorized');
+      }
+      return resp.json();
+    }
+
+    async function discoverGA4Property() {
+      const data = await apiFetch('https://analyticsadmin.googleapis.com/v1beta/accountSummaries');
+      const summaries = data.accountSummaries || [];
+      const allProps = summaries.flatMap(a => a.propertySummaries || []);
+      if (!allProps.length) throw new Error('No GA4 properties found on this Google account.');
+      // Use first property (single-site setup)
+      return allProps[0].property.replace('properties/', '');
+    }
+
+    async function loadGA4Data(propertyId) {
+      const today = new Date();
+      const fmt = d => d.toISOString().split('T')[0];
+      const start = new Date(today); start.setDate(start.getDate() - 30);
+
+      document.getElementById('ga4-date-label').textContent =
+        fmt(start) + ' — ' + fmt(today);
+
+      const data = await apiFetch(
+        'https://analyticsdata.googleapis.com/v1beta/properties/' + propertyId + ':runReport',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+            metrics: [{ name: 'sessions' }, { name: 'totalUsers' }],
+            dimensions: [{ name: 'sessionDefaultChannelGroup' }]
+          })
+        }
+      );
+
+      let totalSessions = 0, totalUsers = 0, organicSessions = 0, directSessions = 0;
+
+      for (const row of (data.rows || [])) {
+        const channel = (row.dimensionValues[0].value || '').toLowerCase();
+        const sessions = parseInt(row.metricValues[0].value || 0);
+        const users = parseInt(row.metricValues[1].value || 0);
+        totalSessions += sessions;
+        totalUsers += users;
+        if (channel.includes('organic')) organicSessions += sessions;
+        if (channel.includes('direct')) directSessions += sessions;
+      }
+
+      document.getElementById('stat-sessions').textContent = totalSessions.toLocaleString();
+      document.getElementById('stat-users').textContent = totalUsers.toLocaleString();
+      document.getElementById('stat-organic').textContent = organicSessions.toLocaleString();
+      document.getElementById('stat-direct').textContent = directSessions.toLocaleString();
+    }
+
+    async function loadGSCData() {
+      const today = new Date();
+      const endDate = new Date(today); endDate.setDate(endDate.getDate() - 3);
+      const startDate = new Date(endDate); startDate.setDate(startDate.getDate() - 27);
+      const fmt = d => d.toISOString().split('T')[0];
+
+      document.getElementById('gsc-date-label').textContent =
+        fmt(startDate) + ' — ' + fmt(endDate);
+
+      // Try domain property first, fall back to URL prefix
+      const sites = [
+        'sc-domain:americanlegacycontracting.com',
+        'https://americanlegacycontracting.com/'
+      ];
+
+      let gscError = null;
+
+      for (const site of sites) {
+        try {
+          const encoded = encodeURIComponent(site);
+          const base = 'https://searchconsole.googleapis.com/webmasters/v3/sites/' + encoded + '/searchAnalytics/query';
+          const body = { startDate: fmt(startDate), endDate: fmt(endDate), rowLimit: 10 };
+
+          const [summary, queriesData] = await Promise.all([
+            apiFetch(base, { method: 'POST', body: JSON.stringify(body) }),
+            apiFetch(base, { method: 'POST', body: JSON.stringify({ ...body, dimensions: ['query'] }) })
+          ]);
+
+          // Summary row
+          const row = (summary.rows || [])[0] || {};
+          const clicks = Math.round(row.clicks || 0);
+          const impressions = Math.round(row.impressions || 0);
+          const position = row.position ? row.position.toFixed(1) : '—';
+          const ctr = row.ctr ? (row.ctr * 100).toFixed(1) + '%' : '—';
+
+          document.getElementById('stat-clicks').textContent = clicks.toLocaleString();
+          document.getElementById('stat-impressions').textContent = impressions.toLocaleString();
+          document.getElementById('stat-position').textContent = position;
+          document.getElementById('stat-ctr').textContent = ctr;
+
+          // Queries table
+          const tbody = document.getElementById('queries-tbody');
+          const queryRows = queriesData.rows || [];
+          if (!queryRows.length) {
+            tbody.innerHTML = '<tr><td colspan="4" style="color:var(--muted);text-align:center;padding:2rem">No query data yet — check back in a few weeks as traffic grows.</td></tr>';
+          } else {
+            tbody.innerHTML = queryRows.map(r => `
+              <tr>
+                <td><span class="query-text">${escHtml(r.keys[0])}</span></td>
+                <td>${Math.round(r.clicks)}</td>
+                <td>${Math.round(r.impressions)}</td>
+                <td>${r.position.toFixed(1)}</td>
+              </tr>
+            `).join('');
+          }
+          return; // success — stop trying sites
+        } catch(e) {
+          if (e.message === 'unauthorized') return;
+          gscError = e;
+        }
+      }
+
+      // Both sites failed
+      const errEl = document.getElementById('gsc-error');
+      errEl.style.display = 'block';
+      errEl.textContent = 'Search Console data unavailable. Make sure this Google account has access to the Search Console property for americanlegacycontracting.com.';
+      document.getElementById('stat-clicks').textContent = 'N/A';
+      document.getElementById('stat-impressions').textContent = 'N/A';
+      document.getElementById('stat-position').textContent = 'N/A';
+      document.getElementById('stat-ctr').textContent = 'N/A';
+      document.getElementById('queries-tbody').innerHTML =
+        '<tr><td colspan="4" style="color:var(--muted);text-align:center;padding:2rem">No data available.</td></tr>';
+    }
+
+    async function loadDashboard() {
+      show('loading-screen');
+      document.getElementById('loading-msg').textContent = 'Loading your data…';
+      try {
+        const propertyId = await discoverGA4Property();
+        await Promise.all([loadGA4Data(propertyId), loadGSCData()]);
+        show('dashboard');
+      } catch(e) {
+        if (e.message !== 'unauthorized') {
+          show('login-screen');
+          showLoginError('Something went wrong: ' + e.message);
+        }
+      }
+    }
+
+    function escHtml(str) {
+      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+  </script>
+  <script src="https://accounts.google.com/gsi/client" onload="initGIS()" async defer></script>
+</body>
+</html>
