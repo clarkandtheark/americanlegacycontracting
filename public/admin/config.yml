@@ -3,7 +3,7 @@ backend:
   repo: clarkandtheark/americanlegacycontracting
   branch: main
   auth_type: pkce
-  app_id: REPLACE_WITH_GITHUB_OAUTH_APP_CLIENT_ID
+  app_id: Ov23liiMkTC495E7QfJR
 
 media_folder: public/assets/img/portfolio
 public_folder: /assets/img/portfolio
