@@ -30,3 +30,6 @@ jobs:
 
       - name: Deploy to S3
         run: aws s3 sync dist/ s3://americanlegacycontracting.com --delete
+
+      - name: Invalidate CloudFront cache
+        run: aws cloudfront create-invalidation --distribution-id E2GIV5UT0MDQE2 --paths "/*"
