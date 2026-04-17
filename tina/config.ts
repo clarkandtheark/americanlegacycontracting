@@ -14,11 +14,9 @@ export default defineConfig({
     outputFolder: 'admin',
     publicFolder: 'public',
   },
-  ui: {
-    cmsCallback: (cms) => {
-      mountDeployStatusWidget();
-      return cms;
-    },
+  cmsCallback: (cms) => {
+    mountDeployStatusWidget();
+    return cms;
   },
   media: {
     tina: {
