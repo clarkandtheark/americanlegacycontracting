@@ -39,7 +39,7 @@ export function mountDeployStatusWidget() {
       #${WIDGET_ID} {
         position: fixed;
         bottom: 16px;
-        right: 16px;
+        left: 16px;
         z-index: 2147483000;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         color: #1a1a1a;
@@ -73,7 +73,7 @@ export function mountDeployStatusWidget() {
         display: none;
         position: absolute;
         bottom: calc(100% + 8px);
-        right: 0;
+        left: 0;
         width: 320px;
         background: #ffffff;
         border: 1px solid #e4e1db;
