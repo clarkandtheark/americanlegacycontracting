@@ -441,7 +441,61 @@
 
       <div id="gsc-error" class="error-msg" style="display:none"></div>
 
-      <p class="dash-footer">Data refreshes each time you load this page &nbsp;·&nbsp; Search Console data has a ~3 day delay</p>
+      <!-- CTA Conversions Section -->
+      <div class="section-header">
+        <span class="section-title">CTA Conversions</span>
+        <span class="section-date" id="cta-date-label">Last 30 days</span>
+      </div>
+
+      <div class="cards">
+        <div class="card card-accent">
+          <div class="card-label">Get a Quote</div>
+          <div class="card-value" id="stat-quotes">—</div>
+          <div class="card-sub" id="stat-quotes-rate">Conversion rate: —</div>
+        </div>
+        <div class="card card-accent">
+          <div class="card-label">Phone Calls</div>
+          <div class="card-value" id="stat-calls">—</div>
+          <div class="card-sub" id="stat-calls-rate">Conversion rate: —</div>
+        </div>
+        <div class="card card-accent">
+          <div class="card-label">Text Messages</div>
+          <div class="card-value" id="stat-texts">—</div>
+          <div class="card-sub" id="stat-texts-rate">Conversion rate: —</div>
+        </div>
+        <div class="card card-accent">
+          <div class="card-label">Total CTA Clicks</div>
+          <div class="card-value" id="stat-total-cta">—</div>
+          <div class="card-sub" id="stat-total-rate">Conversion rate: —</div>
+        </div>
+      </div>
+
+      <!-- CTA by Page Table -->
+      <div class="section-header">
+        <span class="section-title">CTA Clicks by Page</span>
+        <span class="section-date">Which pages drive the most engagement</span>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Page</th>
+              <th>Get a Quote</th>
+              <th>Calls</th>
+              <th>Texts</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody id="cta-pages-tbody">
+            <tr><td colspan="5" style="color:var(--muted);text-align:center;padding:2rem">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="cta-error" class="error-msg" style="display:none"></div>
+
+      <p class="dash-footer">Data refreshes each time you load this page &nbsp;·&nbsp; Search Console data has a ~3 day delay &nbsp;·&nbsp; CTA tracking started April 2026</p>
     </div>
   </div>
 
@@ -565,6 +619,8 @@
       document.getElementById('stat-users').textContent = totalUsers.toLocaleString();
       document.getElementById('stat-organic').textContent = organicSessions.toLocaleString();
       document.getElementById('stat-direct').textContent = directSessions.toLocaleString();
+
+      return totalSessions;
     }
 
     async function loadGSCData() {
@@ -641,12 +697,126 @@
         '<tr><td colspan="4" style="color:var(--muted);text-align:center;padding:2rem">No data available.</td></tr>';
     }
 
+    async function loadCTAData(propertyId, totalSessions) {
+      const today = new Date();
+      const fmt = d => d.toISOString().split('T')[0];
+      const start = new Date(today); start.setDate(start.getDate() - 30);
+
+      document.getElementById('cta-date-label').textContent =
+        fmt(start) + ' — ' + fmt(today);
+
+      try {
+        // Get CTA event counts
+        const data = await apiFetch(
+          'https://analyticsdata.googleapis.com/v1beta/properties/' + propertyId + ':runReport',
+          {
+            method: 'POST',
+            body: JSON.stringify({
+              dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+              metrics: [{ name: 'eventCount' }],
+              dimensions: [{ name: 'eventName' }],
+              dimensionFilter: {
+                filter: {
+                  fieldName: 'eventName',
+                  inListFilter: { values: ['get_quote', 'phone_call', 'text_message'] }
+                }
+              }
+            })
+          }
+        );
+
+        var quotes = 0, calls = 0, texts = 0;
+        for (const row of (data.rows || [])) {
+          const event = row.dimensionValues[0].value;
+          const count = parseInt(row.metricValues[0].value || 0);
+          if (event === 'get_quote') quotes = count;
+          else if (event === 'phone_call') calls = count;
+          else if (event === 'text_message') texts = count;
+        }
+
+        var total = quotes + calls + texts;
+        var pctOf = function(n) {
+          return totalSessions > 0 ? (n / totalSessions * 100).toFixed(1) + '%' : '—';
+        };
+
+        document.getElementById('stat-quotes').textContent = quotes.toLocaleString();
+        document.getElementById('stat-calls').textContent = calls.toLocaleString();
+        document.getElementById('stat-texts').textContent = texts.toLocaleString();
+        document.getElementById('stat-total-cta').textContent = total.toLocaleString();
+
+        document.getElementById('stat-quotes-rate').textContent = 'Conversion rate: ' + pctOf(quotes);
+        document.getElementById('stat-calls-rate').textContent = 'Conversion rate: ' + pctOf(calls);
+        document.getElementById('stat-texts-rate').textContent = 'Conversion rate: ' + pctOf(texts);
+        document.getElementById('stat-total-rate').textContent = 'Conversion rate: ' + pctOf(total);
+
+        // Get CTA clicks by page
+        const pageData = await apiFetch(
+          'https://analyticsdata.googleapis.com/v1beta/properties/' + propertyId + ':runReport',
+          {
+            method: 'POST',
+            body: JSON.stringify({
+              dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+              metrics: [{ name: 'eventCount' }],
+              dimensions: [{ name: 'pagePath' }, { name: 'eventName' }],
+              dimensionFilter: {
+                filter: {
+                  fieldName: 'eventName',
+                  inListFilter: { values: ['get_quote', 'phone_call', 'text_message'] }
+                }
+              },
+              orderBys: [{ metric: { metricName: 'eventCount' }, desc: true }],
+              limit: 100
+            })
+          }
+        );
+
+        // Aggregate by page
+        var pages = {};
+        for (const row of (pageData.rows || [])) {
+          var page = row.dimensionValues[0].value;
+          var event = row.dimensionValues[1].value;
+          var count = parseInt(row.metricValues[0].value || 0);
+          if (!pages[page]) pages[page] = { get_quote: 0, phone_call: 0, text_message: 0 };
+          pages[page][event] = count;
+        }
+
+        var tbody = document.getElementById('cta-pages-tbody');
+        var pageEntries = Object.entries(pages)
+          .map(function(entry) {
+            var p = entry[0], d = entry[1];
+            return { page: p, quotes: d.get_quote, calls: d.phone_call, texts: d.text_message, total: d.get_quote + d.phone_call + d.text_message };
+          })
+          .sort(function(a, b) { return b.total - a.total; })
+          .slice(0, 15);
+
+        if (!pageEntries.length) {
+          tbody.innerHTML = '<tr><td colspan="5" style="color:var(--muted);text-align:center;padding:2rem">No CTA click data yet — tracking just started.</td></tr>';
+        } else {
+          tbody.innerHTML = pageEntries.map(function(r) {
+            return '<tr>' +
+              '<td><span class="query-text">' + escHtml(r.page) + '</span></td>' +
+              '<td>' + r.quotes + '</td>' +
+              '<td>' + r.calls + '</td>' +
+              '<td>' + r.texts + '</td>' +
+              '<td><strong>' + r.total + '</strong></td>' +
+              '</tr>';
+          }).join('');
+        }
+      } catch(e) {
+        if (e.message === 'unauthorized') return;
+        var errEl = document.getElementById('cta-error');
+        errEl.style.display = 'block';
+        errEl.textContent = 'CTA data unavailable. Events may take 24-48 hours to appear after tracking is enabled.';
+      }
+    }
+
     async function loadDashboard() {
       show('loading-screen');
       document.getElementById('loading-msg').textContent = 'Loading your data…';
       try {
         const propertyId = await discoverGA4Property();
-        await Promise.all([loadGA4Data(propertyId), loadGSCData()]);
+        const totalSessions = await loadGA4Data(propertyId);
+        await Promise.all([loadGSCData(), loadCTAData(propertyId, totalSessions)]);
         show('dashboard');
       } catch(e) {
         if (e.message !== 'unauthorized') {
