@@ -1,0 +1,34 @@
+{
+  "city": "Pleasant Grove",
+  "slug": "pleasant-grove",
+  "order": 6,
+  "meta_title": "General Contractor in Pleasant Grove, UT | American Legacy Contracting",
+  "meta_description": "Pleasant Grove general contractor for home renovations, basement finishing, and new construction. From charming downtown cottages to newer subdivisions off Manila Creek. Call Alan: 801-636-9887.",
+  "hero_heading": "General Contractor in Pleasant Grove, Utah",
+  "hero_subheading": "American Legacy Contracting is proud to work in Pleasant Grove, a city that blends small-town warmth with steady growth. Known as the Garden City, PG has everything from vintage homes with real personality to modern subdivisions, and Alan Barben brings the right skills and approach for projects on both ends of that spectrum.",
+  "about_city": "Pleasant Grove has a charm that's hard to find in Utah County's newer cities. The downtown area along Main Street features older homes with established landscaping, covered porches, and the kind of architectural details that don't come standard anymore. Some of these homes date back to the early 1900s and have been lovingly maintained, while others are ready for a thoughtful renovation that preserves their character while bringing systems and finishes up to date. Beyond downtown, Pleasant Grove has expanded with newer neighborhoods along Manila Creek Road and toward the east bench, where more recent construction offers a different set of opportunities, primarily basement finishing and cosmetic upgrades from builder-grade to custom. The city's ongoing downtown revitalization has also sparked interest in updating older commercial-adjacent properties. American Legacy Contracting appreciates Pleasant Grove's diversity of housing stock. We approach a 1940s bungalow renovation differently than a 2015 basement finish, and that adaptability is what PG homeowners need from their contractor.",
+  "local_services": [
+    {
+      "title": "Remodels & Renovations",
+      "description": "Pleasant Grove's range of home styles means renovation work here is never one-size-fits-all. We restore original hardwood floors and update wiring in downtown cottages, open up galley kitchens in mid-century ramblers along Center Street, and modernize bathrooms in newer east-side homes. Each PG neighborhood has its own character, and we match our approach to fit.",
+      "icon": "fa-hammer"
+    },
+    {
+      "title": "Basement Finishing",
+      "description": "Pleasant Grove's newer neighborhoods on the east side are filled with homes that have unfinished basements ready for buildout. We also convert old cellar-style basements in downtown homes into usable living space, adding proper egress windows, insulation, and modern finishes that transform forgotten storage areas into comfortable rooms.",
+      "icon": "fa-stairs"
+    },
+    {
+      "title": "New Construction",
+      "description": "Pleasant Grove's revitalizing downtown and remaining infill lots present genuine opportunities for new construction. We build custom homes that respect PG's neighborhood character while delivering modern performance, energy efficiency, and the open layouts that today's families want.",
+      "icon": "fa-house-chimney"
+    },
+    {
+      "title": "Handyman Services",
+      "description": "Pleasant Grove's older homes especially benefit from a reliable handyman. We repair original wood windows, fix settling cracks in plaster walls, replace porch railings, install modern lighting, and handle the ongoing maintenance that keeps both vintage downtown homes and newer east-side properties in great shape year-round.",
+      "icon": "fa-screwdriver-wrench"
+    }
+  ],
+  "nearby_cities": ["cedar-hills", "lindon", "american-fork", "orem"],
+  "additional_content": ""
+}

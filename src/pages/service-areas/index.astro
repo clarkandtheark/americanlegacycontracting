@@ -1,0 +1,72 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const areaModules = import.meta.glob('../../content/service-areas/*.json', { eager: true });
+const areas = Object.values(areaModules).sort((a: any, b: any) => a.order - b.order);
+---
+<Layout
+    title="Service Areas in Utah County | American Legacy Contracting"
+    description="American Legacy Contracting serves 17 cities along the I-15 corridor from Lehi to Nephi. Licensed general contractor for basement finishing, remodels, new construction, and handyman services."
+    canonicalUrl="https://americanlegacycontracting.com/service-areas/"
+    ogTitle="Service Areas | American Legacy Contracting"
+    ogDescription="Licensed general contractor serving 17 cities in Utah County — from Lehi to Nephi. Basement finishing, remodels, new construction, and handyman services."
+    isSubpage={true}
+>
+    <header class="masthead-sm bg-primary">
+        <div class="container px-4 px-lg-5 py-5">
+            <div class="row justify-content-center text-center" style="padding-top: 5rem;">
+                <div class="col-lg-8">
+                    <h1 class="text-white font-weight-bold mt-0">Service Areas</h1>
+                    <hr class="divider divider-light" />
+                    <p class="text-white-75 mb-0">American Legacy Contracting proudly serves homeowners along the entire I-15 corridor in Utah County — from Lehi in the north to Nephi in the south. Owner Alan Barben brings 14+ years of hands-on experience and a Construction Management degree to every project, no matter which community you call home.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-section">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">Cities We Serve</h2>
+            <hr class="divider" />
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                {areas.map((area: any) => (
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <a href={`/service-areas/${area.slug}/`} class="text-decoration-none">
+                            <div class="card h-100 shadow-sm border-0 service-area-card">
+                                <div class="card-body text-center p-4">
+                                    <div class="mb-3"><i class="fa-solid fa-location-dot fa-2x text-primary"></i></div>
+                                    <h3 class="h5 mb-2 text-dark">{area.city}, UT</h3>
+                                    <p class="text-muted small mb-0">General contracting, basement finishing, remodels &amp; more</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <section class="page-section bg-primary">
+        <div class="container px-4 px-lg-5 text-center">
+            <h2 class="text-white mt-0">Ready to Start Your Project?</h2>
+            <hr class="divider divider-light" />
+            <p class="text-white-75 mb-4">Call or text Alan directly for a free estimate — he responds quickly and will let you know next steps right away.</p>
+            <a class="btn btn-light btn-xl" href="tel:8016369887">Call 801-636-9887</a>
+            <a class="btn btn-outline-light btn-xl ms-2" href="sms:8016369887?body=Hey%20Alan%2C%20I%27m%20looking%20to%20get%20some%20work%20done%20and%20would%20love%20to%20have%20you%20come%20over%20and%20give%20me%20a%20quote!">Text Alan</a>
+        </div>
+    </section>
+
+    <style>
+        .masthead-sm {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        .service-area-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .service-area-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15) !important;
+        }
+    </style>
+</Layout>

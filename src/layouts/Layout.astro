@@ -1,21 +1,45 @@
 ---
+interface Props {
+    title?: string;
+    description?: string;
+    canonicalUrl?: string;
+    ogTitle?: string;
+    ogDescription?: string;
+    structuredData?: object[];
+    isSubpage?: boolean;
+}
+
+const {
+    title = "General Contractor in Payson, UT | American Legacy Contracting",
+    description = "American Legacy Contracting offers licensed general contracting in Payson, Utah and throughout Utah County. Specializing in basement finishing, kitchen remodels, new construction, and handyman services. Call Alan: 801-636-9887.",
+    canonicalUrl = "https://americanlegacycontracting.com/",
+    ogTitle = "General Contractor in Payson, UT | American Legacy Contracting",
+    ogDescription = "Licensed general contractor serving Payson, Spanish Fork, Salem, Springville, and Utah County. Basement finishing, remodels, new construction, and handyman services.",
+    structuredData = [],
+    isSubpage = false,
+} = Astro.props;
+
+const navPrefix = isSubpage ? '/' : '';
 ---
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="American Legacy Contracting offers licensed general contracting in Payson, Utah and throughout Utah County. Specializing in basement finishing, kitchen remodels, new construction, and handyman services. Call Alan: 801-636-9887." />
-        <title>General Contractor in Payson, UT | American Legacy Contracting</title>
+        <meta name="description" content={description} />
+        <title>{title}</title>
         <!-- Canonical -->
-        <link rel="canonical" href="https://americanlegacycontracting.com/" />
+        <link rel="canonical" href={canonicalUrl} />
         <!-- Open Graph -->
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://americanlegacycontracting.com/" />
-        <meta property="og:title" content="General Contractor in Payson, UT | American Legacy Contracting" />
-        <meta property="og:description" content="Licensed general contractor serving Payson, Spanish Fork, Salem, Springville, and Utah County. Basement finishing, remodels, new construction, and handyman services." />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:title" content={ogTitle} />
+        <meta property="og:description" content={ogDescription} />
         <meta property="og:image" content="https://americanlegacycontracting.com/assets/img/Logo-removebg-preview.png" />
-        <!-- LocalBusiness Schema -->
+        {structuredData.map((data) => (
+            <script is:inline type="application/ld+json" set:html={JSON.stringify(data)} />
+        ))}
+        {!isSubpage && (
         <script is:inline type="application/ld+json">
         {
           "@context": "https://schema.org",
@@ -32,7 +56,10 @@
             "addressCountry": "US"
           },
           "areaServed": [
-            "Payson", "Spanish Fork", "Salem", "Springville", "Mapleton", "Elk Ridge", "Utah County"
+            "Lehi", "American Fork", "Highland", "Alpine", "Cedar Hills",
+            "Pleasant Grove", "Lindon", "Orem", "Provo", "Springville",
+            "Spanish Fork", "Mapleton", "Salem", "Elk Ridge", "Payson",
+            "Santaquin", "Nephi", "Utah County"
           ],
           "priceRange": "$$",
           "description": "Licensed general contractor in Payson, Utah specializing in basement finishing, kitchen remodels, new construction, and handyman services throughout Utah County.",
@@ -48,7 +75,8 @@
           }
         }
         </script>
-        <!-- Person Schema (Alan Barben) -->
+        )}
+        {!isSubpage && (
         <script is:inline type="application/ld+json">
         {
           "@context": "https://schema.org",
@@ -85,6 +113,7 @@
           "areaServed": "Utah County, UT"
         }
         </script>
+        )}
         <!-- Google Search Console verification -->
         <meta name="google-site-verification" content="2FF9tN9mZfTn18JYuiJvDJ516C-rzG-vxVyQ3xER1RI" />
         <!-- Google Analytics -->
@@ -111,15 +140,15 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#page-top"><img src="/assets/img/Logo-removebg-preview.png" width="200" height="50" alt="American Legacy Contracting" /></a>
+                <a class="navbar-brand" href={isSubpage ? '/' : '#page-top'}><img src="/assets/img/Logo-removebg-preview.png" width="200" height="50" alt="American Legacy Contracting" /></a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#portfolio">Projects</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href={`${navPrefix}#about`}>About</a></li>
+                        <li class="nav-item"><a class="nav-link" href={`${navPrefix}#services`}>Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/service-areas/">Service Areas</a></li>
+                        <li class="nav-item"><a class="nav-link" href={`${navPrefix}#portfolio`}>Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href={`${navPrefix}#contact`}>Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -138,7 +167,7 @@
                         <p class="small text-muted mb-1">
                             <a href="tel:8016369887" class="text-muted">801-636-9887</a>
                             &nbsp;&middot;&nbsp;
-                            Payson, Spanish Fork, Salem, Springville, Mapleton, Elk Ridge &amp; Utah County
+                            Serving <a href="/service-areas/" class="text-muted">17 cities</a> from Lehi to Nephi along the I-15 corridor
                         </p>
                         <p class="small text-muted mb-0">
                             Copyright &copy; <span id="current-year"></span> - American Legacy Contracting

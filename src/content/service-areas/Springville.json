@@ -1,0 +1,34 @@
+{
+  "city": "Springville",
+  "slug": "springville",
+  "order": 10,
+  "meta_title": "General Contractor in Springville, UT | American Legacy Contracting",
+  "meta_description": "Springville's trusted general contractor for renovating Art City's charming older homes, finishing basements in newer south-end developments, and custom builds. Call Alan: 801-636-9887.",
+  "hero_heading": "General Contractor in Springville, Utah",
+  "hero_subheading": "American Legacy Contracting is honored to work in Springville — Art City — where tree-lined streets, a walkable historic downtown, and a genuine sense of community identity set it apart from the rapid-growth cities around it. Alan Barben and our team bring careful, quality-driven construction to Springville homeowners who take real pride in their properties and their neighborhood's character.",
+  "about_city": "Springville has a personality all its own. The historic core around Main Street and the Springville Museum of Art features some of the most charming older homes in south Utah County — well-built houses from the early 1900s through the 1960s with established yards, mature trees, and the kind of neighborhood feel that newer developments spend millions trying to replicate. These homes have wonderful character but often need updated kitchens, bathrooms, electrical, and insulation. South of 400 South and toward the I-15 corridor, Springville has seen steady new growth with modern subdivisions where unfinished basements are the norm and families are looking to maximize every square foot. American Legacy Contracting serves both sides of Springville with equal care, whether we're refinishing original hardwood in a downtown cottage or framing out a basement theater in a Mapleton Corridor build.",
+  "local_services": [
+    {
+      "title": "Remodels & Renovations",
+      "description": "Springville's established neighborhoods near Main Street, along 200 South, and in the blocks surrounding the art museum are full of homes with real character — original woodwork, built-in shelving, covered porches — but kitchens and bathrooms that are decades overdue for an update. We approach these remodels thoughtfully, preserving the details that give Art City homes their charm while delivering modern functionality, better storage, and updated finishes.",
+      "icon": "fa-hammer"
+    },
+    {
+      "title": "Basement Finishing",
+      "description": "The newer developments along Springville's south end and east side consistently deliver homes with full unfinished basements. We transform those lower levels into bedrooms, home offices, playrooms, and media rooms that Springville families actually use daily. For homeowners in the older downtown area, we also renovate partially finished basements that were done decades ago and no longer meet the family's needs.",
+      "icon": "fa-stairs"
+    },
+    {
+      "title": "New Construction",
+      "description": "Springville continues to grow, with new lots opening up on the south end toward Spanish Fork and occasional infill opportunities closer to downtown. American Legacy Contracting builds custom homes that fit Springville's aesthetic — homes that look like they belong here, designed with quality materials and floor plans suited to how Utah County families actually live.",
+      "icon": "fa-house-chimney"
+    },
+    {
+      "title": "Handyman Services",
+      "description": "Art City homeowners care about their properties, and the to-do list on an older Springville home can grow faster than the garden out front. We handle trim replacement, tile repairs, door installations, shelf and storage builds, exterior caulking, and all the maintenance work that keeps a well-loved Springville home in excellent condition without needing to coordinate three different contractors.",
+      "icon": "fa-screwdriver-wrench"
+    }
+  ],
+  "nearby_cities": ["provo", "mapleton", "spanish-fork"],
+  "additional_content": ""
+}

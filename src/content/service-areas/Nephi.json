@@ -1,0 +1,34 @@
+{
+  "city": "Nephi",
+  "slug": "nephi",
+  "order": 17,
+  "meta_title": "General Contractor in Nephi, UT | American Legacy Contracting",
+  "meta_description": "Nephi general contractor for home renovations, basement finishing, new construction, and handyman services. Quality craftsmanship from Alan Barben at American Legacy Contracting. Call 801-636-9887.",
+  "hero_heading": "General Contractor in Nephi, Utah",
+  "hero_subheading": "American Legacy Contracting extends our services south to Nephi, the Juab County seat and gateway to central Utah. Finding a reliable, quality-focused general contractor in a smaller community can be a challenge, and that's exactly why Alan Barben makes the drive from Payson. We bring the same craftsmanship and professionalism to Nephi that we deliver throughout Utah County.",
+  "about_city": "Nephi is a community built on ranching, agriculture, and the self-reliant spirit that defines rural Utah. Sitting along I-15 at the foot of Mount Nebo, the tallest peak in the Wasatch Range, Nephi has a housing stock that tells the story of over a century of settlement. The blocks around 100 North and Main Street feature brick and stone homes dating back to the early 1900s, with thick walls, original woodwork, and construction methods that were built to last but show their age in kitchens, bathrooms, and electrical systems. Further out from the center, mid-century ranch homes and split-levels sit on generous lots with mature trees. Newer construction is starting to appear on the edges of town as families discover Nephi's affordability and open-sky quality of life. American Legacy Contracting recognizes that Nephi homeowners have limited options when it comes to licensed, experienced general contractors. Many operators in this area are handyman-level or unlicensed. Alan makes the commitment to serve Nephi because these homeowners deserve the same caliber of workmanship available in the more populated cities to the north, and he backs every job with the reliability and communication that a professional contractor should provide.",
+  "local_services": [
+    {
+      "title": "Remodels & Renovations",
+      "description": "Nephi's historic homes near downtown carry beautiful bones underneath outdated finishes. We renovate kitchens with 1950s cabinetry, update bathrooms with cracked tile and old plumbing fixtures, and open up chopped-up floor plans while preserving the architectural details that give these homes their character. For Nephi's mid-century ranch homes, we modernize layouts that no longer fit how families live today.",
+      "icon": "fa-hammer"
+    },
+    {
+      "title": "Basement Finishing",
+      "description": "Many of Nephi's ranch and split-level homes have partially finished or completely unfinished basements with untapped potential. We convert these lower levels into additional living space, whether that's bedrooms for a growing family, a workshop, a guest suite for visiting relatives, or a media room. In a market where adding square footage through an addition is costly, a basement finish delivers the most value per dollar.",
+      "icon": "fa-stairs"
+    },
+    {
+      "title": "New Construction",
+      "description": "Nephi offers something increasingly rare along the Wasatch Front: affordable, buildable land with mountain views in every direction. American Legacy Contracting builds custom homes for families and retirees choosing Nephi's wide-open spaces and small-town pace. We handle the full process from design coordination and permitting through construction and final inspection.",
+      "icon": "fa-house-chimney"
+    },
+    {
+      "title": "Handyman Services",
+      "description": "When your Nephi home needs a new exterior door hung, a section of fence rebuilt, drywall repaired, or a ceiling fan installed, finding someone reliable can be tough in a smaller town. American Legacy Contracting takes on handyman work in Nephi so you don't have to wait weeks for a callback or settle for subpar work. We schedule Nephi visits to handle multiple jobs efficiently and keep costs reasonable.",
+      "icon": "fa-screwdriver-wrench"
+    }
+  ],
+  "nearby_cities": ["santaquin", "payson"],
+  "additional_content": ""
+}

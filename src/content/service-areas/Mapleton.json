@@ -1,0 +1,34 @@
+{
+  "city": "Mapleton",
+  "slug": "mapleton",
+  "order": 12,
+  "meta_title": "General Contractor in Mapleton, UT | American Legacy Contracting",
+  "meta_description": "Mapleton's go-to general contractor for high-end basement finishing, custom home remodels, and new construction on the bench. Quality craftsmanship for upscale homes. Call Alan: 801-636-9887.",
+  "hero_heading": "General Contractor in Mapleton, Utah",
+  "hero_subheading": "American Legacy Contracting provides premium construction services to Mapleton — a quiet, upscale residential community on the east bench between Springville and Spanish Fork. Mapleton homeowners expect a higher level of finish and attention to detail, and Alan Barben's team delivers exactly that on every basement, remodel, and custom build we take on here.",
+  "about_city": "Mapleton is unlike most cities in Utah County. There's no commercial strip, no big-box development, and no dense subdivisions — just well-maintained homes on generous lots with sweeping views of Utah Valley to the west and the Wasatch Range rising immediately to the east. Properties here tend to be larger and more custom than what you find in neighboring cities, with homeowners who chose Mapleton specifically for the space, the views, and the privacy. Many of these homes were built in the 1990s and 2000s and are now reaching the age where kitchens, bathrooms, and master suites are due for a refresh. Others were built with unfinished basements that are ready for a high-quality build-out. American Legacy Contracting brings the craftsmanship and material quality that Mapleton properties demand — we understand that in a community like this, the work has to be impeccable because the homes around it already are.",
+  "local_services": [
+    {
+      "title": "Remodels & Renovations",
+      "description": "Mapleton's custom homes along Maple Street, 1200 East, and the upper bench roads were beautifully built but many are now 20 to 30 years old. We renovate master bathrooms with modern tile and fixtures, update kitchens with premium cabinetry and stone countertops, refinish hardwood floors, and reconfigure layouts to match how families live today — all at the quality level these homes were originally built to.",
+      "icon": "fa-hammer"
+    },
+    {
+      "title": "Basement Finishing",
+      "description": "Mapleton homes tend to have large, deep basements with high ceilings and walkout potential thanks to the bench terrain. We finish these spaces as true extensions of the home — home theaters with proper sound isolation, guest suites with full bathrooms, wine rooms, fitness areas, and spacious family rooms with the same trim details and finish quality as the main floor above.",
+      "icon": "fa-stairs"
+    },
+    {
+      "title": "New Construction",
+      "description": "Building a custom home in Mapleton means working with sloped lots, maximizing mountain and valley views, and meeting the expectations of a community where craftsmanship is visible on every street. American Legacy Contracting builds homes from the ground up that take full advantage of Mapleton's dramatic setting — thoughtful site orientation, quality framing, and finishes that hold up to close inspection.",
+      "icon": "fa-house-chimney"
+    },
+    {
+      "title": "Handyman Services",
+      "description": "Larger homes on bigger lots generate a steady stream of maintenance needs — exterior trim that takes a beating from bench-level wind and sun exposure, deck staining, custom shelving installs, bathroom hardware upgrades, and seasonal repairs that keep a Mapleton property looking as sharp as the day it was built. We handle these tasks efficiently so homeowners can enjoy the property instead of maintaining a project list.",
+      "icon": "fa-screwdriver-wrench"
+    }
+  ],
+  "nearby_cities": ["springville", "spanish-fork", "salem", "elk-ridge"],
+  "additional_content": ""
+}

@@ -1,0 +1,34 @@
+{
+  "city": "Cedar Hills",
+  "slug": "cedar-hills",
+  "order": 5,
+  "meta_title": "General Contractor in Cedar Hills, UT | American Legacy Contracting",
+  "meta_description": "Cedar Hills contractor specializing in basement finishing for 2000s-era homes, family-friendly remodels, and home repairs. Serving the Cedar Hills golf course community. Call Alan: 801-636-9887.",
+  "hero_heading": "General Contractor in Cedar Hills, Utah",
+  "hero_subheading": "American Legacy Contracting is the contractor Cedar Hills families call when it's time to finally finish the basement, update the kitchen, or tackle the project list that's been growing since move-in day. Alan Barben understands the homes in this community because most were built in the same era, and they share similar opportunities for smart upgrades.",
+  "about_city": "Cedar Hills is a family-focused community where most of the housing stock was built between 2000 and 2015, giving the city a cohesive, well-planned feel. Neighborhoods wind through gentle hills near the Cedar Hills Golf Club and up toward the foothills, with homes that were designed for growing families but often sold with unfinished basements and builder-grade finishes throughout. Now that many of these homes are 10 to 20 years old, Cedar Hills homeowners are ready for the next chapter: finishing that basement the kids have been asking about, replacing worn carpet and dated tile, upgrading kitchens beyond the original builder package, and addressing the wear that comes from years of active family life. American Legacy Contracting specializes in exactly this kind of work. We know the common floor plans, we understand the construction methods used during Cedar Hills' building boom, and we deliver upgrades that make these already-great family homes even better.",
+  "local_services": [
+    {
+      "title": "Remodels & Renovations",
+      "description": "Cedar Hills homes built in the 2000s typically came with builder-grade kitchens and bathrooms that are now showing their age. We replace laminate countertops with quartz or granite, install soft-close cabinetry, upgrade master bathrooms with modern tile and frameless glass showers, and refresh the finishes throughout your home to match how your family lives today.",
+      "icon": "fa-hammer"
+    },
+    {
+      "title": "Basement Finishing",
+      "description": "This is Cedar Hills' biggest opportunity. A huge number of homes in the community were purchased with unfinished basements, and finishing that space is the single best way to add livable square footage and value. We build bedrooms, bathrooms, family rooms, and home offices downstairs, working with the existing plumbing rough-ins and electrical panels that were planned for future finishing.",
+      "icon": "fa-stairs"
+    },
+    {
+      "title": "New Construction",
+      "description": "While Cedar Hills is largely built out, opportunities for new construction arise through lot splits, teardowns of the occasional older property, and accessory structures. We also build custom sheds, detached workshops, and covered outdoor living spaces that extend your home's usable footprint on Cedar Hills' well-sized lots.",
+      "icon": "fa-house-chimney"
+    },
+    {
+      "title": "Handyman Services",
+      "description": "After a decade or two, Cedar Hills homes start showing predictable wear: bathroom caulking fails, cabinet hardware loosens, garage doors need adjustment, exterior paint fades, and fence boards warp. We handle these routine repairs efficiently so you can spend your weekends at the golf course or the trailhead instead of at the hardware store.",
+      "icon": "fa-screwdriver-wrench"
+    }
+  ],
+  "nearby_cities": ["pleasant-grove", "highland", "american-fork", "alpine"],
+  "additional_content": ""
+}

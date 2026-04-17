@@ -1,0 +1,34 @@
+{
+  "city": "Highland",
+  "slug": "highland",
+  "order": 3,
+  "meta_title": "General Contractor in Highland, UT | American Legacy Contracting",
+  "meta_description": "High-end remodeling and custom construction in Highland, Utah. Specializing in upscale kitchen and bathroom renovations, basement builds, and luxury home improvements. Call Alan: 801-636-9887.",
+  "hero_heading": "General Contractor in Highland, Utah",
+  "hero_subheading": "American Legacy Contracting brings precision craftsmanship to Highland's distinctive homes. With larger lots, custom architecture, and homeowners who expect premium results, Alan Barben and our team deliver the quality finishes and attention to detail that Highland properties deserve.",
+  "about_city": "Highland is known throughout Utah County for its spacious lots, quiet streets, and beautifully maintained homes nestled against the foothills of the Wasatch Range. Unlike the denser developments in neighboring cities, Highland's half-acre and full-acre properties give homeowners room to dream big with their renovation and construction projects. Many Highland homes were custom-built, which means remodel work here requires a contractor who can match existing high-end finishes, work with unique floor plans, and execute detail-oriented upgrades like custom tile work, built-in cabinetry, and premium fixtures. American Legacy Contracting has earned the trust of Highland homeowners by treating every project with the care these homes demand. Whether it's a full kitchen overhaul in a home along Highland Boulevard or a basement buildout on a property near Beacon Hills, we bring the skill and professionalism this community expects.",
+  "local_services": [
+    {
+      "title": "Remodels & Renovations",
+      "description": "Highland homeowners invest in quality, and their remodels reflect that. We specialize in high-end kitchen renovations with custom cabinetry and stone countertops, luxury master bathroom upgrades, and whole-home refreshes that elevate already-beautiful Highland properties. Our work matches the caliber of the original construction, whether your home is near Mountain Ridge Park or along the Alpine Highway corridor.",
+      "icon": "fa-hammer"
+    },
+    {
+      "title": "Basement Finishing",
+      "description": "Highland's larger homes often come with expansive unfinished basements that represent thousands of square feet of untapped potential. We build out these spaces into home theaters with custom sound insulation, guest suites, exercise rooms, and entertainment areas with wet bars and built-in shelving that match the upscale feel of the rest of the home.",
+      "icon": "fa-stairs"
+    },
+    {
+      "title": "New Construction",
+      "description": "Highland still has select lots available for custom home construction, and some homeowners choose to tear down and rebuild on their existing property to take full advantage of the mountain and valley views. We build custom homes from the foundation up, working closely with Highland homeowners to create the home they envision on their property.",
+      "icon": "fa-house-chimney"
+    },
+    {
+      "title": "Handyman Services",
+      "description": "Even well-built Highland homes need ongoing maintenance. We handle exterior trim repairs, deck restoration, custom shelving installation, door and hardware upgrades, and seasonal maintenance tasks that keep your property looking its best in a community where curb appeal matters.",
+      "icon": "fa-screwdriver-wrench"
+    }
+  ],
+  "nearby_cities": ["american-fork", "alpine", "cedar-hills", "lehi"],
+  "additional_content": ""
+}

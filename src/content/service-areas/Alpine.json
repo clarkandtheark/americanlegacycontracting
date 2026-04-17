@@ -1,0 +1,34 @@
+{
+  "city": "Alpine",
+  "slug": "alpine",
+  "order": 4,
+  "meta_title": "General Contractor in Alpine, UT | American Legacy Contracting",
+  "meta_description": "Custom home building and luxury remodeling in Alpine, Utah. Expert craftsmanship for mountain properties, high-end renovations, and premium basement finishing. Call Alan: 801-636-9887.",
+  "hero_heading": "General Contractor in Alpine, Utah",
+  "hero_subheading": "American Legacy Contracting serves Alpine homeowners who expect nothing less than exceptional. Perched along the mountain benches with sweeping views of Utah Valley, Alpine homes call for a contractor who understands premium materials, custom design, and the unique challenges of building on elevated terrain. Alan Barben and our team are up to the task.",
+  "about_city": "Alpine occupies some of the most coveted real estate in Utah County, with homes that climb the benches of the Wasatch Front and overlook the entire valley below. This is a community where properties routinely sit on an acre or more, where homes are architect-designed, and where homeowners have exacting standards for any work done on their property. The terrain itself presents unique construction considerations, from managing drainage on hillside lots to engineering retaining walls and working around the rocky mountain soils that define Alpine's landscape. American Legacy Contracting has the experience to handle these challenges. We've renovated kitchens with floor-to-ceiling windows framing Timpanogos views, finished walkout basements that open onto terraced backyards, and built custom additions that blend seamlessly with Alpine's distinctive mountain architecture. When your home sits in one of Utah's most prestigious communities, you need a contractor who treats the work accordingly.",
+  "local_services": [
+    {
+      "title": "Remodels & Renovations",
+      "description": "Alpine remodels demand a refined touch. We renovate gourmet kitchens with professional-grade appliance integration, transform master suites into spa-like retreats, and update great rooms to maximize the panoramic views that make Alpine living special. Our team works with natural stone, hardwood, and custom millwork that complement the mountain setting.",
+      "icon": "fa-hammer"
+    },
+    {
+      "title": "Basement Finishing",
+      "description": "Many Alpine homes feature walkout basements with daylight exposure and direct access to expansive yards. We finish these spaces into luxury entertaining areas, wine cellars, home gyms, and multi-room guest suites. The walkout design unique to Alpine's hillside lots allows for finished basements that feel like a natural extension of the main living areas.",
+      "icon": "fa-stairs"
+    },
+    {
+      "title": "New Construction",
+      "description": "Building in Alpine means working with the mountain, not against it. We construct custom homes on Alpine's hillside and bench lots, engineering foundations for sloped terrain, orienting living spaces to capture valley and peak views, and selecting materials that withstand the higher elevation weather while looking stunning for decades.",
+      "icon": "fa-house-chimney"
+    },
+    {
+      "title": "Handyman Services",
+      "description": "Alpine's mountain environment can be tough on homes. We repair weather-damaged exteriors, maintain decks and pergolas exposed to high-altitude sun, replace worn fixtures, and handle the ongoing upkeep that preserves your Alpine property's value and appearance throughout the seasons.",
+      "icon": "fa-screwdriver-wrench"
+    }
+  ],
+  "nearby_cities": ["highland", "american-fork", "cedar-hills"],
+  "additional_content": ""
+}

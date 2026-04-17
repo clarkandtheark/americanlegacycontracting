@@ -1,0 +1,34 @@
+{
+  "city": "Lehi",
+  "slug": "lehi",
+  "order": 1,
+  "meta_title": "General Contractor in Lehi, UT | American Legacy Contracting",
+  "meta_description": "Lehi's go-to general contractor for basement finishing in Traverse Mountain, kitchen remodels in older downtown homes, and new builds across Silicon Slopes. Call Alan: 801-636-9887.",
+  "hero_heading": "General Contractor in Lehi, Utah",
+  "hero_subheading": "American Legacy Contracting is proud to serve Lehi, one of Utah County's fastest-growing cities. Whether you just moved into a new Traverse Mountain home with an unfinished basement or own a character-filled bungalow near Main Street, Alan Barben and our crew deliver quality craftsmanship tailored to Lehi's unique mix of brand-new construction and historic charm.",
+  "about_city": "Lehi sits at the crossroads of Utah County's tech boom and its pioneer heritage. The neighborhoods around Traverse Mountain and Thanksgiving Point are packed with newer homes that often come with bare concrete basements waiting to be transformed into livable space. Meanwhile, the streets near downtown and the original town center feature older homes with real character but dated kitchens, bathrooms, and layouts. American Legacy Contracting understands both sides of Lehi. We finish basements in the newer developments off Pioneer Crossing, renovate turn-of-the-century homes near the Lehi Roller Mills, and handle everything from drywall repairs to full custom builds for families settling into the Silicon Slopes corridor.",
+  "local_services": [
+    {
+      "title": "Remodels & Renovations",
+      "description": "From outdated kitchens in homes near Lehi's historic Main Street to opening up floor plans in Traverse Mountain townhomes, we handle remodels that respect your home's character while bringing it into the modern era. Many Lehi homeowners are updating 1990s-era fixtures and layouts as the city transforms around them.",
+      "icon": "fa-hammer"
+    },
+    {
+      "title": "Basement Finishing",
+      "description": "Lehi is full of newer homes with unfinished basements, especially in developments around Traverse Mountain, Holbrook Farms, and north Lehi near Thanksgiving Point. We turn those empty concrete shells into bedrooms, home theaters, rental apartments, and family rooms, maximizing your home's value in one of Utah's hottest real estate markets.",
+      "icon": "fa-stairs"
+    },
+    {
+      "title": "New Construction",
+      "description": "With Lehi expanding rapidly along the Point of the Mountain corridor, new lots and infill opportunities continue to open up. American Legacy Contracting builds custom homes designed for Lehi's mountain-view lots and growing families, from the ground up.",
+      "icon": "fa-house-chimney"
+    },
+    {
+      "title": "Handyman Services",
+      "description": "Lehi homeowners juggling tech careers and family life don't always have time for the fix-it list. We handle drywall patching, fence repairs, door installations, light fixture swaps, and all the small jobs that keep your Lehi home in top shape without the hassle of finding a dozen different contractors.",
+      "icon": "fa-screwdriver-wrench"
+    }
+  ],
+  "nearby_cities": ["american-fork", "highland", "cedar-hills"],
+  "additional_content": ""
+}

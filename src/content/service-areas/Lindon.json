@@ -1,0 +1,34 @@
+{
+  "city": "Lindon",
+  "slug": "lindon",
+  "order": 7,
+  "meta_title": "General Contractor in Lindon, UT | American Legacy Contracting",
+  "meta_description": "Lindon's trusted general contractor for remodeling orchard-area homes, finishing basements in newer developments, and custom builds on generous lots. Call Alan: 801-636-9887.",
+  "hero_heading": "General Contractor in Lindon, Utah",
+  "hero_subheading": "American Legacy Contracting is proud to serve Lindon, a small city with deep roots and a quiet, family-first atmosphere nestled between Pleasant Grove and Orem. Whether you own one of the original homes near the old orchard groves along 400 North or a newer build in the developments east of State Street, Alan Barben and our team bring dependable craftsmanship to a community that still feels like a well-kept secret in north Utah County.",
+  "about_city": "Lindon has always been the kind of place where neighbors know each other and lots tend to be a little bigger than what you find in the surrounding cities. The western half of town, closer to Geneva Road, features many of the original homes built when Lindon was still primarily an agricultural community — solid structures with good bones but kitchens, bathrooms, and floor plans that need updating. To the east, newer subdivisions climb toward the foothills with homes that often came with unfinished basements ready for build-out. The commercial corridor along State Street is growing steadily, but Lindon remains residential at heart. American Legacy Contracting appreciates that character and works carefully with homeowners here to improve their properties without losing what makes Lindon feel like home.",
+  "local_services": [
+    {
+      "title": "Remodels & Renovations",
+      "description": "Many of Lindon's older homes along 200 South and the orchard-area streets west of Center Street were built in the 1970s and 80s with closed-off kitchens, small bathrooms, and dated finishes. We open up those floor plans, replace worn cabinetry, and modernize layouts while preserving the generous lot sizes and mature landscaping that make these properties special.",
+      "icon": "fa-hammer"
+    },
+    {
+      "title": "Basement Finishing",
+      "description": "Newer Lindon homes east of State Street and in developments near the Orem border frequently have unfinished lower levels with excellent ceiling height and daylight windows. We convert those bare spaces into bedrooms, home offices, playrooms, and rec rooms — adding real square footage to homes in a market where Lindon's family-friendly reputation keeps property values climbing.",
+      "icon": "fa-stairs"
+    },
+    {
+      "title": "New Construction",
+      "description": "Lindon still has larger parcels and occasional infill lots that are uncommon in more built-out cities nearby. Whether you're building a custom home on a half-acre lot off 700 North or replacing an aging structure with a modern family home, American Legacy Contracting handles the full build from foundation to final walkthrough.",
+      "icon": "fa-house-chimney"
+    },
+    {
+      "title": "Handyman Services",
+      "description": "From replacing a rotting fence post along the property line to installing new light fixtures, patching drywall after the kids' science project goes sideways, or fixing a sticky sliding door, we take care of the maintenance tasks that keep Lindon homes comfortable year-round without the runaround of hiring multiple tradespeople.",
+      "icon": "fa-screwdriver-wrench"
+    }
+  ],
+  "nearby_cities": ["pleasant-grove", "orem", "american-fork"],
+  "additional_content": ""
+}

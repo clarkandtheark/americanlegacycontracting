@@ -1,0 +1,34 @@
+{
+  "city": "Provo",
+  "slug": "provo",
+  "order": 9,
+  "meta_title": "General Contractor in Provo, UT | American Legacy Contracting",
+  "meta_description": "Provo's reliable general contractor for historic home renovation, basement finishing near BYU, and new builds across Utah County's cultural hub. Call Alan: 801-636-9887.",
+  "hero_heading": "General Contractor in Provo, Utah",
+  "hero_subheading": "American Legacy Contracting brings dependable, detail-oriented construction services to Provo — Utah County's cultural and educational center. From restoring a craftsman bungalow on the tree-lined streets near downtown to finishing a basement in a family home up on Grandview Hill, Alan Barben and our crew understand the wide variety of homes and homeowners that make Provo unique.",
+  "about_city": "Provo's housing stock tells the story of a city that has been growing for over a century. The neighborhoods surrounding downtown and Center Street feature some of Utah County's most distinctive older homes — Victorian-era residences, early 1900s bungalows, and mid-century builds with real architectural character but aging systems and outdated interiors. Up on the east bench near Rock Canyon and along the foothills toward Squaw Peak, homes range from 1970s split-levels to custom builds with dramatic valley views. The BYU-adjacent areas see heavy rental use, with properties that need durable, well-executed renovations to hold up under turnover. And the newer neighborhoods south of the freeway and toward the Springville border offer unfinished basements and fresh construction opportunities. American Legacy Contracting works across all of Provo's distinct zones, adapting our approach to match each neighborhood's character and each homeowner's goals.",
+  "local_services": [
+    {
+      "title": "Remodels & Renovations",
+      "description": "Provo's historic neighborhoods near Center Street, the Joaquin area, and the streets between University Avenue and 500 West contain homes with gorgeous bones but kitchens that haven't been touched since the Eisenhower administration. We handle sensitive renovations that preserve period details — original trim, hardwood floors, plaster walls — while modernizing the spaces where it counts. Up on Grandview Hill and near Rock Canyon, we tackle full-scale remodels of 1970s and 80s homes ready for their second act.",
+      "icon": "fa-hammer"
+    },
+    {
+      "title": "Basement Finishing",
+      "description": "From Grandview Hill homes with walkout basements overlooking the valley to newer builds in south Provo near the freeway, finishing the lower level is one of the smartest investments a Provo homeowner can make. We build out bedrooms, bathrooms, kitchens, and living areas that comply with city rental codes for homeowners looking to offset mortgage costs in Provo's strong rental market.",
+      "icon": "fa-stairs"
+    },
+    {
+      "title": "New Construction",
+      "description": "Custom home opportunities in Provo range from rare infill lots near the historic core to east-bench parcels with sweeping views of Utah Lake and the valley. American Legacy Contracting builds homes designed to complement Provo's varied architectural landscape, whether that means a modern farmhouse near the foothills or a thoughtfully scaled new build on a downtown street.",
+      "icon": "fa-house-chimney"
+    },
+    {
+      "title": "Handyman Services",
+      "description": "Provo's mix of older homes, rental properties near BYU, and family residences generates a constant stream of maintenance needs — leaky faucets, damaged drywall between tenants, weathered exterior trim, broken cabinet hinges, and fence repairs after Utah County's unpredictable spring winds. We handle it all efficiently so landlords, families, and busy professionals can focus on everything else.",
+      "icon": "fa-screwdriver-wrench"
+    }
+  ],
+  "nearby_cities": ["orem", "springville"],
+  "additional_content": ""
+}

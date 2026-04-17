@@ -1,0 +1,34 @@
+{
+  "city": "Payson",
+  "slug": "payson",
+  "order": 15,
+  "meta_title": "General Contractor in Payson, UT | American Legacy Contracting",
+  "meta_description": "Payson's own general contractor. Alan Barben lives and works in Payson, offering basement finishing, home renovations, new construction, and handyman services to his neighbors. Call 801-636-9887.",
+  "hero_heading": "General Contractor in Payson, Utah",
+  "hero_subheading": "This is home. Alan Barben lives in Payson, raises his family here, and built American Legacy Contracting to serve his neighbors first. When you hire us for a project in Payson, you're not getting a contractor driving in from the north end of the valley. You're getting someone who walks the same streets, attends the same events, and has a personal stake in making sure every job is done right because his reputation lives right next door.",
+  "about_city": "Payson occupies a special place in south Utah County, blending small-town heritage with steady modern growth. The historic downtown around 100 North and Main Street is anchored by landmarks like the Peteetneet Museum and Academy, a gorgeous Romanesque Revival building that speaks to the craftsmanship Payson was built on. The Payson Utah Temple on the hillside above town has brought renewed attention and investment to the area. East of I-15, older neighborhoods feature charming brick and stucco homes from the 1940s through 1970s that are full of potential but often need updated kitchens, bathrooms, electrical, and layouts. Meanwhile, the west side and southern outskirts are seeing new subdivisions where builders deliver homes with unfinished basements and basic finishes that homeowners want to upgrade. American Legacy Contracting knows every corner of Payson because Alan drives these roads daily. We've renovated bungalows near the old downtown, finished basements in the developments along 930 West, and built custom homes on the benches. This is our community, and every project we take on here is a direct investment in the place we call home.",
+  "local_services": [
+    {
+      "title": "Remodels & Renovations",
+      "description": "Payson's older neighborhoods east of Main Street are filled with mid-century homes that have solid bones but need modern updates. We renovate kitchens with original cabinetry from the 1960s, open up closed-off floor plans, update bathrooms with modern tile and fixtures, and restore character details in historic homes near the Peteetneet Museum. We also handle updates in newer west-side homes where builders used basic finishes that homeowners are ready to upgrade.",
+      "icon": "fa-hammer"
+    },
+    {
+      "title": "Basement Finishing",
+      "description": "New construction in Payson's growing developments along the west side and south end almost always comes with an unfinished basement. We transform that raw space into bedrooms, family rooms, home offices, and rental apartments. For older Payson homes, we renovate dated basements with low ceilings and wood paneling into bright, functional living areas that add real value to your property.",
+      "icon": "fa-stairs"
+    },
+    {
+      "title": "New Construction",
+      "description": "As Payson grows southward and new parcels open up on the benches east of town, American Legacy Contracting builds custom homes tailored to this community. Alan's deep knowledge of local soil conditions, building codes, and the Payson planning process means a smoother build from permitting through final walkthrough. This is our hometown, and we build homes here that we're proud to drive past every day.",
+      "icon": "fa-house-chimney"
+    },
+    {
+      "title": "Handyman Services",
+      "description": "Need a fence section replaced after a storm, a door that won't latch fixed, or new shelving installed in the garage? Being based right here in Payson means we can often handle handyman calls the same day. No long drive from Provo, no trip charges, no minimum-hour requirements from distant contractors. Just a neighbor who shows up, fixes it right, and moves on.",
+      "icon": "fa-screwdriver-wrench"
+    }
+  ],
+  "nearby_cities": ["salem", "spanish-fork", "elk-ridge", "santaquin"],
+  "additional_content": ""
+}

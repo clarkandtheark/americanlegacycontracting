@@ -1,0 +1,34 @@
+{
+  "city": "Santaquin",
+  "slug": "santaquin",
+  "order": 16,
+  "meta_title": "General Contractor in Santaquin, UT | American Legacy Contracting",
+  "meta_description": "Santaquin general contractor for home renovations, basement finishing, and new builds. Payson-based Alan Barben serves Santaquin with quality craftsmanship. Call 801-636-9887.",
+  "hero_heading": "General Contractor in Santaquin, Utah",
+  "hero_subheading": "American Legacy Contracting brings Payson-based craftsmanship to Santaquin, our neighbor just a few miles down the road. This tight-knit community nestled against the mountains south of Payson is growing steadily, and Alan Barben is here to help Santaquin homeowners with everything from finishing a basement in a new build to breathing new life into one of the older homes along Main Street.",
+  "about_city": "Santaquin sits in a stunning mountain pocket where the southern Wasatch Front meets the wide-open spaces of Juab County. With a population that has been climbing steadily, the town is evolving from its agricultural roots into a community that attracts families looking for affordable lots, mountain scenery, and a genuine small-town atmosphere. The town center along Main Street features older homes from the early-to-mid 1900s with thick walls, original hardwood under carpet, and layouts that reflect a different era of building. These homes have real character but often need updated electrical, modern kitchens, and reconfigured spaces to meet today's family needs. On the edges of town, new developments are bringing fresh construction with the unfinished basements and builder-grade finishes that homeowners are eager to personalize. American Legacy Contracting is perfectly positioned to serve Santaquin. Alan's Payson base is just ten minutes north, making Santaquin one of our closest service areas. We understand the rural lot considerations, the wind exposure on the south end of town, and the local building requirements that come with working in this community.",
+  "local_services": [
+    {
+      "title": "Remodels & Renovations",
+      "description": "Santaquin's older homes near the town center were built tough but reflect decades-old design choices. We update cramped kitchens, open up divided floor plans, install modern bathrooms, and repair or replace aging siding and trim. For homeowners in newer Santaquin subdivisions, we upgrade builder-grade finishes like basic countertops, hollow-core doors, and stock cabinetry into custom-quality selections.",
+      "icon": "fa-hammer"
+    },
+    {
+      "title": "Basement Finishing",
+      "description": "New homes in Santaquin's expanding developments frequently come with unfinished basements to keep the purchase price accessible. We transform that concrete shell into additional bedrooms, a family room, a home office, or a self-contained apartment. Santaquin's larger lot sizes and quieter pace of life make these homes ideal for multigenerational living, and a finished basement makes that possible.",
+      "icon": "fa-stairs"
+    },
+    {
+      "title": "New Construction",
+      "description": "Santaquin still has buildable land at prices that are hard to find further north in the valley, making it an attractive option for custom home construction. American Legacy Contracting builds homes designed for Santaquin's mountain-adjacent terrain, wind considerations, and the generous lot sizes that give families room to spread out.",
+      "icon": "fa-house-chimney"
+    },
+    {
+      "title": "Handyman Services",
+      "description": "Rural-adjacent living in Santaquin means wind-damaged fences, weathered decks, and the general wear that comes with mountain proximity. We handle those repairs along with interior tasks like drywall patches, door replacements, fixture installations, and trim work. Our Payson base means no long-distance trip fees. We're practically local.",
+      "icon": "fa-screwdriver-wrench"
+    }
+  ],
+  "nearby_cities": ["payson", "nephi"],
+  "additional_content": ""
+}

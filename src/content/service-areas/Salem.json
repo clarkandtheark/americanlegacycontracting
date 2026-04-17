@@ -1,0 +1,34 @@
+{
+  "city": "Salem",
+  "slug": "salem",
+  "order": 13,
+  "meta_title": "General Contractor in Salem, UT | American Legacy Contracting",
+  "meta_description": "Salem's trusted general contractor for basement finishing in new south-end developments, renovations near Salem Pond, and custom builds on growing family lots. Call Alan: 801-636-9887.",
+  "hero_heading": "General Contractor in Salem, Utah",
+  "hero_subheading": "American Legacy Contracting serves Salem from just minutes away in neighboring Payson. This rapidly growing family community has a unique blend of established neighborhoods near Salem Pond and brand-new subdivisions pushing south toward Loafer Mountain. Alan Barben and our team understand Salem's building landscape inside and out, whether you need a basement finished in a new build or a thoughtful renovation on one of the tree-lined streets near the town center.",
+  "about_city": "Salem has transformed from a quiet farming community into one of south Utah County's most desirable family destinations, and the construction needs have evolved right along with it. The established neighborhoods around Salem Pond and Dream Garden park feature solid homes from the 1980s and 1990s that are prime candidates for kitchen updates, bathroom overhauls, and layout modernization. Meanwhile, the booming south end of town is filling with new construction where builders often leave basements unfinished to keep purchase prices competitive. American Legacy Contracting bridges both worlds. We're right down the road in Payson, which means shorter drive times, faster response, and a contractor who actually shops at the same stores and attends the same community events as the homeowners we serve. From renovating a split-level near Salem Elementary to finishing a walkout basement in one of the newer hillside developments, we bring Payson-neighbor reliability to every Salem project.",
+  "local_services": [
+    {
+      "title": "Remodels & Renovations",
+      "description": "Salem's established neighborhoods near the pond and along Canal Road are full of homes built in the 1980s and 1990s with original kitchens, cramped bathrooms, and dated floor plans. We specialize in bringing these well-built homes into the modern era with open-concept conversions, updated cabinetry, tile work, and fixtures that match the family-friendly lifestyle Salem is known for.",
+      "icon": "fa-hammer"
+    },
+    {
+      "title": "Basement Finishing",
+      "description": "New developments on Salem's south side and along the benches toward Loafer Mountain are delivering homes with wide-open, unfinished basements. We convert that raw square footage into bedrooms for growing families, home theaters, playrooms, and even accessory apartments. For older Salem homes, we also renovate outdated basements with low ceilings and paneling into bright, modern living spaces.",
+      "icon": "fa-stairs"
+    },
+    {
+      "title": "New Construction",
+      "description": "Salem's growth isn't slowing down, and new lots continue to open along the southern and eastern edges of town. American Legacy Contracting builds custom homes designed for Salem's larger lot sizes and mountain-view parcels, giving families the chance to build exactly what they need in one of Utah County's best communities for raising kids.",
+      "icon": "fa-house-chimney"
+    },
+    {
+      "title": "Handyman Services",
+      "description": "From fence repairs after a windy Salem spring to patching drywall, replacing exterior trim, or installing new light fixtures, we handle the smaller jobs that keep your home running smoothly. Being based in Payson means we can often fit Salem handyman calls into the same day without the long drive that contractors from Provo or Orem would face.",
+      "icon": "fa-screwdriver-wrench"
+    }
+  ],
+  "nearby_cities": ["spanish-fork", "mapleton", "elk-ridge", "payson"],
+  "additional_content": ""
+}

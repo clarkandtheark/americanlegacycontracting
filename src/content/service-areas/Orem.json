@@ -1,0 +1,34 @@
+{
+  "city": "Orem",
+  "slug": "orem",
+  "order": 8,
+  "meta_title": "General Contractor in Orem, UT | American Legacy Contracting",
+  "meta_description": "Orem's experienced general contractor for whole-home remodels, basement finishing, new construction, and handyman repairs across Family City USA. Call Alan: 801-636-9887.",
+  "hero_heading": "General Contractor in Orem, Utah",
+  "hero_subheading": "American Legacy Contracting serves homeowners throughout Orem — Family City USA — from the tree-lined streets near the Timpanogos foothills to the established neighborhoods south of University Parkway. With a housing stock spanning six decades and nearly every style imaginable, Orem offers some of the best remodeling opportunities in Utah County, and Alan Barben's team has the range to handle all of them.",
+  "about_city": "Orem is one of the largest cities in Utah County, and its neighborhoods are anything but uniform. Up near the mouth of Provo Canyon and along the east bench, you'll find mid-century ranches and split-levels from the 1960s with incredible mountain views but dated interiors crying out for renovation. The neighborhoods around 800 North and the UVU campus area include a mix of student-friendly housing and starter homes that benefit from smart, budget-conscious upgrades. Further south toward the Provo border, newer developments and townhome communities offer unfinished basements and modern layouts. American Legacy Contracting works across all of these areas, bringing the same attention to detail whether we're gutting a 1965 kitchen in Northridge or finishing a walkout basement in a Cascade neighborhood build.",
+  "local_services": [
+    {
+      "title": "Remodels & Renovations",
+      "description": "Orem's older east-side neighborhoods — Northridge, Cascade, Sharon Park, and the streets climbing toward the Timpanogos trailhead — are full of solidly built homes from the 1960s and 70s with small kitchens, single-sink bathrooms, and dark paneling. We bring these homes into the present with open layouts, updated cabinetry, modern tile work, and energy-efficient windows while keeping what works about the original construction.",
+      "icon": "fa-hammer"
+    },
+    {
+      "title": "Basement Finishing",
+      "description": "Whether it's a split-level near 400 South with a partially finished lower level that needs a complete redo, or a newer home in the Vineyard-border developments with a raw concrete basement, Orem homeowners consistently rank basement finishing as their top project. We build out bedrooms, bathrooms, family rooms, and rental-ready apartments that meet city code and add real equity.",
+      "icon": "fa-stairs"
+    },
+    {
+      "title": "New Construction",
+      "description": "Infill lots and teardown-rebuild opportunities still exist in Orem, especially in the older pockets near downtown and along the 800 North corridor. American Legacy Contracting builds custom homes designed to fit Orem's established streetscapes and maximize mountain views on east-bench lots where every foot of elevation matters.",
+      "icon": "fa-house-chimney"
+    },
+    {
+      "title": "Handyman Services",
+      "description": "Orem's busy families and UVU-area rental property owners need a reliable handyman they can call without a two-week wait. We handle door and hardware replacements, drywall repairs, deck maintenance, bathroom fixture installs, and the dozens of small tasks that pile up in homes ranging from 1960s originals to 2020s builds.",
+      "icon": "fa-screwdriver-wrench"
+    }
+  ],
+  "nearby_cities": ["lindon", "provo", "pleasant-grove"],
+  "additional_content": ""
+}

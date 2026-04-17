@@ -1,0 +1,34 @@
+{
+  "city": "American Fork",
+  "slug": "american-fork",
+  "order": 2,
+  "meta_title": "General Contractor in American Fork, UT | American Legacy Contracting",
+  "meta_description": "Trusted contractor in American Fork for home remodels, basement finishing, and repairs. Serving historic downtown homes and newer neighborhoods near the canyon. Call Alan: 801-636-9887.",
+  "hero_heading": "General Contractor in American Fork, Utah",
+  "hero_subheading": "American Legacy Contracting serves American Fork homeowners with the same dedication that built this tight-knit community. From renovating craftsman-style homes along the tree-lined streets near downtown to finishing basements in the subdivisions east of I-15, Alan Barben brings hands-on expertise and honest pricing to every project in AF.",
+  "about_city": "American Fork has deep roots and a strong identity that sets it apart from the rapid development happening around it. The neighborhoods near Main Street and the historic downtown core feature charming older homes, many built in the mid-20th century, with solid bones but kitchens, bathrooms, and electrical systems that need updating. East of the freeway, newer developments have filled in toward the mouth of American Fork Canyon, where many homes were built with unfinished lower levels. American Legacy Contracting knows the difference between working on a 1960s rambler near the city park and a 2010s two-story in the eastern foothills. We bring the right approach to each, preserving what works while upgrading what doesn't. Our proximity in Payson means we're just a short drive down I-15, and we've built strong relationships with AF homeowners who value quality over shortcuts.",
+  "local_services": [
+    {
+      "title": "Remodels & Renovations",
+      "description": "American Fork's older homes near downtown, the Art Doan Park area, and along State Street often have original layouts that feel cramped by today's standards. We open up walls, modernize kitchens with new cabinetry and countertops, update bathrooms, and give these well-built homes a fresh life while keeping the craftsmanship that made them last decades.",
+      "icon": "fa-hammer"
+    },
+    {
+      "title": "Basement Finishing",
+      "description": "Many homes in American Fork's east-side developments and neighborhoods near the canyon mouth were sold with unfinished basements. We design and build out these spaces into extra bedrooms, home offices, playrooms, or full mother-in-law apartments, adding serious square footage and value to your AF home.",
+      "icon": "fa-stairs"
+    },
+    {
+      "title": "New Construction",
+      "description": "While American Fork is more established than some neighboring cities, infill lots and teardown-rebuild opportunities still come up, especially near the downtown corridor. We build custom homes that fit the character of AF's neighborhoods while meeting modern energy codes and family needs.",
+      "icon": "fa-house-chimney"
+    },
+    {
+      "title": "Handyman Services",
+      "description": "From replacing aging siding on homes near Robinson Park to installing new interior doors, fixing leaky faucets, or patching up drywall after a long winter, our handyman services keep American Fork homes well-maintained. No job is too small, and we show up when we say we will.",
+      "icon": "fa-screwdriver-wrench"
+    }
+  ],
+  "nearby_cities": ["lehi", "highland", "pleasant-grove", "alpine"],
+  "additional_content": ""
+}

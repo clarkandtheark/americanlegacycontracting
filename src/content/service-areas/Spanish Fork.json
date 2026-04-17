@@ -1,0 +1,34 @@
+{
+  "city": "Spanish Fork",
+  "slug": "spanish-fork",
+  "order": 11,
+  "meta_title": "General Contractor in Spanish Fork, UT | American Legacy Contracting",
+  "meta_description": "Spanish Fork's local general contractor for remodeling older downtown homes, finishing basements in fast-growing new developments, and custom construction. Call Alan: 801-636-9887.",
+  "hero_heading": "General Contractor in Spanish Fork, Utah",
+  "hero_subheading": "American Legacy Contracting is a natural fit for Spanish Fork — a city that has exploded in growth while holding on to its strong community roots. Based just minutes away in Payson, Alan Barben and our crew know this area as well as anyone, and we bring that local knowledge to every remodel, basement finish, and new build we take on for Spanish Fork homeowners.",
+  "about_city": "Spanish Fork has transformed dramatically over the past two decades. The original downtown along Main Street still anchors the city with older brick and frame homes from the mid-1900s — properties with solid construction and good-sized lots but interiors that have fallen behind the times. East of town toward Spanish Fork Canyon, homes sit on larger parcels with mountain access and a more rural feel. But the biggest change has been the massive residential growth on the south and west sides, where large master-planned developments have added thousands of newer homes, most with unfinished basements and modern open floor plans. The Fiesta Days spirit runs strong here — Spanish Fork residents invest in their homes because they plan to stay. American Legacy Contracting shares that long-term mindset, building and remodeling with quality that lasts, not shortcuts that save a week.",
+  "local_services": [
+    {
+      "title": "Remodels & Renovations",
+      "description": "Spanish Fork's older neighborhoods along Main Street, Volunteer Drive, and the streets near the city cemetery feature homes from the 1950s through 1980s that are ripe for renovation. We update cramped kitchens, replace worn-out bathrooms, open up closed floor plans, and add modern flooring and finishes — giving these well-located homes the interiors they deserve while keeping what works about their original construction.",
+      "icon": "fa-hammer"
+    },
+    {
+      "title": "Basement Finishing",
+      "description": "The newer developments south of the freeway and along the Arrowhead Trail corridor are packed with homes sitting on fully unfinished basements. Families who bought during Spanish Fork's growth boom are ready to expand into that lower level — adding bedrooms for growing kids, home offices, guest suites, and recreation rooms. We handle the full build-out from framing to final paint, permitted and inspected.",
+      "icon": "fa-stairs"
+    },
+    {
+      "title": "New Construction",
+      "description": "Spanish Fork's continued expansion means new lots and building opportunities are still available, particularly on the south and east edges of the city near the canyon. American Legacy Contracting builds custom homes for families who want something designed for their specific needs rather than choosing from a production builder's catalog of three floor plans.",
+      "icon": "fa-house-chimney"
+    },
+    {
+      "title": "Handyman Services",
+      "description": "From fixing a gate latch before Fiesta Days guests arrive to patching drywall, replacing worn weatherstripping before winter, swapping out bathroom vanities, and repairing deck boards, we handle the practical maintenance jobs that Spanish Fork homeowners need done right. Being based in nearby Payson means we're never far away and can often fit smaller jobs in quickly.",
+      "icon": "fa-screwdriver-wrench"
+    }
+  ],
+  "nearby_cities": ["springville", "mapleton", "salem", "payson"],
+  "additional_content": ""
+}
