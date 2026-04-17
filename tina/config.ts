@@ -1,4 +1,5 @@
 import { defineConfig } from 'tinacms';
+import { mountDeployStatusWidget } from './deploy-status';
 
 const branch =
   process.env.GITHUB_BRANCH ||
@@ -12,6 +13,12 @@ export default defineConfig({
   build: {
     outputFolder: 'admin',
     publicFolder: 'public',
+  },
+  ui: {
+    cmsCallback: (cms) => {
+      mountDeployStatusWidget();
+      return cms;
+    },
   },
   media: {
     tina: {
