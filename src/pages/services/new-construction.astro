@@ -1,0 +1,378 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import site from '../../content/site.json';
+
+const faqItems = [
+    {
+        question: "How much does it cost to build a house in Utah?",
+        answer: "The cost of building a home in Utah varies significantly based on the size of the home, the finishes you choose, the lot and its conditions, and the complexity of the design. Rather than give you a number that might not apply to your situation, <a href='tel:8016369887'>call Alan</a> for a free consultation. He'll discuss your goals, review your plans or lot, and help you understand realistic costs for your specific project."
+    },
+    {
+        question: "How long does new construction take?",
+        answer: "Most custom homes take between 6 and 12 months from groundbreaking to move-in, depending on the size and complexity of the build, weather, and permitting timelines. Smaller projects like home additions or ADUs can often be completed in 2-4 months. Alan provides a detailed timeline during the planning phase and keeps you updated throughout the build."
+    },
+    {
+        question: "Can you help with home additions?",
+        answer: "Yes — Alan builds room additions, second-story additions, and accessory dwelling units (ADUs / mother-in-law suites). Whether you need an extra bedroom, a larger living space, or a separate rental unit on your property, he has the experience and licensing to handle it."
+    },
+    {
+        question: "Do you handle permits and inspections?",
+        answer: "Absolutely. Alan manages the entire permit process from application through final inspection. His Construction Management degree and years of experience mean he knows the building codes and local requirements inside and out, so the process goes smoothly."
+    }
+];
+
+const structuredData = [
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://americanlegacycontracting.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://americanlegacycontracting.com/services/" },
+            { "@type": "ListItem", "position": 3, "name": "New Construction", "item": "https://americanlegacycontracting.com/services/new-construction/" }
+        ]
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Custom Home Building",
+        "name": "Custom Home Builder in Utah County",
+        "description": "Licensed custom home builder in Utah County. New construction, spec homes, home additions, and ADUs. Construction Management degree, 14+ years experience.",
+        "provider": {
+            "@type": "GeneralContractor",
+            "name": "American Legacy Contracting",
+            "telephone": "801-636-9887",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Payson",
+                "addressRegion": "UT",
+                "addressCountry": "US"
+            }
+        },
+        "areaServed": {
+            "@type": "State",
+            "name": "Utah"
+        }
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqItems.map(item => ({
+            "@type": "Question",
+            "name": item.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": item.answer
+            }
+        }))
+    }
+];
+---
+<Layout
+    title="Custom Home Builder in Utah County | American Legacy Contracting"
+    description="Licensed custom home builder in Utah County. New construction, spec homes, home additions, and ADUs. Construction Management degree, 14+ years experience. Free consultation — call 801-636-9887."
+    canonicalUrl="https://americanlegacycontracting.com/services/new-construction/"
+    ogTitle="Custom Home Builder in Utah County | American Legacy Contracting"
+    ogDescription="Build your dream home with a licensed Utah contractor. Custom homes, additions, and ADUs. CM degree, 14+ years experience. Call 801-636-9887."
+    structuredData={structuredData}
+    isSubpage={true}
+>
+    <!-- Hero -->
+    <header class="masthead-sm bg-primary">
+        <div class="container px-4 px-lg-5 py-5">
+            <div class="row justify-content-center text-center" style="padding-top: 5rem;">
+                <div class="col-lg-8">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center mb-3" style="--bs-breadcrumb-divider-color: rgba(255,255,255,.6); --bs-breadcrumb-item-active-color: #fff;">
+                            <li class="breadcrumb-item"><a href="/" class="text-white-75">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/services/" class="text-white-75">Services</a></li>
+                            <li class="breadcrumb-item active text-white" aria-current="page">New Construction</li>
+                        </ol>
+                    </nav>
+                    <h1 class="text-white font-weight-bold mt-0">Custom Home Builder in Utah County</h1>
+                    <hr class="divider divider-light" />
+                    <p class="text-white-75 mb-4">Building a home is one of the biggest decisions you'll ever make — and you deserve a builder who treats it that way. Alan Barben brings a Construction Management degree, experience in both residential and commercial construction, and 14+ years of hands-on building expertise to every new construction project. From custom dream homes to practical room additions, American Legacy Contracting builds it right.</p>
+                    <a class="btn btn-light btn-xl quote-btn" href="/#contact">Get a Quote</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Build Your Dream Home -->
+    <section class="page-section">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">Build Your Dream Home</h2>
+            <hr class="divider" />
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <p class="text-muted mb-4">What makes Alan different from other builders? He's not just a contractor — he's a formally trained construction manager with real-world experience across every major trade. Alan holds both a Bachelor's degree and an Applied Science degree in Construction Management. He's worked as a residential home builder, a commercial construction manager, and has hands-on experience in framing, electrical, HVAC, and plumbing.</p>
+                    <p class="text-muted mb-4">That broad experience means Alan understands how every system in your home works together. He catches problems before they happen, coordinates trades efficiently, and delivers a home built to last — not just built to sell.</p>
+                </div>
+            </div>
+            <div class="row gx-4 gx-lg-5 justify-content-center mt-3">
+                <div class="col-lg-3 col-md-6 text-center mb-4">
+                    <div class="mt-3">
+                        <div class="mb-2"><i class="fa-solid fa-graduation-cap fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Formally Trained</h3>
+                        <p class="text-muted mb-0">Two degrees in Construction Management — not just experience, but education to back it up.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center mb-4">
+                    <div class="mt-3">
+                        <div class="mb-2"><i class="fa-solid fa-building fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Residential & Commercial</h3>
+                        <p class="text-muted mb-0">Experience building homes and managing large commercial projects — a rare combination.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center mb-4">
+                    <div class="mt-3">
+                        <div class="mb-2"><i class="fa-solid fa-tools fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Trades Experience</h3>
+                        <p class="text-muted mb-0">Hands-on work in framing, electrical, HVAC, and plumbing — Alan understands every system in your home.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center mb-4">
+                    <div class="mt-3">
+                        <div class="mb-2"><i class="fa-solid fa-handshake fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Trusted Network</h3>
+                        <p class="text-muted mb-0">Vetted subcontractors Alan trusts enough to use in his own home — electricians, plumbers, and more.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Build -->
+    <section class="page-section bg-light">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">What We Build</h2>
+            <hr class="divider" />
+            <div class="row gx-4 gx-lg-5">
+                <div class="col-lg-6 col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body p-4">
+                            <div class="mb-3 text-center"><i class="fa-solid fa-house-chimney fa-3x text-primary"></i></div>
+                            <h3 class="h4 text-center mb-3">Custom Homes</h3>
+                            <p class="text-muted">Your vision, built from the ground up. Alan works with you from initial design through final walkthrough to build a home that fits your family's lifestyle, preferences, and budget. Every custom home is built with quality materials and expert craftsmanship.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body p-4">
+                            <div class="mb-3 text-center"><i class="fa-solid fa-house-circle-check fa-3x text-primary"></i></div>
+                            <h3 class="h4 text-center mb-3">Spec Homes</h3>
+                            <p class="text-muted">Move-in ready homes built with the same quality and attention to detail as our custom builds. If you're looking for a new home without the wait of a fully custom build, a spec home gives you new construction quality with a faster timeline.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body p-4">
+                            <div class="mb-3 text-center"><i class="fa-solid fa-maximize fa-3x text-primary"></i></div>
+                            <h3 class="h4 text-center mb-3">Home Additions & Room Additions</h3>
+                            <p class="text-muted">Love your location but need more space? Alan builds room additions, second-story additions, and bump-outs that blend seamlessly with your existing home. Extra bedrooms, expanded living areas, or a larger kitchen — we can make it happen.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body p-4">
+                            <div class="mb-3 text-center"><i class="fa-solid fa-house-user fa-3x text-primary"></i></div>
+                            <h3 class="h4 text-center mb-3">ADUs & Mother-in-Law Suites</h3>
+                            <p class="text-muted">Accessory dwelling units are an excellent way to add living space for family members or generate rental income. Alan handles design, permitting, and construction of standalone or attached ADUs that meet all local codes and regulations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mid-page CTA -->
+    <section class="page-section bg-primary">
+        <div class="container px-4 px-lg-5 text-center">
+            <h2 class="text-white mt-0">Ready to Build?</h2>
+            <hr class="divider divider-light" />
+            <p class="text-white-75 mb-4">Whether you're starting from scratch or adding to an existing home, Alan is ready to help. Call or text for a free consultation to discuss your project.</p>
+            <a class="btn btn-light btn-xl quote-btn" href="/#contact">Get a Quote</a>
+            <a class="btn btn-outline-light btn-xl ms-2" href="tel:8016369887">Call 801-636-9887</a>
+        </div>
+    </section>
+
+    <!-- Our Building Process -->
+    <section class="page-section">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">Our Building Process</h2>
+            <hr class="divider" />
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8">
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0"><span class="badge bg-primary rounded-circle p-3 fs-5">1</span></div>
+                        <div class="ms-3">
+                            <h3 class="h5">Land Consultation</h3>
+                            <p class="text-muted">Already have a lot? Alan will evaluate it for buildability, drainage, utilities, and access. Still looking? He can advise on what to look for and what to avoid when selecting a building site.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0"><span class="badge bg-primary rounded-circle p-3 fs-5">2</span></div>
+                        <div class="ms-3">
+                            <h3 class="h5">Design & Architecture</h3>
+                            <p class="text-muted">Work with Alan to define your floor plan, layout, and design preferences. He coordinates with architects and designers to produce plans that match your vision and budget.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0"><span class="badge bg-primary rounded-circle p-3 fs-5">3</span></div>
+                        <div class="ms-3">
+                            <h3 class="h5">Permits</h3>
+                            <p class="text-muted">Alan handles all permit applications, plan reviews, and approvals with the local building department. His CM background means fewer delays and a smoother process.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0"><span class="badge bg-primary rounded-circle p-3 fs-5">4</span></div>
+                        <div class="ms-3">
+                            <h3 class="h5">Foundation & Framing</h3>
+                            <p class="text-muted">The structure goes up — foundation, framing, and roofing. This is where Alan's hands-on framing experience gives him an edge: he knows what quality framing looks like because he's done it himself.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0"><span class="badge bg-primary rounded-circle p-3 fs-5">5</span></div>
+                        <div class="ms-3">
+                            <h3 class="h5">Systems: Electrical, Plumbing & HVAC</h3>
+                            <p class="text-muted">All mechanical systems are installed by licensed, trusted subcontractors. Alan's experience working in electrical, plumbing, and HVAC means he can oversee these trades with an expert eye.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0"><span class="badge bg-primary rounded-circle p-3 fs-5">6</span></div>
+                        <div class="ms-3">
+                            <h3 class="h5">Finishing</h3>
+                            <p class="text-muted">Drywall, paint, flooring, cabinets, countertops, fixtures, trim, and all the details that turn a structure into a home. This phase is where your choices come to life.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0"><span class="badge bg-primary rounded-circle p-3 fs-5">7</span></div>
+                        <div class="ms-3">
+                            <h3 class="h5">Final Inspection & Walkthrough</h3>
+                            <p class="text-muted">All required inspections are completed and passed. Alan walks through the finished home with you to verify every detail meets your expectations before handing over the keys.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="page-section bg-light">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">Why Choose American Legacy Contracting?</h2>
+            <hr class="divider" />
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-3 col-md-6 text-center mb-4">
+                    <div class="mt-4">
+                        <div class="mb-2"><i class="fa-solid fa-certificate fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Licensed & Insured</h3>
+                        <p class="text-muted mb-0">Fully licensed and insured in the state of Utah for your protection and peace of mind.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center mb-4">
+                    <div class="mt-4">
+                        <div class="mb-2"><i class="fa-solid fa-graduation-cap fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">CM Degree</h3>
+                        <p class="text-muted mb-0">Alan holds both a Bachelor's and Applied Science degree in Construction Management.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center mb-4">
+                    <div class="mt-4">
+                        <div class="mb-2"><i class="fa-solid fa-calendar-check fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">14+ Years Experience</h3>
+                        <p class="text-muted mb-0">Over 14 years of hands-on residential and commercial construction experience.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center mb-4">
+                    <div class="mt-4">
+                        <div class="mb-2"><i class="fa-solid fa-user-check fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Owner-Operated</h3>
+                        <p class="text-muted mb-0">Alan personally manages every project — you always know who's in charge.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="page-section">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">New Construction FAQ</h2>
+            <hr class="divider" />
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        {faqItems.map((item, i) => (
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id={`faq-heading-${i}`}>
+                                    <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target={`#faq-collapse-${i}`}
+                                        aria-expanded="false"
+                                        aria-controls={`faq-collapse-${i}`}
+                                    >
+                                        {item.question}
+                                    </button>
+                                </h3>
+                                <div
+                                    id={`faq-collapse-${i}`}
+                                    class="accordion-collapse collapse"
+                                    aria-labelledby={`faq-heading-${i}`}
+                                    data-bs-parent="#faqAccordion"
+                                >
+                                    <div class="accordion-body text-muted" set:html={item.answer} />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Areas -->
+    <section class="page-section bg-light">
+        <div class="container px-4 px-lg-5 text-center">
+            <h2 class="mt-0">Building Custom Homes Across Utah County</h2>
+            <hr class="divider" />
+            <p class="text-muted mb-4">American Legacy Contracting builds custom homes and additions in Payson, Spanish Fork, Salem, Springville, Provo, Orem, Lehi, American Fork, and communities throughout Utah County. Wherever you want to build, Alan is ready to make it happen.</p>
+            <a class="btn btn-outline-primary btn-lg" href="/service-areas/">View All Service Areas</a>
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="page-section bg-dark text-white">
+        <div class="container px-4 px-lg-5 text-center">
+            <h2 class="mt-0">Let's Build Something Great</h2>
+            <hr class="divider divider-light" />
+            <p class="text-white-75 mb-4">Ready to start your new construction project? Call or text Alan for a free consultation. He'll listen to your goals and help you understand what's possible.</p>
+            <a class="btn btn-primary btn-xl quote-btn" href="/#contact">Get a Quote</a>
+            <br class="d-block d-md-none"><br class="d-block d-md-none">
+            <a class="btn btn-light btn-xl mt-3 mt-md-0 ms-md-2" href="tel:8016369887">Call 801-636-9887</a>
+            <a class="btn btn-outline-light btn-xl mt-3 mt-md-0 ms-md-2" href="sms:8016369887?body=Hey%20Alan%2C%20I%27m%20looking%20to%20get%20some%20work%20done%20and%20would%20love%20to%20have%20you%20come%20over%20and%20give%20me%20a%20quote!">Text Alan</a>
+        </div>
+    </section>
+
+    <script is:inline>
+      document.querySelectorAll('.quote-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          if (/Mobi|Android/i.test(navigator.userAgent)) {
+            e.preventDefault();
+            window.location.href = 'sms:8016369887?body=Hey%20Alan%2C%20I%27m%20looking%20to%20get%20some%20work%20done%20and%20would%20love%20to%20have%20you%20come%20over%20and%20give%20me%20a%20quote!';
+          }
+        });
+      });
+    </script>
+
+    <style>
+        .masthead-sm {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+    </style>
+</Layout>

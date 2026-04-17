@@ -1,0 +1,189 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import site from '../../content/site.json';
+
+const serviceModules = import.meta.glob('../../content/services/*.json', { eager: true });
+const services = Object.values(serviceModules).sort((a: any, b: any) => a.order - b.order);
+
+const servicePages = [
+    { title: "Kitchen & Bathroom Remodels", slug: "kitchen-bathroom-remodels", description: "From cabinet upgrades to full gut-renovations, we transform kitchens and bathrooms throughout Utah County.", icon: "fa-hammer" },
+    { title: "Basement Finishing", slug: "basement-finishing", description: "Turn your unfinished basement into livable square footage — bedrooms, family rooms, home offices, and more.", icon: "fa-stairs" },
+    { title: "New Construction", slug: "new-construction", description: "Custom homes, spec homes, room additions, and ADUs built by a licensed contractor with a Construction Management degree.", icon: "fa-house-chimney" },
+    { title: "Handyman Services", slug: "handyman-services", description: "No job too small — drywall, doors, fences, decks, painting, tile, and general home repairs throughout Utah County.", icon: "fa-screwdriver-wrench" },
+];
+
+const structuredData = [
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://americanlegacycontracting.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://americanlegacycontracting.com/services/" }
+        ]
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "General Contracting",
+        "provider": {
+            "@type": "GeneralContractor",
+            "name": "American Legacy Contracting",
+            "telephone": "801-636-9887",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Payson",
+                "addressRegion": "UT",
+                "addressCountry": "US"
+            }
+        },
+        "areaServed": {
+            "@type": "State",
+            "name": "Utah"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Contracting Services",
+            "itemListElement": [
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Kitchen & Bathroom Remodels" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Basement Finishing" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "New Construction" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Handyman Services" } }
+            ]
+        }
+    }
+];
+---
+<Layout
+    title="Our Services | American Legacy Contracting"
+    description="American Legacy Contracting offers basement finishing, kitchen and bathroom remodels, new construction, and handyman services throughout Utah County. Licensed, insured, and owner-operated. Call 801-636-9887."
+    canonicalUrl="https://americanlegacycontracting.com/services/"
+    ogTitle="Our Services | American Legacy Contracting"
+    ogDescription="Licensed general contractor in Utah County offering basement finishing, remodels, new construction, and handyman services. 14+ years experience. Free estimates."
+    structuredData={structuredData}
+    isSubpage={true}
+>
+    <header class="masthead-sm bg-primary">
+        <div class="container px-4 px-lg-5 py-5">
+            <div class="row justify-content-center text-center" style="padding-top: 5rem;">
+                <div class="col-lg-8">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center mb-3" style="--bs-breadcrumb-divider-color: rgba(255,255,255,.6); --bs-breadcrumb-item-active-color: #fff;">
+                            <li class="breadcrumb-item"><a href="/" class="text-white-75">Home</a></li>
+                            <li class="breadcrumb-item active text-white" aria-current="page">Services</li>
+                        </ol>
+                    </nav>
+                    <h1 class="text-white font-weight-bold mt-0">Our Services</h1>
+                    <hr class="divider divider-light" />
+                    <p class="text-white-75 mb-4">From basement finishing and kitchen remodels to custom homes and handyman repairs, American Legacy Contracting handles projects of every size throughout Utah County. Owner Alan Barben brings 14+ years of hands-on experience and a Construction Management degree to every job.</p>
+                    <a class="btn btn-light btn-xl quote-btn" href="/#contact">Get a Quote</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-section">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">What We Do</h2>
+            <hr class="divider" />
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                {servicePages.map((s) => (
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <a href={`/services/${s.slug}/`} class="text-decoration-none">
+                            <div class="card h-100 shadow-sm border-0 service-card">
+                                <div class="card-body text-center p-4">
+                                    <div class="mb-3"><i class={`fa-solid ${s.icon} fa-3x text-primary`}></i></div>
+                                    <h3 class="h4 mb-2 text-dark">{s.title}</h3>
+                                    <p class="text-muted mb-3">{s.description}</p>
+                                    <span class="btn btn-outline-primary btn-sm">Learn More</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <section class="page-section bg-primary">
+        <div class="container px-4 px-lg-5 text-center">
+            <h2 class="text-white mt-0">Why Choose American Legacy Contracting?</h2>
+            <hr class="divider divider-light" />
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-3 col-md-6 text-center mb-4">
+                    <div class="mt-4">
+                        <div class="mb-2"><i class="fa-solid fa-certificate fa-2xl text-white"></i></div><br>
+                        <h3 class="h5 text-white mb-2">Licensed & Insured</h3>
+                        <p class="text-white-75 mb-0">Fully licensed and insured in the state of Utah</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center mb-4">
+                    <div class="mt-4">
+                        <div class="mb-2"><i class="fa-solid fa-graduation-cap fa-2xl text-white"></i></div><br>
+                        <h3 class="h5 text-white mb-2">CM Degree</h3>
+                        <p class="text-white-75 mb-0">Bachelor's and Applied Science degrees in Construction Management</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center mb-4">
+                    <div class="mt-4">
+                        <div class="mb-2"><i class="fa-solid fa-calendar-check fa-2xl text-white"></i></div><br>
+                        <h3 class="h5 text-white mb-2">14+ Years</h3>
+                        <p class="text-white-75 mb-0">Over 14 years of residential and commercial experience</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center mb-4">
+                    <div class="mt-4">
+                        <div class="mb-2"><i class="fa-solid fa-user-check fa-2xl text-white"></i></div><br>
+                        <h3 class="h5 text-white mb-2">Owner-Operated</h3>
+                        <p class="text-white-75 mb-0">Alan is on every job — no middlemen, no runaround</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <div class="container px-4 px-lg-5 text-center">
+            <h2 class="mt-0">Serving Communities Across Utah County</h2>
+            <hr class="divider" />
+            <p class="text-muted mb-4">American Legacy Contracting proudly serves homeowners in 17 cities along the I-15 corridor from Lehi to Nephi. Whether you're in Payson, Spanish Fork, Provo, Orem, or anywhere in between, Alan is ready to help with your next project.</p>
+            <a class="btn btn-outline-primary btn-lg me-2" href="/service-areas/">View All Service Areas</a>
+        </div>
+    </section>
+
+    <section class="page-section bg-dark text-white">
+        <div class="container px-4 px-lg-5 text-center">
+            <h2 class="mt-0">Ready to Get Started?</h2>
+            <hr class="divider divider-light" />
+            <p class="text-white-75 mb-4">Call or text Alan directly for a free estimate. He responds quickly and will let you know exactly how he can help.</p>
+            <a class="btn btn-primary btn-xl quote-btn" href="/#contact">Get a Quote</a>
+            <br class="d-block d-md-none"><br class="d-block d-md-none">
+            <a class="btn btn-light btn-xl mt-3 mt-md-0 ms-md-2" href="tel:8016369887">Call 801-636-9887</a>
+            <a class="btn btn-outline-light btn-xl mt-3 mt-md-0 ms-md-2" href="sms:8016369887?body=Hey%20Alan%2C%20I%27m%20looking%20to%20get%20some%20work%20done%20and%20would%20love%20to%20have%20you%20come%20over%20and%20give%20me%20a%20quote!">Text Alan</a>
+        </div>
+    </section>
+
+    <script is:inline>
+      document.querySelectorAll('.quote-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          if (/Mobi|Android/i.test(navigator.userAgent)) {
+            e.preventDefault();
+            window.location.href = 'sms:8016369887?body=Hey%20Alan%2C%20I%27m%20looking%20to%20get%20some%20work%20done%20and%20would%20love%20to%20have%20you%20come%20over%20and%20give%20me%20a%20quote!';
+          }
+        });
+      });
+    </script>
+
+    <style>
+        .masthead-sm {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        .service-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15) !important;
+        }
+    </style>
+</Layout>

@@ -1,0 +1,358 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import site from '../../content/site.json';
+
+const faqItems = [
+    {
+        question: "How much does it cost to finish a basement in Utah?",
+        answer: "The cost of finishing a basement in Utah depends on the size of the space, the complexity of the layout, and the finishes you choose. Most homeowners spend between $25 and $50 per square foot. The best way to get an accurate number is to <a href='tel:8016369887'>call Alan</a> for a free, no-obligation estimate — he'll walk through your space and give you an honest price."
+    },
+    {
+        question: "How long does basement finishing take?",
+        answer: "Most basement finishing projects take between 4 and 8 weeks from start to finish, depending on the scope of work. A straightforward open-concept family room will be on the shorter end, while a full basement with multiple bedrooms, a bathroom, and a home theater will take longer. Alan will provide a realistic timeline during your free consultation."
+    },
+    {
+        question: "Do I need a permit to finish my basement in Utah?",
+        answer: "Yes — permits are required for most basement finishing work in Utah, including framing, electrical, plumbing, and egress windows. Alan handles the entire permitting process for you, so you don't have to worry about navigating city requirements on your own."
+    },
+    {
+        question: "Will finishing my basement increase my home's value?",
+        answer: "Absolutely. A finished basement is one of the best investments you can make in your home. On average, homeowners see around a 70% return on investment. Beyond the financial return, you gain valuable living space — extra bedrooms, a home office, or an entertainment area — that makes your home more functional and enjoyable."
+    }
+];
+
+const structuredData = [
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://americanlegacycontracting.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://americanlegacycontracting.com/services/" },
+            { "@type": "ListItem", "position": 3, "name": "Basement Finishing", "item": "https://americanlegacycontracting.com/services/basement-finishing/" }
+        ]
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Basement Finishing",
+        "name": "Basement Finishing in Utah County",
+        "description": "Professional basement finishing services in Utah County. Turn your unfinished basement into livable space — bedrooms, family rooms, home offices, bathrooms, and more.",
+        "provider": {
+            "@type": "GeneralContractor",
+            "name": "American Legacy Contracting",
+            "telephone": "801-636-9887",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Payson",
+                "addressRegion": "UT",
+                "addressCountry": "US"
+            }
+        },
+        "areaServed": {
+            "@type": "State",
+            "name": "Utah"
+        }
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqItems.map(item => ({
+            "@type": "Question",
+            "name": item.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": item.answer
+            }
+        }))
+    }
+];
+---
+<Layout
+    title="Basement Finishing in Utah County | American Legacy Contracting"
+    description="Professional basement finishing in Utah County. Turn your unfinished basement into bedrooms, family rooms, home offices, and more. Licensed contractor, 14+ years experience. Free estimates — call 801-636-9887."
+    canonicalUrl="https://americanlegacycontracting.com/services/basement-finishing/"
+    ogTitle="Basement Finishing in Utah County | American Legacy Contracting"
+    ogDescription="Finish your basement with a licensed Utah contractor. Bedrooms, family rooms, home theaters, and more. 14+ years experience. Free estimates — call 801-636-9887."
+    structuredData={structuredData}
+    isSubpage={true}
+>
+    <!-- Hero -->
+    <header class="masthead-sm bg-primary">
+        <div class="container px-4 px-lg-5 py-5">
+            <div class="row justify-content-center text-center" style="padding-top: 5rem;">
+                <div class="col-lg-8">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center mb-3" style="--bs-breadcrumb-divider-color: rgba(255,255,255,.6); --bs-breadcrumb-item-active-color: #fff;">
+                            <li class="breadcrumb-item"><a href="/" class="text-white-75">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/services/" class="text-white-75">Services</a></li>
+                            <li class="breadcrumb-item active text-white" aria-current="page">Basement Finishing</li>
+                        </ol>
+                    </nav>
+                    <h1 class="text-white font-weight-bold mt-0">Basement Finishing in Utah County</h1>
+                    <hr class="divider divider-light" />
+                    <p class="text-white-75 mb-4">Your unfinished basement is untapped potential. Whether you need extra bedrooms for a growing family, a dedicated home office, or a space for entertaining, American Legacy Contracting turns bare concrete into beautiful, livable rooms. Owner Alan Barben personally manages every basement finishing project from design through final walkthrough.</p>
+                    <a class="btn btn-light btn-xl quote-btn" href="/#contact">Get a Quote</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Why Finish Your Basement -->
+    <section class="page-section">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">Why Finish Your Basement?</h2>
+            <hr class="divider" />
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="mt-4">
+                        <div class="mb-2"><i class="fa-solid fa-expand fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">More Living Space</h3>
+                        <p class="text-muted mb-0">Add hundreds or even thousands of square feet of usable living space without changing your home's footprint. A finished basement can nearly double your functional square footage.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="mt-4">
+                        <div class="mb-2"><i class="fa-solid fa-chart-line fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Strong ROI (~70%)</h3>
+                        <p class="text-muted mb-0">Basement finishing consistently ranks as one of the best home improvement investments. Homeowners typically see around 70% return on investment when they sell, and they get to enjoy the space in the meantime.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="mt-4">
+                        <div class="mb-2"><i class="fa-solid fa-couch fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Flexible Functionality</h3>
+                        <p class="text-muted mb-0">Design your basement around your lifestyle — guest bedrooms, a home office, entertainment room, playroom, gym, or all of the above. The possibilities are limited only by your imagination.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Build -->
+    <section class="page-section bg-light">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">What We Build</h2>
+            <hr class="divider" />
+            <p class="text-muted text-center mb-5">Every basement is different, and Alan works with you to design a layout that fits your family's needs and budget. Here are some of the most popular basement finishing projects we handle:</p>
+            <div class="row gx-4 gx-lg-5">
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="mt-3">
+                        <div class="mb-2"><i class="fa-solid fa-tv fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Family & Entertainment Rooms</h3>
+                        <p class="text-muted mb-0">Open-concept gathering spaces for movie nights, game days, and family time.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="mt-3">
+                        <div class="mb-2"><i class="fa-solid fa-bed fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Bedrooms</h3>
+                        <p class="text-muted mb-0">Code-compliant bedrooms with egress windows, closets, and comfortable finishes for growing families or guests.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="mt-3">
+                        <div class="mb-2"><i class="fa-solid fa-laptop fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Home Offices</h3>
+                        <p class="text-muted mb-0">Quiet, dedicated workspaces with proper lighting, electrical, and network infrastructure for remote work.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="mt-3">
+                        <div class="mb-2"><i class="fa-solid fa-bath fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Bathrooms</h3>
+                        <p class="text-muted mb-0">Full or half baths with tile, vanities, and quality fixtures — plumbing handled by trusted, licensed subs.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="mt-3">
+                        <div class="mb-2"><i class="fa-solid fa-film fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Home Theaters</h3>
+                        <p class="text-muted mb-0">Sound-insulated media rooms with proper wiring, lighting control, and theater-quality finishes.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="mt-3">
+                        <div class="mb-2"><i class="fa-solid fa-dumbbell fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Playrooms & Home Gyms</h3>
+                        <p class="text-muted mb-0">Durable, functional spaces for kids' play areas or your personal fitness setup.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Process -->
+    <section class="page-section">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">Our Basement Finishing Process</h2>
+            <hr class="divider" />
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8">
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0"><span class="badge bg-primary rounded-circle p-3 fs-5">1</span></div>
+                        <div class="ms-3">
+                            <h3 class="h5">Consultation & Design</h3>
+                            <p class="text-muted">Alan visits your home, measures the space, discusses your goals, and provides a detailed estimate. He helps you plan a layout that maximizes your square footage and fits your budget.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0"><span class="badge bg-primary rounded-circle p-3 fs-5">2</span></div>
+                        <div class="ms-3">
+                            <h3 class="h5">Permits & Planning</h3>
+                            <p class="text-muted">We handle all permit applications with your local city. Alan's Construction Management degree and years of experience mean the permitting process goes smoothly.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0"><span class="badge bg-primary rounded-circle p-3 fs-5">3</span></div>
+                        <div class="ms-3">
+                            <h3 class="h5">Framing & Electrical</h3>
+                            <p class="text-muted">Walls go up, electrical and plumbing rough-ins are completed by trusted licensed subcontractors, and the space starts to take shape. Inspections are scheduled and passed before moving forward.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0"><span class="badge bg-primary rounded-circle p-3 fs-5">4</span></div>
+                        <div class="ms-3">
+                            <h3 class="h5">Drywall & Finishing</h3>
+                            <p class="text-muted">Drywall, taping, texture, paint, flooring, trim, doors, and all the finishing touches that turn a construction zone into a polished living space.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0"><span class="badge bg-primary rounded-circle p-3 fs-5">5</span></div>
+                        <div class="ms-3">
+                            <h3 class="h5">Final Walkthrough</h3>
+                            <p class="text-muted">Alan walks through the completed basement with you to make sure every detail meets your expectations. Final inspections are completed and your new space is ready to enjoy.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mid-page CTA -->
+    <section class="page-section bg-primary">
+        <div class="container px-4 px-lg-5 text-center">
+            <h2 class="text-white mt-0">Ready to Finish Your Basement?</h2>
+            <hr class="divider divider-light" />
+            <p class="text-white-75 mb-4">Get a free, no-obligation estimate from Alan. He'll visit your home, walk through your basement, and give you an honest price — no pressure, no gimmicks.</p>
+            <a class="btn btn-light btn-xl quote-btn" href="/#contact">Get a Quote</a>
+            <a class="btn btn-outline-light btn-xl ms-2" href="tel:8016369887">Call 801-636-9887</a>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="page-section">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">Why Choose American Legacy Contracting?</h2>
+            <hr class="divider" />
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-3 col-md-6 text-center mb-4">
+                    <div class="mt-4">
+                        <div class="mb-2"><i class="fa-solid fa-certificate fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Licensed & Insured</h3>
+                        <p class="text-muted mb-0">Fully licensed and insured in the state of Utah for your protection and peace of mind.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center mb-4">
+                    <div class="mt-4">
+                        <div class="mb-2"><i class="fa-solid fa-graduation-cap fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">CM Degree</h3>
+                        <p class="text-muted mb-0">Alan holds both a Bachelor's and Applied Science degree in Construction Management.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center mb-4">
+                    <div class="mt-4">
+                        <div class="mb-2"><i class="fa-solid fa-calendar-check fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">14+ Years Experience</h3>
+                        <p class="text-muted mb-0">Over 14 years of hands-on residential and commercial construction experience.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center mb-4">
+                    <div class="mt-4">
+                        <div class="mb-2"><i class="fa-solid fa-user-check fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Owner-Operated</h3>
+                        <p class="text-muted mb-0">Alan personally manages every project — you always know who's in charge.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="page-section bg-light">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">Basement Finishing FAQ</h2>
+            <hr class="divider" />
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        {faqItems.map((item, i) => (
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id={`faq-heading-${i}`}>
+                                    <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target={`#faq-collapse-${i}`}
+                                        aria-expanded="false"
+                                        aria-controls={`faq-collapse-${i}`}
+                                    >
+                                        {item.question}
+                                    </button>
+                                </h3>
+                                <div
+                                    id={`faq-collapse-${i}`}
+                                    class="accordion-collapse collapse"
+                                    aria-labelledby={`faq-heading-${i}`}
+                                    data-bs-parent="#faqAccordion"
+                                >
+                                    <div class="accordion-body text-muted" set:html={item.answer} />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Areas -->
+    <section class="page-section">
+        <div class="container px-4 px-lg-5 text-center">
+            <h2 class="mt-0">Basement Finishing Across Utah County</h2>
+            <hr class="divider" />
+            <p class="text-muted mb-4">We finish basements in Payson, Spanish Fork, Salem, Springville, Provo, Orem, Lehi, American Fork, and 17 cities throughout Utah County. No matter where you are along the I-15 corridor, Alan can help transform your basement into the space your family needs.</p>
+            <a class="btn btn-outline-primary btn-lg" href="/service-areas/">View All Service Areas</a>
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="page-section bg-dark text-white">
+        <div class="container px-4 px-lg-5 text-center">
+            <h2 class="mt-0">Let's Talk About Your Basement</h2>
+            <hr class="divider divider-light" />
+            <p class="text-white-75 mb-4">Call or text Alan for a free estimate. He'll come to your home, walk through your unfinished basement, and give you an honest price and realistic timeline.</p>
+            <a class="btn btn-primary btn-xl quote-btn" href="/#contact">Get a Quote</a>
+            <br class="d-block d-md-none"><br class="d-block d-md-none">
+            <a class="btn btn-light btn-xl mt-3 mt-md-0 ms-md-2" href="tel:8016369887">Call 801-636-9887</a>
+            <a class="btn btn-outline-light btn-xl mt-3 mt-md-0 ms-md-2" href="sms:8016369887?body=Hey%20Alan%2C%20I%27m%20looking%20to%20get%20some%20work%20done%20and%20would%20love%20to%20have%20you%20come%20over%20and%20give%20me%20a%20quote!">Text Alan</a>
+        </div>
+    </section>
+
+    <script is:inline>
+      document.querySelectorAll('.quote-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          if (/Mobi|Android/i.test(navigator.userAgent)) {
+            e.preventDefault();
+            window.location.href = 'sms:8016369887?body=Hey%20Alan%2C%20I%27m%20looking%20to%20get%20some%20work%20done%20and%20would%20love%20to%20have%20you%20come%20over%20and%20give%20me%20a%20quote!';
+          }
+        });
+      });
+    </script>
+
+    <style>
+        .masthead-sm {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+    </style>
+</Layout>

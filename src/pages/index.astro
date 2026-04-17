@@ -11,6 +11,13 @@ const testimonials = Object.values(testimonialModules).sort((a: any, b: any) => 
 const portfolioModules = import.meta.glob('../content/portfolio/*.json', { eager: true });
 const portfolio = Object.values(portfolioModules).sort((a: any, b: any) => a.order - b.order);
 
+const serviceLinks: Record<string, string> = {
+    'Remodels & Renovations': '/services/kitchen-bathroom-remodels/',
+    'Basement Finishing': '/services/basement-finishing/',
+    'New Construction': '/services/new-construction/',
+    'Handyman Services': '/services/handyman-services/',
+};
+
 const faqItems = [
     {
         question: "Are you licensed and insured?",
@@ -92,11 +99,13 @@ const faqItems = [
             <div class="row gx-4 gx-lg-5">
                 {services.map((s: any) => (
                     <div class="col-lg-3 col-md-6 text-center">
-                        <div class="mt-5">
-                            <div class="mb-2"><i class={`fa-solid ${s.icon} fa-2xl text-primary`}></i></div><br>
-                            <h3 class="h4 mb-2">{s.title}</h3>
-                            <p class="text-muted mb-0">{s.description}</p>
-                        </div>
+                        <a href={serviceLinks[s.title] || '/services/'} class="text-decoration-none">
+                            <div class="mt-5">
+                                <div class="mb-2"><i class={`fa-solid ${s.icon} fa-2xl text-primary`}></i></div><br>
+                                <h3 class="h4 mb-2">{s.title}</h3>
+                                <p class="text-muted mb-0">{s.description}</p>
+                            </div>
+                        </a>
                     </div>
                 ))}
             </div>

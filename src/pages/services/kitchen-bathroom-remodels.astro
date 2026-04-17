@@ -1,0 +1,380 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import site from '../../content/site.json';
+
+const faqItems = [
+    {
+        question: "How much does a kitchen remodel cost in Utah?",
+        answer: "Kitchen remodel costs vary widely depending on the scope of work — a cosmetic refresh with new countertops and paint is very different from a full gut-renovation with new cabinets, flooring, and layout changes. Rather than guess, <a href='tel:8016369887'>call Alan</a> for a free in-home estimate. He'll walk through your kitchen, discuss your goals, and give you an honest price."
+    },
+    {
+        question: "How long does a bathroom remodel take?",
+        answer: "Most bathroom remodels take 2 to 4 weeks, depending on scope. A simple vanity and fixture swap can be done in about a week, while a full remodel with new tile, shower, and layout changes will take closer to 3-4 weeks. Alan will give you a realistic timeline during your consultation."
+    },
+    {
+        question: "Can you work with my existing layout?",
+        answer: "Absolutely. Many of our remodels refresh the look and feel of a kitchen or bathroom without changing the layout at all — new cabinets, countertops, tile, and fixtures can completely transform a space. If you do want to open things up or reconfigure the layout, Alan has the experience to handle structural changes, plumbing reroutes, and electrical updates."
+    },
+    {
+        question: "Do you handle plumbing and electrical?",
+        answer: "Alan works with trusted, licensed electricians and plumbers he knows well enough to use in his own home. You get one point of contact — Alan — and he coordinates all the trades so you don't have to."
+    }
+];
+
+const structuredData = [
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://americanlegacycontracting.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://americanlegacycontracting.com/services/" },
+            { "@type": "ListItem", "position": 3, "name": "Kitchen & Bathroom Remodels", "item": "https://americanlegacycontracting.com/services/kitchen-bathroom-remodels/" }
+        ]
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Kitchen and Bathroom Remodeling",
+        "name": "Kitchen & Bathroom Remodels in Utah County",
+        "description": "Professional kitchen and bathroom remodeling services in Utah County. Cabinets, countertops, tile, fixtures, layout changes, and full renovations.",
+        "provider": {
+            "@type": "GeneralContractor",
+            "name": "American Legacy Contracting",
+            "telephone": "801-636-9887",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Payson",
+                "addressRegion": "UT",
+                "addressCountry": "US"
+            }
+        },
+        "areaServed": {
+            "@type": "State",
+            "name": "Utah"
+        }
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqItems.map(item => ({
+            "@type": "Question",
+            "name": item.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": item.answer
+            }
+        }))
+    }
+];
+---
+<Layout
+    title="Kitchen & Bathroom Remodels in Utah County | American Legacy Contracting"
+    description="Expert kitchen and bathroom remodeling in Utah County. Cabinets, countertops, tile, fixtures, and full renovations. Licensed contractor, 14+ years experience. Free estimates — call 801-636-9887."
+    canonicalUrl="https://americanlegacycontracting.com/services/kitchen-bathroom-remodels/"
+    ogTitle="Kitchen & Bathroom Remodels in Utah County | American Legacy Contracting"
+    ogDescription="Transform your kitchen or bathroom with a licensed Utah contractor. Cabinets, countertops, tile, showers, and full renovations. Free estimates — call 801-636-9887."
+    structuredData={structuredData}
+    isSubpage={true}
+>
+    <!-- Hero -->
+    <header class="masthead-sm bg-primary">
+        <div class="container px-4 px-lg-5 py-5">
+            <div class="row justify-content-center text-center" style="padding-top: 5rem;">
+                <div class="col-lg-8">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center mb-3" style="--bs-breadcrumb-divider-color: rgba(255,255,255,.6); --bs-breadcrumb-item-active-color: #fff;">
+                            <li class="breadcrumb-item"><a href="/" class="text-white-75">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/services/" class="text-white-75">Services</a></li>
+                            <li class="breadcrumb-item active text-white" aria-current="page">Kitchen & Bathroom Remodels</li>
+                        </ol>
+                    </nav>
+                    <h1 class="text-white font-weight-bold mt-0">Kitchen & Bathroom Remodels in Utah County</h1>
+                    <hr class="divider divider-light" />
+                    <p class="text-white-75 mb-4">Your kitchen and bathrooms are the hardest-working rooms in your home — and the ones that make the biggest impression. Whether you're dreaming of a modern kitchen with new countertops and custom cabinets, or a spa-like bathroom with updated tile and fixtures, American Legacy Contracting delivers quality renovations that transform how you live.</p>
+                    <a class="btn btn-light btn-xl quote-btn" href="/#contact">Get a Quote</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Kitchen Remodeling -->
+    <section class="page-section">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">Kitchen Remodeling</h2>
+            <hr class="divider" />
+            <p class="text-muted text-center mb-5">The kitchen is the heart of your home. Whether you're updating finishes or completely reconfiguring the layout, Alan has the experience to bring your vision to life.</p>
+            <div class="row gx-4 gx-lg-5">
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="mt-3">
+                        <div class="mb-2"><i class="fa-solid fa-cabinet-filing fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Cabinets</h3>
+                        <p class="text-muted mb-0">New cabinet installation, refacing, or custom-built cabinetry to maximize your storage and style.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="mt-3">
+                        <div class="mb-2"><i class="fa-solid fa-gem fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Countertops</h3>
+                        <p class="text-muted mb-0">Granite, quartz, butcher block, and other countertop materials — professionally measured and installed.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="mt-3">
+                        <div class="mb-2"><i class="fa-solid fa-layer-group fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Flooring</h3>
+                        <p class="text-muted mb-0">Tile, hardwood, LVP, and other durable kitchen flooring options installed with precision.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="mt-3">
+                        <div class="mb-2"><i class="fa-solid fa-lightbulb fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Lighting</h3>
+                        <p class="text-muted mb-0">Under-cabinet lighting, recessed lights, pendant fixtures, and electrical upgrades by licensed electricians.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="mt-3">
+                        <div class="mb-2"><i class="fa-solid fa-arrows-left-right-to-line fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Layout Changes</h3>
+                        <p class="text-muted mb-0">Open up walls, add an island, or reconfigure the flow — Alan handles structural and layout modifications.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="mt-3">
+                        <div class="mb-2"><i class="fa-solid fa-blender fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Appliance Installation</h3>
+                        <p class="text-muted mb-0">Proper installation of new appliances, including any electrical or plumbing modifications needed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bathroom Remodeling -->
+    <section class="page-section bg-light">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">Bathroom Remodeling</h2>
+            <hr class="divider" />
+            <p class="text-muted text-center mb-5">From a simple vanity swap to a full master bathroom renovation, we handle every aspect of bathroom remodeling with attention to detail and quality craftsmanship.</p>
+            <div class="row gx-4 gx-lg-5">
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="mt-3">
+                        <div class="mb-2"><i class="fa-solid fa-border-all fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Tile Work</h3>
+                        <p class="text-muted mb-0">Shower surrounds, backsplashes, floor tile, and accent walls — professionally laid for a clean, lasting finish.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="mt-3">
+                        <div class="mb-2"><i class="fa-solid fa-sink fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Vanities & Storage</h3>
+                        <p class="text-muted mb-0">Single or double vanities, mirrors, medicine cabinets, and smart storage solutions to keep your bathroom organized.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="mt-3">
+                        <div class="mb-2"><i class="fa-solid fa-shower fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Showers & Tubs</h3>
+                        <p class="text-muted mb-0">Walk-in showers, tub-to-shower conversions, soaker tubs, and custom shower enclosures.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="mt-3">
+                        <div class="mb-2"><i class="fa-solid fa-layer-group fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Flooring</h3>
+                        <p class="text-muted mb-0">Waterproof tile, LVP, and other moisture-resistant flooring options suited for bathroom environments.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="mt-3">
+                        <div class="mb-2"><i class="fa-solid fa-faucet fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Fixtures & Hardware</h3>
+                        <p class="text-muted mb-0">Faucets, showerheads, towel bars, and hardware upgrades that complete the look of your remodel.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="mt-3">
+                        <div class="mb-2"><i class="fa-solid fa-wheelchair fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Accessibility Upgrades</h3>
+                        <p class="text-muted mb-0">Grab bars, curbless showers, wider doorways, and other modifications for aging in place or accessibility needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mid-page CTA -->
+    <section class="page-section bg-primary">
+        <div class="container px-4 px-lg-5 text-center">
+            <h2 class="text-white mt-0">Let's Transform Your Kitchen or Bathroom</h2>
+            <hr class="divider divider-light" />
+            <p class="text-white-75 mb-4">Call or text Alan for a free, no-obligation estimate. He'll visit your home, discuss your vision, and provide an honest price — no high-pressure sales tactics.</p>
+            <a class="btn btn-light btn-xl quote-btn" href="/#contact">Get a Quote</a>
+            <a class="btn btn-outline-light btn-xl ms-2" href="tel:8016369887">Call 801-636-9887</a>
+        </div>
+    </section>
+
+    <!-- Our Approach -->
+    <section class="page-section">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">Our Remodeling Approach</h2>
+            <hr class="divider" />
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8">
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0"><span class="badge bg-primary rounded-circle p-3 fs-5">1</span></div>
+                        <div class="ms-3">
+                            <h3 class="h5">Consultation</h3>
+                            <p class="text-muted">Alan visits your home, listens to your ideas, takes measurements, and discusses options that fit your budget. You'll get a clear estimate with no hidden costs.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0"><span class="badge bg-primary rounded-circle p-3 fs-5">2</span></div>
+                        <div class="ms-3">
+                            <h3 class="h5">Design & Material Selection</h3>
+                            <p class="text-muted">Together we finalize the design, select materials, and create a timeline. Alan helps you make smart choices that balance quality, aesthetics, and budget.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0"><span class="badge bg-primary rounded-circle p-3 fs-5">3</span></div>
+                        <div class="ms-3">
+                            <h3 class="h5">Demolition</h3>
+                            <p class="text-muted">Careful, controlled demo of existing surfaces, fixtures, and structures. We protect the rest of your home and handle all debris removal.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0"><span class="badge bg-primary rounded-circle p-3 fs-5">4</span></div>
+                        <div class="ms-3">
+                            <h3 class="h5">Build & Install</h3>
+                            <p class="text-muted">Framing, plumbing, electrical, cabinets, countertops, tile, flooring — everything goes in. Alan coordinates all trades and keeps the project on schedule.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0"><span class="badge bg-primary rounded-circle p-3 fs-5">5</span></div>
+                        <div class="ms-3">
+                            <h3 class="h5">Finishing Touches</h3>
+                            <p class="text-muted">Paint, hardware, fixtures, trim, and a thorough cleanup. Alan does a final walkthrough with you to make sure every detail is right before the job is done.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="page-section bg-light">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">Why Choose American Legacy Contracting?</h2>
+            <hr class="divider" />
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-3 col-md-6 text-center mb-4">
+                    <div class="mt-4">
+                        <div class="mb-2"><i class="fa-solid fa-certificate fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Licensed & Insured</h3>
+                        <p class="text-muted mb-0">Fully licensed and insured in the state of Utah for your protection and peace of mind.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center mb-4">
+                    <div class="mt-4">
+                        <div class="mb-2"><i class="fa-solid fa-graduation-cap fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">CM Degree</h3>
+                        <p class="text-muted mb-0">Alan holds both a Bachelor's and Applied Science degree in Construction Management.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center mb-4">
+                    <div class="mt-4">
+                        <div class="mb-2"><i class="fa-solid fa-calendar-check fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">14+ Years Experience</h3>
+                        <p class="text-muted mb-0">Over 14 years of hands-on residential and commercial construction experience.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center mb-4">
+                    <div class="mt-4">
+                        <div class="mb-2"><i class="fa-solid fa-user-check fa-2xl text-primary"></i></div><br>
+                        <h3 class="h5 mb-2">Owner-Operated</h3>
+                        <p class="text-muted mb-0">Alan personally manages every project — you always know who's in charge.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="page-section">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">Kitchen & Bathroom Remodel FAQ</h2>
+            <hr class="divider" />
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        {faqItems.map((item, i) => (
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id={`faq-heading-${i}`}>
+                                    <button
+                                        class="accordion-button collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target={`#faq-collapse-${i}`}
+                                        aria-expanded="false"
+                                        aria-controls={`faq-collapse-${i}`}
+                                    >
+                                        {item.question}
+                                    </button>
+                                </h3>
+                                <div
+                                    id={`faq-collapse-${i}`}
+                                    class="accordion-collapse collapse"
+                                    aria-labelledby={`faq-heading-${i}`}
+                                    data-bs-parent="#faqAccordion"
+                                >
+                                    <div class="accordion-body text-muted" set:html={item.answer} />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Areas -->
+    <section class="page-section bg-light">
+        <div class="container px-4 px-lg-5 text-center">
+            <h2 class="mt-0">Kitchen & Bathroom Remodeling Across Utah County</h2>
+            <hr class="divider" />
+            <p class="text-muted mb-4">We remodel kitchens and bathrooms in Payson, Spanish Fork, Salem, Springville, Provo, Orem, Lehi, American Fork, and communities throughout Utah County. Wherever you are along the I-15 corridor, Alan is ready to help upgrade your home.</p>
+            <a class="btn btn-outline-primary btn-lg" href="/service-areas/">View All Service Areas</a>
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="page-section bg-dark text-white">
+        <div class="container px-4 px-lg-5 text-center">
+            <h2 class="mt-0">Ready to Remodel?</h2>
+            <hr class="divider divider-light" />
+            <p class="text-white-75 mb-4">Your dream kitchen or bathroom is closer than you think. Call or text Alan for a free estimate — he'll help you figure out the best approach for your space and budget.</p>
+            <a class="btn btn-primary btn-xl quote-btn" href="/#contact">Get a Quote</a>
+            <br class="d-block d-md-none"><br class="d-block d-md-none">
+            <a class="btn btn-light btn-xl mt-3 mt-md-0 ms-md-2" href="tel:8016369887">Call 801-636-9887</a>
+            <a class="btn btn-outline-light btn-xl mt-3 mt-md-0 ms-md-2" href="sms:8016369887?body=Hey%20Alan%2C%20I%27m%20looking%20to%20get%20some%20work%20done%20and%20would%20love%20to%20have%20you%20come%20over%20and%20give%20me%20a%20quote!">Text Alan</a>
+        </div>
+    </section>
+
+    <script is:inline>
+      document.querySelectorAll('.quote-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          if (/Mobi|Android/i.test(navigator.userAgent)) {
+            e.preventDefault();
+            window.location.href = 'sms:8016369887?body=Hey%20Alan%2C%20I%27m%20looking%20to%20get%20some%20work%20done%20and%20would%20love%20to%20have%20you%20come%20over%20and%20give%20me%20a%20quote!';
+          }
+        });
+      });
+    </script>
+
+    <style>
+        .masthead-sm {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+    </style>
+</Layout>
