@@ -188,32 +188,37 @@ const navPrefix = isSubpage ? '/' : '';
         <!-- Core theme JS-->
         <script is:inline src="/js/scripts.js"></script>
         <script is:inline src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-        <!-- CTA click tracking -->
+        <!-- CTA click tracking (once per action per session) -->
         <script is:inline>
-        document.addEventListener('click', function(e) {
-            var link = e.target.closest('a');
-            if (!link) return;
-            var href = link.getAttribute('href') || '';
-            var text = link.textContent.trim();
-            var page = window.location.pathname;
-            var action = null;
+        (function() {
+            var fired = {};
+            document.addEventListener('click', function(e) {
+                var link = e.target.closest('a');
+                if (!link) return;
+                var href = link.getAttribute('href') || '';
+                var text = link.textContent.trim();
+                var page = window.location.pathname;
+                var action = null;
 
-            if (link.classList.contains('quote-btn') || link.id === 'quote-btn' || text.match(/Get a.*Quote/i)) {
-                action = 'get_quote';
-            } else if (href.indexOf('tel:') === 0) {
-                action = 'phone_call';
-            } else if (href.indexOf('sms:') === 0) {
-                action = 'text_message';
-            }
+                if (link.classList.contains('quote-btn') || link.id === 'quote-btn' || text.match(/Get a.*Quote/i)) {
+                    action = 'get_quote';
+                } else if (href.indexOf('tel:') === 0) {
+                    action = 'phone_call';
+                } else if (href.indexOf('sms:') === 0) {
+                    action = 'text_message';
+                }
 
-            if (action && typeof gtag === 'function') {
-                gtag('event', action, {
-                    event_category: 'cta_click',
-                    event_label: page,
-                    button_text: text
-                });
-            }
-        });
+                var key = action + ':' + page;
+                if (action && !fired[key] && typeof gtag === 'function') {
+                    fired[key] = true;
+                    gtag('event', action, {
+                        event_category: 'cta_click',
+                        event_label: page,
+                        button_text: text
+                    });
+                }
+            });
+        })();
         </script>
     </body>
 </html>
