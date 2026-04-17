@@ -65,7 +65,8 @@ const breadcrumbSchema = {
     ]
 };
 
-const smsLink = "sms:8016369887?body=Hey%20Alan%2C%20I%27m%20looking%20to%20get%20some%20work%20done%20and%20would%20love%20to%20have%20you%20come%20over%20and%20give%20me%20a%20quote!";
+const smsBody = encodeURIComponent(`Hey Alan, I'm in ${area.city} and looking to get some work done. Would love to have you come over and give me a quote!`);
+const smsLink = `sms:8016369887?body=${smsBody}`;
 ---
 <Layout
     title={area.meta_title}
@@ -97,13 +98,13 @@ const smsLink = "sms:8016369887?body=Hey%20Alan%2C%20I%27m%20looking%20to%20get%
                     <h1 class="mt-0">{area.hero_heading}</h1>
                     <hr class="divider divider-light" />
                     <p class="text-white-75 mb-4">{area.hero_subheading}</p>
-                    <a class="btn btn-primary btn-xl quote-btn" href="/#contact">Get a Free Quote</a>
+                    <a class="btn btn-primary btn-xl quote-btn" href="/#contact" data-sms={smsLink}>Get a Free Quote</a>
                     <script is:inline>
                       document.querySelectorAll('.quote-btn').forEach(function(btn) {
                         btn.addEventListener('click', function(e) {
                           if (/Mobi|Android/i.test(navigator.userAgent)) {
                             e.preventDefault();
-                            window.location.href = 'sms:8016369887?body=Hey%20Alan%2C%20I%27m%20looking%20to%20get%20some%20work%20done%20and%20would%20love%20to%20have%20you%20come%20over%20and%20give%20me%20a%20quote!';
+                            window.location.href = btn.getAttribute('data-sms') || btn.href;
                           }
                         });
                       });
