@@ -1,10 +1,7 @@
 import { defineConfig } from 'tinacms';
 import { mountDeployStatusWidget } from './deploy-status';
 
-const branch =
-  process.env.GITHUB_BRANCH ||
-  process.env.HEAD ||
-  'main';
+const branch = process.env.GITHUB_BRANCH || process.env.HEAD || 'main';
 
 export default defineConfig({
   branch,
