@@ -18,6 +18,7 @@ export default defineConfig({
     mountDeployStatusWidget();
     return cms;
   },
+  ui: {},
   media: {
     tina: {
       mediaRoot: 'assets/img/portfolio',
