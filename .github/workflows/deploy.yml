@@ -24,6 +24,18 @@ jobs:
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
         run: npm run build
 
+      - name: Push updated tina-lock.json if changed
+        run: |
+          if git diff --quiet tina/tina-lock.json; then
+            echo "tina-lock.json unchanged, skipping"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add tina/tina-lock.json
+            git commit -m "Auto-update tina-lock.json [skip ci]"
+            git push
+          fi
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
