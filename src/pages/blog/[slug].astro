@@ -1,0 +1,194 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const postModules = import.meta.glob('../../content/blog/*.json', { eager: true });
+const allPosts = Object.values(postModules)
+    .filter((p: any) => p.published !== false)
+    .sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+export function getStaticPaths() {
+    const modules = import.meta.glob('../../content/blog/*.json', { eager: true });
+    const posts = Object.values(modules).filter((p: any) => p.published !== false);
+    return posts.map((post: any) => ({
+        params: { slug: post.slug },
+        props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+
+const otherPosts = allPosts.filter((p: any) => p.slug !== post.slug).slice(0, 3);
+
+const smsBody = encodeURIComponent(`Hey Alan, I just read your blog post about "${post.title}" and I'm interested in getting a quote!`);
+const smsLink = `sms:8016369887?body=${smsBody}`;
+
+const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.meta_description,
+    "datePublished": post.date,
+    "url": `https://americanlegacycontracting.com/blog/${post.slug}/`,
+    "author": {
+        "@type": "Person",
+        "name": "Alan Barben",
+        "jobTitle": "Owner & General Contractor",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "American Legacy Contracting"
+        }
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "American Legacy Contracting",
+        "url": "https://americanlegacycontracting.com",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://americanlegacycontracting.com/assets/img/Logo-removebg-preview.png"
+        }
+    }
+};
+
+const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://americanlegacycontracting.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://americanlegacycontracting.com/blog/" },
+        { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://americanlegacycontracting.com/blog/${post.slug}/` }
+    ]
+};
+---
+<Layout
+    title={post.meta_title}
+    description={post.meta_description}
+    canonicalUrl={`https://americanlegacycontracting.com/blog/${post.slug}/`}
+    ogTitle={post.meta_title}
+    ogDescription={post.meta_description}
+    structuredData={[articleSchema, breadcrumbSchema]}
+    isSubpage={true}
+>
+    <div class="bg-light border-bottom" style="padding-top: 5rem;">
+        <div class="container px-4 px-lg-5">
+            <nav aria-label="breadcrumb" class="py-2">
+                <ol class="breadcrumb mb-0 small">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/blog/">Blog</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{post.title}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <article class="page-section">
+        <div class="container px-4 px-lg-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-muted small mb-2">
+                        {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                        &nbsp;&middot;&nbsp; By Alan Barben
+                    </div>
+                    <h1 class="mb-4">{post.title}</h1>
+                    <div class="blog-content" set:html={post.content} />
+                </div>
+            </div>
+        </div>
+    </article>
+
+    {post.cta_service && (
+    <section class="page-section bg-primary">
+        <div class="container px-4 px-lg-5 text-center">
+            <h2 class="text-white mt-0">{post.cta_label || 'Get a Free Estimate'}</h2>
+            <hr class="divider divider-light" />
+            <p class="text-white-75 mb-4">Ready to get started? Call or text Alan for a free, no-obligation quote.</p>
+            <a class="btn btn-light btn-xl quote-btn" href={post.cta_service}>Learn More</a>
+            <a class="btn btn-outline-light btn-xl ms-2" href="tel:8016369887">Call 801-636-9887</a>
+        </div>
+    </section>
+    )}
+
+    <section class="page-section bg-dark text-white">
+        <div class="container px-4 px-lg-5 text-center">
+            <h2 class="mt-0">Have Questions About Your Project?</h2>
+            <hr class="divider divider-light" />
+            <p class="text-white-75 mb-4">Alan is happy to answer questions and provide a free estimate — no pressure, no obligation.</p>
+            <a class="btn btn-primary btn-xl quote-btn" href="/#contact" data-sms={smsLink}>Get a Free Quote</a>
+            <script is:inline>
+              document.querySelectorAll('.quote-btn').forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                  if (/Mobi|Android/i.test(navigator.userAgent) && btn.getAttribute('data-sms')) {
+                    e.preventDefault();
+                    window.location.href = btn.getAttribute('data-sms');
+                  }
+                });
+              });
+            </script>
+        </div>
+    </section>
+
+    {otherPosts.length > 0 && (
+    <section class="page-section">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">More Articles</h2>
+            <hr class="divider" />
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                {otherPosts.map((p: any) => (
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <a href={`/blog/${p.slug}/`} class="text-decoration-none">
+                            <div class="card shadow-sm border-0 blog-card h-100">
+                                <div class="card-body p-4">
+                                    <div class="text-muted small mb-2">{new Date(p.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+                                    <h3 class="h5 text-dark mb-2">{p.title}</h3>
+                                    <p class="text-muted small mb-0">{p.excerpt}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+    )}
+
+    <style>
+        .blog-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #333;
+        }
+        .blog-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1a2a3a;
+        }
+        .blog-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: #1a2a3a;
+        }
+        .blog-content p {
+            margin-bottom: 1.25rem;
+        }
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+        .blog-content strong {
+            color: #1a2a3a;
+        }
+        .blog-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .blog-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.12) !important;
+        }
+    </style>
+</Layout>

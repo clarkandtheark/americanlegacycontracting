@@ -1,0 +1,88 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const postModules = import.meta.glob('../../content/blog/*.json', { eager: true });
+const posts = Object.values(postModules)
+    .filter((p: any) => p.published !== false)
+    .sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "American Legacy Contracting Blog",
+    "description": "Home improvement tips, cost guides, and project advice from a licensed Utah County general contractor.",
+    "url": "https://americanlegacycontracting.com/blog/",
+    "publisher": {
+        "@type": "Organization",
+        "name": "American Legacy Contracting",
+        "url": "https://americanlegacycontracting.com"
+    }
+};
+---
+<Layout
+    title="Home Improvement Blog | American Legacy Contracting"
+    description="Expert home improvement tips, cost guides, and project advice from Alan Barben — licensed general contractor in Utah County with 14+ years of experience."
+    canonicalUrl="https://americanlegacycontracting.com/blog/"
+    ogTitle="Home Improvement Blog | American Legacy Contracting"
+    ogDescription="Cost guides, project tips, and contractor advice for Utah County homeowners."
+    structuredData={[structuredData]}
+    isSubpage={true}
+>
+    <div class="bg-light border-bottom" style="padding-top: 5rem;">
+        <div class="container px-4 px-lg-5">
+            <nav aria-label="breadcrumb" class="py-2">
+                <ol class="breadcrumb mb-0 small">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Blog</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <section class="page-section">
+        <div class="container px-4 px-lg-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h1 class="mt-0">Home Improvement Blog</h1>
+                    <hr class="divider" />
+                    <p class="text-muted mb-5">Cost guides, project tips, and expert advice from a licensed Utah County general contractor.</p>
+                </div>
+            </div>
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                {posts.map((post: any) => (
+                    <div class="col-lg-8 mb-4">
+                        <a href={`/blog/${post.slug}/`} class="text-decoration-none">
+                            <div class="card shadow-sm border-0 blog-card">
+                                <div class="card-body p-4">
+                                    <div class="text-muted small mb-2">{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+                                    <h2 class="h4 text-dark mb-2">{post.title}</h2>
+                                    <p class="text-muted mb-0">{post.excerpt}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <section class="page-section bg-primary">
+        <div class="container px-4 px-lg-5 text-center">
+            <h2 class="text-white mt-0">Ready to Start Your Project?</h2>
+            <hr class="divider divider-light" />
+            <p class="text-white-75 mb-4">Call or text Alan directly for a free estimate.</p>
+            <a class="btn btn-light btn-xl" href="tel:8016369887">Call 801-636-9887</a>
+            <a class="btn btn-outline-light btn-xl ms-2" href="sms:8016369887?body=Hey%20Alan%2C%20I%27m%20looking%20to%20get%20some%20work%20done%20and%20would%20love%20to%20have%20you%20come%20over%20and%20give%20me%20a%20quote!">Text Alan</a>
+        </div>
+    </section>
+
+    <style>
+        .blog-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .blog-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.12) !important;
+        }
+    </style>
+</Layout>
