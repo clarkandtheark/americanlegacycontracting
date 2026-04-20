@@ -179,10 +179,93 @@
       color: #fff;
     }
 
+    /* ── Date range bar ── */
+    .date-bar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 56px;
+      z-index: 90;
+    }
+
+    .date-pill {
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      padding: 0.4rem 1rem;
+      font-size: 0.8rem;
+      font-family: 'Merriweather Sans', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      background: transparent;
+      color: var(--muted);
+      transition: all 0.2s;
+    }
+
+    .date-pill:hover {
+      border-color: var(--blue);
+      color: var(--navy);
+    }
+
+    .date-pill.active {
+      background: var(--navy);
+      color: #fff;
+      border-color: var(--navy);
+    }
+
+    .date-custom-fields {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .date-custom-fields input[type="date"] {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.35rem 0.6rem;
+      font-size: 0.8rem;
+      font-family: 'Merriweather Sans', sans-serif;
+      color: var(--text);
+    }
+
+    .date-custom-fields .date-pill {
+      background: var(--blue);
+      color: #fff;
+      border-color: var(--blue);
+    }
+
+    .date-custom-fields .date-pill:hover {
+      background: var(--blue-dark);
+      border-color: var(--blue-dark);
+    }
+
+    /* ── Content area ── */
     .content {
       max-width: 1100px;
       margin: 0 auto;
       padding: 2rem 1.5rem 4rem;
+      position: relative;
+    }
+
+    .content-loading {
+      position: absolute;
+      inset: 0;
+      background: rgba(244,246,249,0.7);
+      z-index: 50;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 4rem;
+    }
+
+    .content-loading .spinner {
+      width: 28px;
+      height: 28px;
     }
 
     /* ── Section headers ── */
@@ -249,6 +332,19 @@
 
     .card-accent { border-top: 3px solid var(--blue); }
 
+    /* ── Delta badges ── */
+    .card-delta {
+      font-size: 0.75rem;
+      margin-top: 0.35rem;
+      font-weight: 600;
+      min-height: 1.1em;
+    }
+
+    .card-delta--up { color: var(--green); }
+    .card-delta--down { color: var(--red); }
+    .card-delta--neutral { color: var(--muted); }
+    .card-delta--new { color: var(--blue); font-weight: 600; }
+
     /* ── Queries table ── */
     .table-wrap {
       background: var(--white);
@@ -296,6 +392,14 @@
       color: var(--navy);
     }
 
+    /* ── GSC date note ── */
+    .gsc-date-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 0.25rem;
+    }
+
     /* ── Error state ── */
     .error-msg {
       background: #fff3f3;
@@ -313,6 +417,11 @@
       font-size: 0.75rem;
       color: var(--muted);
       margin-top: 3rem;
+    }
+
+    @media (max-width: 600px) {
+      .date-bar { padding: 0.6rem 1rem; gap: 0.4rem; }
+      .date-pill { padding: 0.3rem 0.7rem; font-size: 0.7rem; }
     }
   </style>
 </head>
@@ -357,7 +466,22 @@
       </div>
     </header>
 
-    <div class="content">
+    <div class="date-bar" id="date-bar">
+      <button class="date-pill" data-range="7">Last 7 days</button>
+      <button class="date-pill active" data-range="30">Last 30 days</button>
+      <button class="date-pill" data-range="90">Last 3 months</button>
+      <button class="date-pill" data-range="180">Last 6 months</button>
+      <button class="date-pill" data-range="ytd">Year to date</button>
+      <button class="date-pill" data-range="custom">Custom</button>
+      <div class="date-custom-fields" id="custom-date-fields" style="display:none">
+        <input type="date" id="custom-start" />
+        <span style="color:var(--muted);font-size:0.8rem">to</span>
+        <input type="date" id="custom-end" />
+        <button class="date-pill" id="custom-apply">Apply</button>
+      </div>
+    </div>
+
+    <div class="content" id="dashboard-content">
 
       <!-- GA4 Section -->
       <div class="section-header">
@@ -368,23 +492,27 @@
       <div class="cards" id="ga4-cards">
         <div class="card card-accent">
           <div class="card-label">Sessions</div>
-          <div class="card-value" id="stat-sessions">—</div>
+          <div class="card-value" id="stat-sessions">&mdash;</div>
           <div class="card-sub">Total site visits</div>
+          <div class="card-delta" id="delta-sessions"></div>
         </div>
         <div class="card card-accent">
           <div class="card-label">Users</div>
-          <div class="card-value" id="stat-users">—</div>
+          <div class="card-value" id="stat-users">&mdash;</div>
           <div class="card-sub">Unique visitors</div>
+          <div class="card-delta" id="delta-users"></div>
         </div>
         <div class="card card-accent">
           <div class="card-label">Organic Sessions</div>
-          <div class="card-value" id="stat-organic">—</div>
+          <div class="card-value" id="stat-organic">&mdash;</div>
           <div class="card-sub">From Google search</div>
+          <div class="card-delta" id="delta-organic"></div>
         </div>
         <div class="card card-accent">
           <div class="card-label">Direct Sessions</div>
-          <div class="card-value" id="stat-direct">—</div>
+          <div class="card-value" id="stat-direct">&mdash;</div>
           <div class="card-sub">Typed your URL directly</div>
+          <div class="card-delta" id="delta-direct"></div>
         </div>
       </div>
 
@@ -393,27 +521,32 @@
         <span class="section-title">Google Search Console</span>
         <span class="section-date" id="gsc-date-label">Last 28 days</span>
       </div>
+      <div class="gsc-date-note" id="gsc-date-note" style="display:none"></div>
 
       <div class="cards">
         <div class="card card-accent">
           <div class="card-label">Clicks</div>
-          <div class="card-value" id="stat-clicks">—</div>
+          <div class="card-value" id="stat-clicks">&mdash;</div>
           <div class="card-sub">People who clicked your site</div>
+          <div class="card-delta" id="delta-clicks"></div>
         </div>
         <div class="card card-accent">
           <div class="card-label">Impressions</div>
-          <div class="card-value" id="stat-impressions">—</div>
+          <div class="card-value" id="stat-impressions">&mdash;</div>
           <div class="card-sub">Times shown in search results</div>
+          <div class="card-delta" id="delta-impressions"></div>
         </div>
         <div class="card card-accent">
           <div class="card-label">Avg. Position</div>
-          <div class="card-value" id="stat-position">—</div>
+          <div class="card-value" id="stat-position">&mdash;</div>
           <div class="card-sub">Average ranking (lower = better)</div>
+          <div class="card-delta" id="delta-position"></div>
         </div>
         <div class="card card-accent">
           <div class="card-label">Click-through Rate</div>
-          <div class="card-value" id="stat-ctr">—</div>
+          <div class="card-value" id="stat-ctr">&mdash;</div>
           <div class="card-sub">% who clicked after seeing you</div>
+          <div class="card-delta" id="delta-ctr"></div>
         </div>
       </div>
 
@@ -450,23 +583,27 @@
       <div class="cards">
         <div class="card card-accent">
           <div class="card-label">Get a Quote</div>
-          <div class="card-value" id="stat-quotes">—</div>
-          <div class="card-sub" id="stat-quotes-rate">Conversion rate: —</div>
+          <div class="card-value" id="stat-quotes">&mdash;</div>
+          <div class="card-sub" id="stat-quotes-rate">Conversion rate: &mdash;</div>
+          <div class="card-delta" id="delta-quotes"></div>
         </div>
         <div class="card card-accent">
           <div class="card-label">Phone Calls</div>
-          <div class="card-value" id="stat-calls">—</div>
-          <div class="card-sub" id="stat-calls-rate">Conversion rate: —</div>
+          <div class="card-value" id="stat-calls">&mdash;</div>
+          <div class="card-sub" id="stat-calls-rate">Conversion rate: &mdash;</div>
+          <div class="card-delta" id="delta-calls"></div>
         </div>
         <div class="card card-accent">
           <div class="card-label">Text Messages</div>
-          <div class="card-value" id="stat-texts">—</div>
-          <div class="card-sub" id="stat-texts-rate">Conversion rate: —</div>
+          <div class="card-value" id="stat-texts">&mdash;</div>
+          <div class="card-sub" id="stat-texts-rate">Conversion rate: &mdash;</div>
+          <div class="card-delta" id="delta-texts"></div>
         </div>
         <div class="card card-accent">
           <div class="card-label">Total CTA Clicks</div>
-          <div class="card-value" id="stat-total-cta">—</div>
-          <div class="card-sub" id="stat-total-rate">Conversion rate: —</div>
+          <div class="card-value" id="stat-total-cta">&mdash;</div>
+          <div class="card-sub" id="stat-total-rate">Conversion rate: &mdash;</div>
+          <div class="card-delta" id="delta-total-cta"></div>
         </div>
       </div>
 
@@ -495,7 +632,7 @@
 
       <div id="cta-error" class="error-msg" style="display:none"></div>
 
-      <p class="dash-footer">Data refreshes each time you load this page &nbsp;·&nbsp; Search Console data has a ~3 day delay &nbsp;·&nbsp; CTA tracking started April 2026</p>
+      <p class="dash-footer">Data refreshes each time you load this page &nbsp;&middot;&nbsp; Search Console data has a ~3 day delay &nbsp;&middot;&nbsp; CTA tracking started April 2026</p>
     </div>
   </div>
 
@@ -505,13 +642,137 @@
 
     let tokenClient;
     let accessToken = sessionStorage.getItem('alc_ga_token');
+    let cachedPropertyId = null;
+
+    /* ── Date range helpers ── */
+
+    function fmt(d) {
+      return d.toISOString().split('T')[0];
+    }
+
+    function computeDateRange(key) {
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+      var startDate, endDate = new Date(today);
+
+      if (key === 'ytd') {
+        startDate = new Date(today.getFullYear(), 0, 1);
+      } else if (key === 'custom') {
+        var cs = document.getElementById('custom-start').value;
+        var ce = document.getElementById('custom-end').value;
+        if (!cs || !ce) return null;
+        startDate = new Date(cs + 'T00:00:00');
+        endDate = new Date(ce + 'T00:00:00');
+        if (startDate >= endDate) return null;
+      } else {
+        var days = parseInt(key);
+        startDate = new Date(today);
+        startDate.setDate(startDate.getDate() - days);
+      }
+
+      var rangeDays = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24));
+      var compEnd = new Date(startDate);
+      compEnd.setDate(compEnd.getDate() - 1);
+      var compStart = new Date(compEnd);
+      compStart.setDate(compStart.getDate() - rangeDays + 1);
+
+      return {
+        startDate: startDate,
+        endDate: endDate,
+        comparisonStartDate: compStart,
+        comparisonEndDate: compEnd,
+        days: rangeDays,
+        label: fmt(startDate) + ' — ' + fmt(endDate)
+      };
+    }
+
+    function computeGSCDateRange(baseRange) {
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+      var maxEnd = new Date(today);
+      maxEnd.setDate(maxEnd.getDate() - 3);
+
+      var endDate = new Date(Math.min(baseRange.endDate.getTime(), maxEnd.getTime()));
+      var startDate = new Date(baseRange.startDate);
+      if (startDate >= endDate) {
+        startDate = new Date(endDate);
+        startDate.setDate(startDate.getDate() - 1);
+      }
+
+      var rangeDays = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24));
+      var compEnd = new Date(startDate);
+      compEnd.setDate(compEnd.getDate() - 1);
+      var compStart = new Date(compEnd);
+      compStart.setDate(compStart.getDate() - rangeDays + 1);
+
+      var wasClamped = baseRange.endDate.getTime() > maxEnd.getTime();
+
+      return {
+        startDate: startDate,
+        endDate: endDate,
+        comparisonStartDate: compStart,
+        comparisonEndDate: compEnd,
+        days: rangeDays,
+        label: fmt(startDate) + ' — ' + fmt(endDate),
+        wasClamped: wasClamped,
+        clampedDate: fmt(maxEnd)
+      };
+    }
+
+    function renderDelta(elementId, current, previous, options) {
+      options = options || {};
+      var el = document.getElementById(elementId);
+      if (!el) return;
+
+      if (previous === 0 && current === 0) {
+        el.innerHTML = '<span class="card-delta--neutral">No change</span>';
+        return;
+      }
+      if (previous === 0 || previous == null) {
+        el.innerHTML = '<span class="card-delta--new">New — no prior data</span>';
+        return;
+      }
+      if (current == null) {
+        el.textContent = '';
+        return;
+      }
+
+      var pctChange = ((current - previous) / Math.abs(previous)) * 100;
+      var isPositive = options.invertColor ? pctChange < 0 : pctChange > 0;
+      var arrow = pctChange > 0 ? '\u2191' : pctChange < 0 ? '\u2193' : '';
+      var cls = pctChange === 0 ? 'card-delta--neutral' : (isPositive ? 'card-delta--up' : 'card-delta--down');
+
+      el.innerHTML = '<span class="' + cls + '">' + arrow + ' ' + Math.abs(pctChange).toFixed(0) + '% vs previous period</span>';
+    }
+
+    function clearDeltas() {
+      var deltas = document.querySelectorAll('.card-delta');
+      for (var i = 0; i < deltas.length; i++) deltas[i].textContent = '';
+    }
+
+    /* ── Screen management ── */
 
     function show(id) {
-      ['loading-screen', 'login-screen', 'dashboard'].forEach(s => {
-        const el = document.getElementById(s);
+      ['loading-screen', 'login-screen', 'dashboard'].forEach(function(s) {
+        var el = document.getElementById(s);
         if (el) el.style.display = (s === id ? (id === 'dashboard' ? 'block' : 'flex') : 'none');
       });
     }
+
+    function showContentLoading(on) {
+      var existing = document.getElementById('content-overlay');
+      if (on && !existing) {
+        var overlay = document.createElement('div');
+        overlay.className = 'content-loading';
+        overlay.id = 'content-overlay';
+        overlay.innerHTML = '<div class="spinner"></div>';
+        document.getElementById('dashboard-content').appendChild(overlay);
+      } else if (!on && existing) {
+        existing.remove();
+      }
+    }
+
+    /* ── Auth ── */
 
     function authorize() {
       if (tokenClient) tokenClient.requestAccessToken({ prompt: '' });
@@ -522,7 +783,9 @@
         try { google.accounts.oauth2.revoke(accessToken); } catch(e) {}
       }
       sessionStorage.removeItem('alc_ga_token');
+      sessionStorage.removeItem('alc_date_range');
       accessToken = null;
+      cachedPropertyId = null;
       show('login-screen');
     }
 
@@ -530,7 +793,7 @@
       tokenClient = google.accounts.oauth2.initTokenClient({
         client_id: CLIENT_ID,
         scope: SCOPES,
-        callback: async (resp) => {
+        callback: async function(resp) {
           if (resp.error) {
             showLoginError('Sign-in failed: ' + resp.error);
             show('login-screen');
@@ -550,13 +813,15 @@
     };
 
     function showLoginError(msg) {
-      const el = document.getElementById('login-error');
+      var el = document.getElementById('login-error');
       el.textContent = msg;
       el.style.display = 'block';
     }
 
+    /* ── API helper ── */
+
     async function apiFetch(url, options) {
-      const resp = await fetch(url, {
+      var resp = await fetch(url, {
         ...options,
         headers: {
           Authorization: 'Bearer ' + accessToken,
@@ -574,45 +839,62 @@
       return resp.json();
     }
 
+    /* ── GA4 property discovery ── */
+
     async function discoverGA4Property() {
-      const data = await apiFetch('https://analyticsadmin.googleapis.com/v1beta/accountSummaries');
-      const summaries = data.accountSummaries || [];
-      const allProps = summaries.flatMap(a => a.propertySummaries || []);
+      if (cachedPropertyId) return cachedPropertyId;
+      var data = await apiFetch('https://analyticsadmin.googleapis.com/v1beta/accountSummaries');
+      var summaries = data.accountSummaries || [];
+      var allProps = summaries.flatMap(function(a) { return a.propertySummaries || []; });
       if (!allProps.length) throw new Error('No GA4 properties found on this Google account.');
-      // Use first property (single-site setup)
-      return allProps[0].property.replace('properties/', '');
+      cachedPropertyId = allProps[0].property.replace('properties/', '');
+      return cachedPropertyId;
     }
 
-    async function loadGA4Data(propertyId) {
-      const today = new Date();
-      const fmt = d => d.toISOString().split('T')[0];
-      const start = new Date(today); start.setDate(start.getDate() - 30);
+    /* ── Load GA4 data ── */
 
-      document.getElementById('ga4-date-label').textContent =
-        fmt(start) + ' — ' + fmt(today);
+    async function loadGA4Data(propertyId, dateRange) {
+      document.getElementById('ga4-date-label').textContent = dateRange.label;
 
-      const data = await apiFetch(
+      var data = await apiFetch(
         'https://analyticsdata.googleapis.com/v1beta/properties/' + propertyId + ':runReport',
         {
           method: 'POST',
           body: JSON.stringify({
-            dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+            dateRanges: [
+              { startDate: fmt(dateRange.startDate), endDate: fmt(dateRange.endDate) },
+              { startDate: fmt(dateRange.comparisonStartDate), endDate: fmt(dateRange.comparisonEndDate) }
+            ],
             metrics: [{ name: 'sessions' }, { name: 'totalUsers' }],
             dimensions: [{ name: 'sessionDefaultChannelGroup' }]
           })
         }
       );
 
-      let totalSessions = 0, totalUsers = 0, organicSessions = 0, directSessions = 0;
+      var totalSessions = 0, totalUsers = 0, organicSessions = 0, directSessions = 0;
+      var prevSessions = 0, prevUsers = 0, prevOrganic = 0, prevDirect = 0;
 
-      for (const row of (data.rows || [])) {
-        const channel = (row.dimensionValues[0].value || '').toLowerCase();
-        const sessions = parseInt(row.metricValues[0].value || 0);
-        const users = parseInt(row.metricValues[1].value || 0);
+      for (var i = 0; i < (data.rows || []).length; i++) {
+        var row = data.rows[i];
+        var channel = (row.dimensionValues[0].value || '').toLowerCase();
+        var sessions = parseInt(row.metricValues[0].value || 0);
+        var users = parseInt(row.metricValues[1].value || 0);
+        var prevSess = parseInt(row.metricValues[2].value || 0);
+        var prevUsr = parseInt(row.metricValues[3].value || 0);
+
         totalSessions += sessions;
         totalUsers += users;
-        if (channel.includes('organic')) organicSessions += sessions;
-        if (channel.includes('direct')) directSessions += sessions;
+        prevSessions += prevSess;
+        prevUsers += prevUsr;
+
+        if (channel.includes('organic')) {
+          organicSessions += sessions;
+          prevOrganic += prevSess;
+        }
+        if (channel.includes('direct')) {
+          directSessions += sessions;
+          prevDirect += prevSess;
+        }
       }
 
       document.getElementById('stat-sessions').textContent = totalSessions.toLocaleString();
@@ -620,73 +902,97 @@
       document.getElementById('stat-organic').textContent = organicSessions.toLocaleString();
       document.getElementById('stat-direct').textContent = directSessions.toLocaleString();
 
-      return totalSessions;
+      renderDelta('delta-sessions', totalSessions, prevSessions);
+      renderDelta('delta-users', totalUsers, prevUsers);
+      renderDelta('delta-organic', organicSessions, prevOrganic);
+      renderDelta('delta-direct', directSessions, prevDirect);
+
+      return { current: totalSessions, previous: prevSessions };
     }
 
-    async function loadGSCData() {
-      const today = new Date();
-      const endDate = new Date(today); endDate.setDate(endDate.getDate() - 3);
-      const startDate = new Date(endDate); startDate.setDate(startDate.getDate() - 27);
-      const fmt = d => d.toISOString().split('T')[0];
+    /* ── Load GSC data ── */
 
-      document.getElementById('gsc-date-label').textContent =
-        fmt(startDate) + ' — ' + fmt(endDate);
+    async function loadGSCData(gscRange) {
+      document.getElementById('gsc-date-label').textContent = gscRange.label;
 
-      // Try domain property first, fall back to URL prefix
-      const sites = [
+      var noteEl = document.getElementById('gsc-date-note');
+      if (gscRange.wasClamped) {
+        noteEl.textContent = 'Search Console data is only available through ' + gscRange.clampedDate + ' due to processing delay.';
+        noteEl.style.display = 'block';
+      } else {
+        noteEl.style.display = 'none';
+      }
+
+      var sites = [
         'sc-domain:americanlegacycontracting.com',
         'https://americanlegacycontracting.com/'
       ];
 
-      let gscError = null;
+      var gscError = null;
 
-      for (const site of sites) {
+      for (var s = 0; s < sites.length; s++) {
+        var site = sites[s];
         try {
-          const encoded = encodeURIComponent(site);
-          const base = 'https://searchconsole.googleapis.com/webmasters/v3/sites/' + encoded + '/searchAnalytics/query';
-          const body = { startDate: fmt(startDate), endDate: fmt(endDate), rowLimit: 10 };
+          var encoded = encodeURIComponent(site);
+          var base = 'https://searchconsole.googleapis.com/webmasters/v3/sites/' + encoded + '/searchAnalytics/query';
 
-          const [summary, queriesData] = await Promise.all([
-            apiFetch(base, { method: 'POST', body: JSON.stringify(body) }),
-            apiFetch(base, { method: 'POST', body: JSON.stringify({ ...body, dimensions: ['query'] }) })
+          var currentBody = { startDate: fmt(gscRange.startDate), endDate: fmt(gscRange.endDate), rowLimit: 10 };
+          var compBody = { startDate: fmt(gscRange.comparisonStartDate), endDate: fmt(gscRange.comparisonEndDate), rowLimit: 10 };
+
+          var results = await Promise.all([
+            apiFetch(base, { method: 'POST', body: JSON.stringify(currentBody) }),
+            apiFetch(base, { method: 'POST', body: JSON.stringify({ ...currentBody, dimensions: ['query'] }) }),
+            apiFetch(base, { method: 'POST', body: JSON.stringify(compBody) })
           ]);
 
-          // Summary row
-          const row = (summary.rows || [])[0] || {};
-          const clicks = Math.round(row.clicks || 0);
-          const impressions = Math.round(row.impressions || 0);
-          const position = row.position ? row.position.toFixed(1) : '—';
-          const ctr = row.ctr ? (row.ctr * 100).toFixed(1) + '%' : '—';
+          var summary = results[0];
+          var queriesData = results[1];
+          var compSummary = results[2];
+
+          var row = (summary.rows || [])[0] || {};
+          var clicks = Math.round(row.clicks || 0);
+          var impressions = Math.round(row.impressions || 0);
+          var position = row.position ? row.position.toFixed(1) : '—';
+          var ctr = row.ctr ? (row.ctr * 100).toFixed(1) + '%' : '—';
 
           document.getElementById('stat-clicks').textContent = clicks.toLocaleString();
           document.getElementById('stat-impressions').textContent = impressions.toLocaleString();
           document.getElementById('stat-position').textContent = position;
           document.getElementById('stat-ctr').textContent = ctr;
 
-          // Queries table
-          const tbody = document.getElementById('queries-tbody');
-          const queryRows = queriesData.rows || [];
+          var compRow = (compSummary.rows || [])[0] || {};
+          var prevClicks = Math.round(compRow.clicks || 0);
+          var prevImpressions = Math.round(compRow.impressions || 0);
+          var prevPosition = compRow.position || null;
+          var prevCtr = compRow.ctr != null ? compRow.ctr : null;
+
+          renderDelta('delta-clicks', clicks, prevClicks);
+          renderDelta('delta-impressions', impressions, prevImpressions);
+          renderDelta('delta-position', row.position || null, prevPosition, { invertColor: true });
+          renderDelta('delta-ctr', row.ctr || null, prevCtr);
+
+          var tbody = document.getElementById('queries-tbody');
+          var queryRows = queriesData.rows || [];
           if (!queryRows.length) {
             tbody.innerHTML = '<tr><td colspan="4" style="color:var(--muted);text-align:center;padding:2rem">No query data yet — check back in a few weeks as traffic grows.</td></tr>';
           } else {
-            tbody.innerHTML = queryRows.map(r => `
-              <tr>
-                <td><span class="query-text">${escHtml(r.keys[0])}</span></td>
-                <td>${Math.round(r.clicks)}</td>
-                <td>${Math.round(r.impressions)}</td>
-                <td>${r.position.toFixed(1)}</td>
-              </tr>
-            `).join('');
+            tbody.innerHTML = queryRows.map(function(r) {
+              return '<tr>' +
+                '<td><span class="query-text">' + escHtml(r.keys[0]) + '</span></td>' +
+                '<td>' + Math.round(r.clicks) + '</td>' +
+                '<td>' + Math.round(r.impressions) + '</td>' +
+                '<td>' + r.position.toFixed(1) + '</td>' +
+                '</tr>';
+            }).join('');
           }
-          return; // success — stop trying sites
+          return;
         } catch(e) {
           if (e.message === 'unauthorized') return;
           gscError = e;
         }
       }
 
-      // Both sites failed
-      const errEl = document.getElementById('gsc-error');
+      var errEl = document.getElementById('gsc-error');
       errEl.style.display = 'block';
       errEl.textContent = 'Search Console data unavailable. Make sure this Google account has access to the Search Console property for americanlegacycontracting.com.';
       document.getElementById('stat-clicks').textContent = 'N/A';
@@ -697,22 +1003,21 @@
         '<tr><td colspan="4" style="color:var(--muted);text-align:center;padding:2rem">No data available.</td></tr>';
     }
 
-    async function loadCTAData(propertyId, totalSessions) {
-      const today = new Date();
-      const fmt = d => d.toISOString().split('T')[0];
-      const start = new Date(today); start.setDate(start.getDate() - 30);
+    /* ── Load CTA data ── */
 
-      document.getElementById('cta-date-label').textContent =
-        fmt(start) + ' — ' + fmt(today);
+    async function loadCTAData(propertyId, totalSessions, dateRange) {
+      document.getElementById('cta-date-label').textContent = dateRange.label;
 
       try {
-        // Get CTA event counts
-        const data = await apiFetch(
+        var data = await apiFetch(
           'https://analyticsdata.googleapis.com/v1beta/properties/' + propertyId + ':runReport',
           {
             method: 'POST',
             body: JSON.stringify({
-              dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+              dateRanges: [
+                { startDate: fmt(dateRange.startDate), endDate: fmt(dateRange.endDate) },
+                { startDate: fmt(dateRange.comparisonStartDate), endDate: fmt(dateRange.comparisonEndDate) }
+              ],
               metrics: [{ name: 'eventCount' }],
               dimensions: [{ name: 'eventName' }],
               dimensionFilter: {
@@ -726,15 +1031,21 @@
         );
 
         var quotes = 0, calls = 0, texts = 0;
-        for (const row of (data.rows || [])) {
-          const event = row.dimensionValues[0].value;
-          const count = parseInt(row.metricValues[0].value || 0);
-          if (event === 'get_quote') quotes = count;
-          else if (event === 'phone_call') calls = count;
-          else if (event === 'text_message') texts = count;
+        var prevQuotes = 0, prevCalls = 0, prevTexts = 0;
+
+        for (var i = 0; i < (data.rows || []).length; i++) {
+          var row = data.rows[i];
+          var event = row.dimensionValues[0].value;
+          var count = parseInt(row.metricValues[0].value || 0);
+          var prevCount = parseInt(row.metricValues[1].value || 0);
+          if (event === 'get_quote') { quotes = count; prevQuotes = prevCount; }
+          else if (event === 'phone_call') { calls = count; prevCalls = prevCount; }
+          else if (event === 'text_message') { texts = count; prevTexts = prevCount; }
         }
 
         var total = quotes + calls + texts;
+        var prevTotal = prevQuotes + prevCalls + prevTexts;
+
         var pctOf = function(n) {
           return totalSessions > 0 ? (n / totalSessions * 100).toFixed(1) + '%' : '—';
         };
@@ -749,13 +1060,17 @@
         document.getElementById('stat-texts-rate').textContent = 'Conversion rate: ' + pctOf(texts);
         document.getElementById('stat-total-rate').textContent = 'Conversion rate: ' + pctOf(total);
 
-        // Get CTA clicks by page
-        const pageData = await apiFetch(
+        renderDelta('delta-quotes', quotes, prevQuotes);
+        renderDelta('delta-calls', calls, prevCalls);
+        renderDelta('delta-texts', texts, prevTexts);
+        renderDelta('delta-total-cta', total, prevTotal);
+
+        var pageData = await apiFetch(
           'https://analyticsdata.googleapis.com/v1beta/properties/' + propertyId + ':runReport',
           {
             method: 'POST',
             body: JSON.stringify({
-              dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+              dateRanges: [{ startDate: fmt(dateRange.startDate), endDate: fmt(dateRange.endDate) }],
               metrics: [{ name: 'eventCount' }],
               dimensions: [{ name: 'pagePath' }, { name: 'eventName' }],
               dimensionFilter: {
@@ -770,9 +1085,9 @@
           }
         );
 
-        // Aggregate by page
         var pages = {};
-        for (const row of (pageData.rows || [])) {
+        for (var i = 0; i < (pageData.rows || []).length; i++) {
+          var row = pageData.rows[i];
           var page = row.dimensionValues[0].value;
           var event = row.dimensionValues[1].value;
           var count = parseInt(row.metricValues[0].value || 0);
@@ -810,14 +1125,66 @@
       }
     }
 
+    /* ── Dashboard orchestration ── */
+
+    async function refreshDashboard(key) {
+      var dateRange = computeDateRange(key);
+      if (!dateRange) return;
+
+      var gscRange = computeGSCDateRange(dateRange);
+
+      sessionStorage.setItem('alc_date_range', key);
+      if (key === 'custom') {
+        sessionStorage.setItem('alc_custom_start', document.getElementById('custom-start').value);
+        sessionStorage.setItem('alc_custom_end', document.getElementById('custom-end').value);
+      }
+
+      clearDeltas();
+      showContentLoading(true);
+
+      document.getElementById('gsc-error').style.display = 'none';
+      document.getElementById('cta-error').style.display = 'none';
+
+      try {
+        var propertyId = await discoverGA4Property();
+        var ga4Result = await loadGA4Data(propertyId, dateRange);
+        await Promise.all([
+          loadGSCData(gscRange),
+          loadCTAData(propertyId, ga4Result.current, dateRange)
+        ]);
+      } catch(e) {
+        if (e.message !== 'unauthorized') {
+          console.error('Dashboard refresh error:', e);
+        }
+      } finally {
+        showContentLoading(false);
+      }
+    }
+
     async function loadDashboard() {
       show('loading-screen');
       document.getElementById('loading-msg').textContent = 'Loading your data…';
+
+      var savedRange = sessionStorage.getItem('alc_date_range') || '30';
+
+      if (savedRange === 'custom') {
+        var savedStart = sessionStorage.getItem('alc_custom_start');
+        var savedEnd = sessionStorage.getItem('alc_custom_end');
+        if (savedStart && savedEnd) {
+          document.getElementById('custom-start').value = savedStart;
+          document.getElementById('custom-end').value = savedEnd;
+          document.getElementById('custom-date-fields').style.display = '';
+        } else {
+          savedRange = '30';
+        }
+      }
+
+      setActivePill(savedRange);
+
       try {
-        const propertyId = await discoverGA4Property();
-        const totalSessions = await loadGA4Data(propertyId);
-        await Promise.all([loadGSCData(), loadCTAData(propertyId, totalSessions)]);
+        await discoverGA4Property();
         show('dashboard');
+        await refreshDashboard(savedRange);
       } catch(e) {
         if (e.message !== 'unauthorized') {
           show('login-screen');
@@ -825,6 +1192,42 @@
         }
       }
     }
+
+    /* ── Date bar event listeners ── */
+
+    function setActivePill(key) {
+      var pills = document.querySelectorAll('.date-pill[data-range]');
+      for (var i = 0; i < pills.length; i++) {
+        pills[i].classList.toggle('active', pills[i].getAttribute('data-range') === key);
+      }
+    }
+
+    document.getElementById('date-bar').addEventListener('click', function(e) {
+      var pill = e.target.closest('.date-pill[data-range]');
+      if (!pill) return;
+
+      var range = pill.getAttribute('data-range');
+
+      if (range === 'custom') {
+        setActivePill('custom');
+        document.getElementById('custom-date-fields').style.display = '';
+        return;
+      }
+
+      document.getElementById('custom-date-fields').style.display = 'none';
+      setActivePill(range);
+      refreshDashboard(range);
+    });
+
+    document.getElementById('custom-apply').addEventListener('click', function() {
+      var cs = document.getElementById('custom-start').value;
+      var ce = document.getElementById('custom-end').value;
+      if (!cs || !ce) return;
+      if (new Date(cs) >= new Date(ce)) return;
+      refreshDashboard('custom');
+    });
+
+    /* ── Util ── */
 
     function escHtml(str) {
       return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
