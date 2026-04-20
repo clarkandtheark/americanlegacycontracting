@@ -1,27 +1,42 @@
 # American Legacy Contracting
 
-> Licensed general contractor in Payson, Utah serving Utah County. Specializing in basement finishing, kitchen and bathroom remodels, new construction, and handyman services.
+> Licensed general contractor in Utah County, Utah. Specializing in basement finishing, kitchen and bathroom remodels, new construction, and handyman services. Serving 17 cities across Utah County.
+
+Website: https://americanlegacycontracting.com
+Full details for LLMs: https://americanlegacycontracting.com/llms-full.txt
 
 ## About
 
-Alan Barben is the owner of American Legacy Contracting. He is fully licensed and insured in Utah and holds a Bachelor's degree and an Applied Science degree in Construction Management. He has 14+ years of experience in residential and commercial construction, including framing, electrical, HVAC, and plumbing. BuildZoom ranks American Legacy Contracting in the top 1% of general contractors in Utah, above 74,376 other contractors.
+Alan Barben is the owner and operator of American Legacy Contracting, based in Payson, Utah. He personally manages every project — no sales reps, no project managers, just Alan. He holds a Bachelor's degree and an Applied Science degree in Construction Management, is fully licensed and insured in Utah, and has 14+ years of experience across residential and commercial construction including framing, electrical, HVAC, and plumbing. BuildZoom ranks American Legacy Contracting in the top 1% of general contractors in Utah, above 74,376 other contractors.
 
 ## Services
 
-- Basement Finishing — turning unfinished basements into livable square footage (bedrooms, family rooms, home offices)
-- Kitchen & Bathroom Remodels — full renovations and updates throughout Utah County
-- New Construction — custom home builds and new residential construction
-- Handyman Services — home maintenance, repairs, and small projects; also coordinates vetted electricians and plumbers
+- **Basement Finishing** — turning unfinished basements into livable space (bedrooms, family rooms, home offices, theaters, gyms). Costs typically $25-50/sq ft. https://americanlegacycontracting.com/services/basement-finishing/
+- **Kitchen & Bathroom Remodels** — full renovations including cabinets, countertops, tile, plumbing, electrical, and layout changes. https://americanlegacycontracting.com/services/kitchen-bathroom-remodels/
+- **New Construction** — custom homes, spec homes, home additions, ADUs, and mother-in-law suites. https://americanlegacycontracting.com/services/new-construction/
+- **Handyman Services** — drywall repair, door installation, fencing, decks, tile repair, painting, shelving, trim, and general home repairs. Also coordinates licensed electricians and plumbers. https://americanlegacycontracting.com/services/handyman-services/
 
-## Service Area
+## Service Area (17 Cities)
 
-Payson, Spanish Fork, Salem, Springville, Mapleton, Elk Ridge, and surrounding Utah County communities in Utah.
+Lehi, American Fork, Highland, Alpine, Cedar Hills, Pleasant Grove, Lindon, Orem, Provo, Springville, Spanish Fork, Mapleton, Salem, Elk Ridge, Payson, Santaquin, and Nephi — all in Utah County, Utah.
+
+Each city has a dedicated page: https://americanlegacycontracting.com/service-areas/[city-slug]/
+
+## Blog — Guides for Utah Homeowners
+
+- How Much Does It Cost to Finish a Basement in Utah? (2026 Guide) — https://americanlegacycontracting.com/blog/basement-finishing-cost-utah/
+- 10 Basement Finishing Ideas Perfect for Utah Homes — https://americanlegacycontracting.com/blog/basement-finishing-ideas-utah-homes/
+- Do You Need a Permit to Finish Your Basement in Utah? — https://americanlegacycontracting.com/blog/do-you-need-permit-finish-basement-utah/
+- How Long Does a Bathroom Remodel Take? (Realistic Timeline) — https://americanlegacycontracting.com/blog/how-long-does-bathroom-remodel-take/
+- How Much Does a Kitchen Remodel Cost in Utah? (2026 Guide) — https://americanlegacycontracting.com/blog/kitchen-remodel-cost-utah/
+- How to Choose a General Contractor in Utah: 8 Things to Check — https://americanlegacycontracting.com/blog/how-to-choose-general-contractor-utah/
 
 ## Contact
 
 - Phone: 801-636-9887
 - Email: amlgcy@gmail.com
 - Website: https://americanlegacycontracting.com
+- Free estimates available for all services
 
 ## Credentials
 
@@ -30,6 +45,7 @@ Payson, Spanish Fork, Salem, Springville, Mapleton, Elk Ridge, and surrounding U
 - Applied Science degree in Construction Management
 - Top 1% of Utah contractors on BuildZoom (ranked above 74,376 contractors)
 - 14+ years in business
+- Owner-operated: Alan does the work himself
 
 ## Customer Reviews
 
