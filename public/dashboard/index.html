@@ -853,61 +853,55 @@
 
     /* ── Load GA4 data ── */
 
-    async function loadGA4Data(propertyId, dateRange) {
-      document.getElementById('ga4-date-label').textContent = dateRange.label;
-
-      var data = await apiFetch(
-        'https://analyticsdata.googleapis.com/v1beta/properties/' + propertyId + ':runReport',
-        {
-          method: 'POST',
-          body: JSON.stringify({
-            dateRanges: [
-              { startDate: fmt(dateRange.startDate), endDate: fmt(dateRange.endDate) },
-              { startDate: fmt(dateRange.comparisonStartDate), endDate: fmt(dateRange.comparisonEndDate) }
-            ],
-            metrics: [{ name: 'sessions' }, { name: 'totalUsers' }],
-            dimensions: [{ name: 'sessionDefaultChannelGroup' }]
-          })
-        }
-      );
-
+    function parseGA4Channels(data) {
       var totalSessions = 0, totalUsers = 0, organicSessions = 0, directSessions = 0;
-      var prevSessions = 0, prevUsers = 0, prevOrganic = 0, prevDirect = 0;
-
       for (var i = 0; i < (data.rows || []).length; i++) {
         var row = data.rows[i];
         var channel = (row.dimensionValues[0].value || '').toLowerCase();
         var sessions = parseInt(row.metricValues[0].value || 0);
         var users = parseInt(row.metricValues[1].value || 0);
-        var prevSess = parseInt(row.metricValues[2].value || 0);
-        var prevUsr = parseInt(row.metricValues[3].value || 0);
-
         totalSessions += sessions;
         totalUsers += users;
-        prevSessions += prevSess;
-        prevUsers += prevUsr;
-
-        if (channel.includes('organic')) {
-          organicSessions += sessions;
-          prevOrganic += prevSess;
-        }
-        if (channel.includes('direct')) {
-          directSessions += sessions;
-          prevDirect += prevSess;
-        }
+        if (channel.includes('organic')) organicSessions += sessions;
+        if (channel.includes('direct')) directSessions += sessions;
       }
+      return { totalSessions: totalSessions, totalUsers: totalUsers, organicSessions: organicSessions, directSessions: directSessions };
+    }
 
-      document.getElementById('stat-sessions').textContent = totalSessions.toLocaleString();
-      document.getElementById('stat-users').textContent = totalUsers.toLocaleString();
-      document.getElementById('stat-organic').textContent = organicSessions.toLocaleString();
-      document.getElementById('stat-direct').textContent = directSessions.toLocaleString();
+    async function loadGA4Data(propertyId, dateRange) {
+      document.getElementById('ga4-date-label').textContent = dateRange.label;
 
-      renderDelta('delta-sessions', totalSessions, prevSessions);
-      renderDelta('delta-users', totalUsers, prevUsers);
-      renderDelta('delta-organic', organicSessions, prevOrganic);
-      renderDelta('delta-direct', directSessions, prevDirect);
+      var ga4Url = 'https://analyticsdata.googleapis.com/v1beta/properties/' + propertyId + ':runReport';
+      var makeBody = function(start, end) {
+        return {
+          method: 'POST',
+          body: JSON.stringify({
+            dateRanges: [{ startDate: fmt(start), endDate: fmt(end) }],
+            metrics: [{ name: 'sessions' }, { name: 'totalUsers' }],
+            dimensions: [{ name: 'sessionDefaultChannelGroup' }]
+          })
+        };
+      };
 
-      return { current: totalSessions, previous: prevSessions };
+      var results = await Promise.all([
+        apiFetch(ga4Url, makeBody(dateRange.startDate, dateRange.endDate)),
+        apiFetch(ga4Url, makeBody(dateRange.comparisonStartDate, dateRange.comparisonEndDate))
+      ]);
+
+      var current = parseGA4Channels(results[0]);
+      var previous = parseGA4Channels(results[1]);
+
+      document.getElementById('stat-sessions').textContent = current.totalSessions.toLocaleString();
+      document.getElementById('stat-users').textContent = current.totalUsers.toLocaleString();
+      document.getElementById('stat-organic').textContent = current.organicSessions.toLocaleString();
+      document.getElementById('stat-direct').textContent = current.directSessions.toLocaleString();
+
+      renderDelta('delta-sessions', current.totalSessions, previous.totalSessions);
+      renderDelta('delta-users', current.totalUsers, previous.totalUsers);
+      renderDelta('delta-organic', current.organicSessions, previous.organicSessions);
+      renderDelta('delta-direct', current.directSessions, previous.directSessions);
+
+      return { current: current.totalSessions, previous: previous.totalSessions };
     }
 
     /* ── Load GSC data ── */
@@ -1005,19 +999,29 @@
 
     /* ── Load CTA data ── */
 
+    function parseCTAEvents(data) {
+      var quotes = 0, calls = 0, texts = 0;
+      for (var i = 0; i < (data.rows || []).length; i++) {
+        var row = data.rows[i];
+        var event = row.dimensionValues[0].value;
+        var count = parseInt(row.metricValues[0].value || 0);
+        if (event === 'get_quote') quotes = count;
+        else if (event === 'phone_call') calls = count;
+        else if (event === 'text_message') texts = count;
+      }
+      return { quotes: quotes, calls: calls, texts: texts, total: quotes + calls + texts };
+    }
+
     async function loadCTAData(propertyId, totalSessions, dateRange) {
       document.getElementById('cta-date-label').textContent = dateRange.label;
 
       try {
-        var data = await apiFetch(
-          'https://analyticsdata.googleapis.com/v1beta/properties/' + propertyId + ':runReport',
-          {
+        var ctaUrl = 'https://analyticsdata.googleapis.com/v1beta/properties/' + propertyId + ':runReport';
+        var makeBody = function(start, end) {
+          return {
             method: 'POST',
             body: JSON.stringify({
-              dateRanges: [
-                { startDate: fmt(dateRange.startDate), endDate: fmt(dateRange.endDate) },
-                { startDate: fmt(dateRange.comparisonStartDate), endDate: fmt(dateRange.comparisonEndDate) }
-              ],
+              dateRanges: [{ startDate: fmt(start), endDate: fmt(end) }],
               metrics: [{ name: 'eventCount' }],
               dimensions: [{ name: 'eventName' }],
               dimensionFilter: {
@@ -1027,43 +1031,35 @@
                 }
               }
             })
-          }
-        );
+          };
+        };
 
-        var quotes = 0, calls = 0, texts = 0;
-        var prevQuotes = 0, prevCalls = 0, prevTexts = 0;
+        var results = await Promise.all([
+          apiFetch(ctaUrl, makeBody(dateRange.startDate, dateRange.endDate)),
+          apiFetch(ctaUrl, makeBody(dateRange.comparisonStartDate, dateRange.comparisonEndDate))
+        ]);
 
-        for (var i = 0; i < (data.rows || []).length; i++) {
-          var row = data.rows[i];
-          var event = row.dimensionValues[0].value;
-          var count = parseInt(row.metricValues[0].value || 0);
-          var prevCount = parseInt(row.metricValues[1].value || 0);
-          if (event === 'get_quote') { quotes = count; prevQuotes = prevCount; }
-          else if (event === 'phone_call') { calls = count; prevCalls = prevCount; }
-          else if (event === 'text_message') { texts = count; prevTexts = prevCount; }
-        }
-
-        var total = quotes + calls + texts;
-        var prevTotal = prevQuotes + prevCalls + prevTexts;
+        var cur = parseCTAEvents(results[0]);
+        var prev = parseCTAEvents(results[1]);
 
         var pctOf = function(n) {
           return totalSessions > 0 ? (n / totalSessions * 100).toFixed(1) + '%' : '—';
         };
 
-        document.getElementById('stat-quotes').textContent = quotes.toLocaleString();
-        document.getElementById('stat-calls').textContent = calls.toLocaleString();
-        document.getElementById('stat-texts').textContent = texts.toLocaleString();
-        document.getElementById('stat-total-cta').textContent = total.toLocaleString();
+        document.getElementById('stat-quotes').textContent = cur.quotes.toLocaleString();
+        document.getElementById('stat-calls').textContent = cur.calls.toLocaleString();
+        document.getElementById('stat-texts').textContent = cur.texts.toLocaleString();
+        document.getElementById('stat-total-cta').textContent = cur.total.toLocaleString();
 
-        document.getElementById('stat-quotes-rate').textContent = 'Conversion rate: ' + pctOf(quotes);
-        document.getElementById('stat-calls-rate').textContent = 'Conversion rate: ' + pctOf(calls);
-        document.getElementById('stat-texts-rate').textContent = 'Conversion rate: ' + pctOf(texts);
-        document.getElementById('stat-total-rate').textContent = 'Conversion rate: ' + pctOf(total);
+        document.getElementById('stat-quotes-rate').textContent = 'Conversion rate: ' + pctOf(cur.quotes);
+        document.getElementById('stat-calls-rate').textContent = 'Conversion rate: ' + pctOf(cur.calls);
+        document.getElementById('stat-texts-rate').textContent = 'Conversion rate: ' + pctOf(cur.texts);
+        document.getElementById('stat-total-rate').textContent = 'Conversion rate: ' + pctOf(cur.total);
 
-        renderDelta('delta-quotes', quotes, prevQuotes);
-        renderDelta('delta-calls', calls, prevCalls);
-        renderDelta('delta-texts', texts, prevTexts);
-        renderDelta('delta-total-cta', total, prevTotal);
+        renderDelta('delta-quotes', cur.quotes, prev.quotes);
+        renderDelta('delta-calls', cur.calls, prev.calls);
+        renderDelta('delta-texts', cur.texts, prev.texts);
+        renderDelta('delta-total-cta', cur.total, prev.total);
 
         var pageData = await apiFetch(
           'https://analyticsdata.googleapis.com/v1beta/properties/' + propertyId + ':runReport',
@@ -1147,11 +1143,21 @@
 
       try {
         var propertyId = await discoverGA4Property();
-        var ga4Result = await loadGA4Data(propertyId, dateRange);
-        await Promise.all([
-          loadGSCData(gscRange),
-          loadCTAData(propertyId, ga4Result.current, dateRange)
-        ]);
+
+        var totalSessions = 0;
+        var ga4Done = loadGA4Data(propertyId, dateRange)
+          .then(function(r) { totalSessions = r.current; })
+          .catch(function(e) { if (e.message !== 'unauthorized') console.error('GA4 error:', e); });
+
+        var gscDone = loadGSCData(gscRange)
+          .catch(function(e) { if (e.message !== 'unauthorized') console.error('GSC error:', e); });
+
+        await ga4Done;
+
+        var ctaDone = loadCTAData(propertyId, totalSessions, dateRange)
+          .catch(function(e) { if (e.message !== 'unauthorized') console.error('CTA error:', e); });
+
+        await Promise.all([gscDone, ctaDone]);
       } catch(e) {
         if (e.message !== 'unauthorized') {
           console.error('Dashboard refresh error:', e);
