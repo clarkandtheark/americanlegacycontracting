@@ -46,5 +46,34 @@ jobs:
       - name: Deploy to S3
         run: aws s3 sync dist/ s3://americanlegacycontracting.com --delete
 
+      - name: Deploy CloudFront redirect function
+        run: |
+          FUNC_NAME="redirect-index-html"
+          FUNC_CODE='function handler(event) { var r = event.request; if (r.uri === "/index.html") { return { statusCode: 301, headers: { location: { value: "/" } } }; } return r; }'
+
+          # Create or update the function
+          if aws cloudfront describe-function --name "$FUNC_NAME" 2>/dev/null; then
+            ETAG=$(aws cloudfront describe-function --name "$FUNC_NAME" --query 'ETag' --output text)
+            aws cloudfront update-function --name "$FUNC_NAME" --function-config Comment="Redirect /index.html to /",Runtime="cloudfront-js-2.0" --function-code "$FUNC_CODE" --if-match "$ETAG"
+          else
+            aws cloudfront create-function --name "$FUNC_NAME" --function-config Comment="Redirect /index.html to /",Runtime="cloudfront-js-2.0" --function-code "$FUNC_CODE"
+          fi
+
+          # Publish the function
+          ETAG=$(aws cloudfront describe-function --name "$FUNC_NAME" --stage DEVELOPMENT --query 'ETag' --output text)
+          aws cloudfront publish-function --name "$FUNC_NAME" --if-match "$ETAG"
+
+          # Associate with distribution if not already
+          DIST_ID="E2GIV5UT0MDQE2"
+          FUNC_ARN=$(aws cloudfront describe-function --name "$FUNC_NAME" --query 'FunctionSummary.FunctionMetadata.FunctionARN' --output text)
+          DIST_CONFIG=$(aws cloudfront get-distribution-config --id "$DIST_ID")
+          ETAG=$(echo "$DIST_CONFIG" | jq -r '.ETag')
+          HAS_FUNC=$(echo "$DIST_CONFIG" | jq '.DistributionConfig.DefaultCacheBehavior.FunctionAssociations.Items[]? | select(.EventType=="viewer-request")')
+
+          if [ -z "$HAS_FUNC" ]; then
+            UPDATED=$(echo "$DIST_CONFIG" | jq --arg arn "$FUNC_ARN" '.DistributionConfig.DefaultCacheBehavior.FunctionAssociations = {"Quantity": 1, "Items": [{"FunctionARN": $arn, "EventType": "viewer-request"}]}' | jq '.DistributionConfig')
+            aws cloudfront update-distribution --id "$DIST_ID" --distribution-config "$UPDATED" --if-match "$ETAG"
+          fi
+
       - name: Invalidate CloudFront cache
         run: aws cloudfront create-invalidation --distribution-id E2GIV5UT0MDQE2 --paths "/*"
