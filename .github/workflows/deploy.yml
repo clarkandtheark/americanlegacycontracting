@@ -49,14 +49,16 @@ jobs:
       - name: Deploy CloudFront redirect function
         run: |
           FUNC_NAME="redirect-index-html"
-          FUNC_CODE='function handler(event) { var r = event.request; if (r.uri === "/index.html") { return { statusCode: 301, headers: { location: { value: "/" } } }; } return r; }'
+          cat > /tmp/cf-function.js <<'JSEOF'
+          function handler(event) { var r = event.request; if (r.uri === "/index.html") { return { statusCode: 301, headers: { location: { value: "/" } } }; } return r; }
+          JSEOF
 
           # Create or update the function
           if aws cloudfront describe-function --name "$FUNC_NAME" 2>/dev/null; then
             ETAG=$(aws cloudfront describe-function --name "$FUNC_NAME" --query 'ETag' --output text)
-            aws cloudfront update-function --name "$FUNC_NAME" --function-config Comment="Redirect /index.html to /",Runtime="cloudfront-js-2.0" --function-code "$FUNC_CODE" --if-match "$ETAG"
+            aws cloudfront update-function --name "$FUNC_NAME" --function-config Comment="Redirect /index.html to /",Runtime="cloudfront-js-2.0" --function-code fileb:///tmp/cf-function.js --if-match "$ETAG"
           else
-            aws cloudfront create-function --name "$FUNC_NAME" --function-config Comment="Redirect /index.html to /",Runtime="cloudfront-js-2.0" --function-code "$FUNC_CODE"
+            aws cloudfront create-function --name "$FUNC_NAME" --function-config Comment="Redirect /index.html to /",Runtime="cloudfront-js-2.0" --function-code fileb:///tmp/cf-function.js
           fi
 
           # Publish the function
